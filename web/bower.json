@@ -1,0 +1,18 @@
+{
+  "name": "Administrativo eMarket",
+  "homepage": "https://github.com/Montanheiro/eMarket",
+  "authors": [
+    "Montanheiro <lucasmontanheiro10@gmail.com>"
+  ],
+  "description": "Parte administrativa do sistema de supermercados eMarket",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
