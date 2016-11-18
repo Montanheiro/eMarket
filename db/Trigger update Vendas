@@ -1,0 +1,22 @@
+-- trigger para alteração de estoque quando ocorrer update na tabela itens_venda; 
+
+DELIMITER $$
+CREATE TRIGGER Tgr_ItensVenda_Update AFTER UPDATE 
+ON itens_vendas
+FOR EACH ROW
+BEGIN
+
+  if  New.Status = 'S' then 
+  
+    UPDATE produtos SET QuantidadeAtual = QuantidadeAtual - New.Quantidade
+    WHERE id = New.Produtos_id;
+    
+  else
+  
+  UPDATE produtos SET QuantidadeAtual = (QuantidadeAtual - Old.Quantidade) + New.Quantidade
+  WHERE id = New.Produtos_id;
+    
+    end if;
+    
+END $$
+DELIMITER ;
