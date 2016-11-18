@@ -1,0 +1,11 @@
+-- Trigger para alteração de estoque quando ocorrer inserção de itens Venda.
+
+DELIMITER $$
+CREATE TRIGGER Tgr_ItensVenda_Insert AFTER INSERT 
+ON itens_vendas
+FOR EACH ROW
+BEGIN
+    UPDATE produtos SET QuantidadeAtual = QuantidadeAtual - New.Quantidade
+WHERE id = New.Produtos_id;
+END $$
+DELIMITER ;
