@@ -1,0 +1,11 @@
+-- Trigger para atualização de estoque quando ocorrer remoção de itens nas venda.
+
+DELIMITER $$
+CREATE TRIGGER Tgr_ItensVenda_Delete AFTER DELETE 
+ON itens_vendas
+FOR EACH ROW
+BEGIN
+    UPDATE produtos SET QuantidadeAtual = QuantidadeAtual + Old.Quantidade
+WHERE id = Old.Produtos_id;
+END $$
+DELIMITER ;

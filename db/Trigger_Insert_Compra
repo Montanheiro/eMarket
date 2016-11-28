@@ -1,0 +1,16 @@
+
+-- Trigger atualização de estque quando ouver a inserção de uma nova compra.
+
+
+DELIMITER $$
+CREATE TRIGGER Tgr_ItensCompra_Update AFTER Insert 
+ON itens_compra
+FOR EACH ROW
+BEGIN
+
+    UPDATE produtos SET QuantidadeAtual = QuantidadeAtual + NEW.Quantidade
+    WHERE id = NEW.Produtos_id; 
+    
+END $$
+DELIMITER ;
+
