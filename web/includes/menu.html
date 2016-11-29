@@ -1,0 +1,34 @@
+<md-toolbar>
+	<h1 class="md-toolbar-tools">Menu</h1>
+</md-toolbar>
+<div class="spaceToolbar"></div>
+
+<!-- Dynamic menu -->
+
+<md-list ng-controller="MenuItemsCtrl">
+	<a ng-repeat="item in MenuItems" ng-href="{{item.link}}" ng-click="toggleLeft()">
+		<md-list-item>			
+			<button  class="md-no-style bigMenuItensSlidenav" ng-click="">
+				<div class="menuIcon">
+					<md-icon md-svg-icon="img/icons/{{item.icon}}.svg"></md-icon>
+				</div>
+				<div class="md-list-item-inner">		    
+					<span>{{item.name}}</span>
+				</div>
+			</button>
+		</md-list-item>
+	</a>
+</md-list>
+
+<md-divider class="md-default-theme"></md-divider>
+<md-list>
+	<a ng-href="#/configuration" ng-click="toggleLeft()">
+		<md-list-item>			
+			<button  class="md-no-style" ng-click="">
+				<div class="md-list-item-inner">		    
+					<span>Configuração</span>
+				</div>
+			</button>
+		</md-list-item>
+	</a>
+</md-list>

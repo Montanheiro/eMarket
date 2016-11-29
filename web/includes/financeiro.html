@@ -1,0 +1,70 @@
+<div>
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
+				<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+			</md-button>
+			<h2>
+				<span>{{name}}</span>
+			</h2>					    
+		</div>
+	</md-toolbar>
+	<div class="spaceToolbar"></div>
+	<md-content class="md-padding">
+    	<md-card>      
+     		<md-card-content>
+				<h3>Está na Página : {{name}}</h3>
+			</md-card-content>
+
+			<div>
+				<md-card class="cardSubMenu">
+		        <div class="icon">
+					<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+				</div>
+		        <md-card-content>
+		          <div>
+			      		Compras
+		          </div>
+		        </md-card-content>
+		        <md-card-actions layout="column" layout-align="start">
+		          <md-button>Action 1</md-button>
+		          <md-button>Action 2</md-button>
+		        </md-card-actions>
+		      </md-card>
+
+
+		      <md-card class="cardSubMenu">
+		        <div class="icon">
+					<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+				</div>
+		        <md-card-content>
+		          <div>
+			      		Cadastro
+		          </div>
+		        </md-card-content>
+		        <md-card-actions layout="column" layout-align="start">
+		          <md-button>Action 1</md-button>
+		          <md-button>Action 2</md-button>
+		        </md-card-actions>
+		      </md-card>
+
+
+		      <md-card class="cardSubMenu">
+		        <div class="icon">
+					<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+				</div>
+		        <md-card-content>
+		          <div>
+			      		Relatórios
+		          </div>
+		        </md-card-content>
+		        <md-card-actions layout="column" layout-align="start">
+		          <md-button>Action 1</md-button>
+		          <md-button>Action 2</md-button>
+		        </md-card-actions>
+		      </md-card>
+		    </div>
+
+		</md-card>
+	</md-content>	
+</div>

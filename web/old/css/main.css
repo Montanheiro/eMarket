@@ -3,3 +3,9 @@
 .toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
 	color: white; 
 }
+
+.barraLateralEsquerda{
+	width: 250px;
+	height: 100%;
+	background-color: red;
+}
