@@ -6,3 +6,4 @@ Sistema de supermercado para o curso de Tecnologia em Sistemas para Internet
 - pdv -> ponto de venda, aplicação desktop
 - db -> banco de dados
 - backend -> APIs do sistema
+BIRL
