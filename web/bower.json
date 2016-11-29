@@ -1,13 +1,17 @@
 {
-  "name": "administrativo-emarket",
-  "homepage": "https://github.com/Montanheiro/eMarket",
+  "name": "Cordova-Noticias-IFGoiano",
+  "version": "1.0.0",
+  "homepage": "https://github.com/luizalexandrew/Cordova-Noticias-IFGoiano",
   "authors": [
-    "Montanheiro <lucasmontanheiro10@gmail.com>"
+    "luizalexandrew <luiz.alexandre@live.com>"
   ],
-  "description": "parte administrativa do sistema de supermercados emarket",
-  "main": "index.html",
+  "description": "Aplicativo permite acessar notícias e informações sobre a instituição.",
+  "keywords": [
+    "cordova",
+    "polymer",
+    "angular"
+  ],
   "license": "MIT",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -16,7 +20,11 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.5.8",
-    "angular-material": "^1.1.1"
+    "angular": "^1.4.x",
+    "angular-animate": "^1.4.x",
+    "angular-aria": "^1.4.x",
+    "angular-material": "^0.9.0",
+    "angular-route": "~1.4.1",
+    "angular-messages": "~1.4.1"
   }
 }

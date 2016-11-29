@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="principal">
+<head>
+	<meta charset="utf-8">
+	<title>Pagina principal do admin</title>
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body ng-controller="principalCtrl">
+	
+	<!--inicio menu-->
+	<md-content>
+		<md-toolbar class="md-hue-2">
+			<div class="md-toolbar-tools">
+				<h2>{{tituloMenu}}</h2>
+			</div>
+		</md-toolbar>
+	</md-content>
+
+	
+	<md-content class="barraLateralEsquerda">
+    <md-list>
+		<md-list-item class="md-3-line" ng-repeat="item in messages">
+			<div class="md-list-item-text">
+          <h3>item.what</h3>
+          <h4>item.who</h4>
+          <p>item.notes</p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+
+
+
+
+
+
+
+
+
+
+	
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.js"></script>
+	<script src="bower_components/angular-material/angular-material.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
