@@ -131,6 +131,8 @@ md-list-item{
 
 .semMargem{
 	margin: 0;
+	text-transform: none;
+	text-align: left;
 }
 
 .cardSubMenu > .icon{
