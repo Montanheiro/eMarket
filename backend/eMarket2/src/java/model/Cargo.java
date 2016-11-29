@@ -5,6 +5,11 @@ package model;
  * @author Bárbara
  */
 public class Cargo {
+    
+    /*
+        
+    
+    */
 
     private int id;
 
