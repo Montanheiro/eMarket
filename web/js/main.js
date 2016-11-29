@@ -9,11 +9,6 @@
             controller: 'HomeCtrl'
         })
 
-        .when('/favorite', {
-            templateUrl: 'includes/favorite.html',
-            controller: 'FavoriteCtrl'
-        })
-
         .when('/configuration', {
             templateUrl: 'includes/configuration.html',
             controller: 'ConfigurationCtrl'
@@ -23,6 +18,11 @@
             templateUrl: 'includes/financeiro.html',
             controller: 'financeiroCtrl'
         })
+        .when('/financeiro/cadastrar/cliente', {
+            templateUrl: 'includes/financeiroCadCliente.html',
+            controller: 'financeiroCadClienteCtrl'
+        })
+        
         .otherwise({ redirectTo: '/'});
     });
 
