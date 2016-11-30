@@ -75,9 +75,7 @@ public class CargoDAO {
             String sql = "SELECT * FROM emark.cargo";
             ResultSet rs = stm.executeQuery(sql);
 
-            if (rs.next()) {
-
-                ArrayList<Cargo> c = new ArrayList<>();
+           ArrayList<Cargo> c = new ArrayList<>();
 
                 while (rs.next()) {
                     c.add(new Cargo(
@@ -87,7 +85,6 @@ public class CargoDAO {
 
                 rs.next();
                 return c;
-            }
 
         } catch (SQLException ex) {
             Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
