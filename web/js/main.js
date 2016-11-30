@@ -22,6 +22,17 @@
             templateUrl: 'includes/financeiroCadCliente.html',
             controller: 'financeiroCadClienteCtrl'
         })
+
+
+        .when('/compras', {
+            templateUrl: 'includes/compras.html',
+            controller: 'comprasCtrl'
+        })
+
+        .when('/vendas', {
+            templateUrl: 'includes/vendas.html',
+            controller: 'vendasCtrl'
+        })
         
         .otherwise({ redirectTo: '/'});
     });
@@ -34,12 +45,7 @@
 
 
 
-
-
-
-
-
-    
+  
 
     
 
@@ -47,5 +53,5 @@
 
 
 
-})()
+})();
 
