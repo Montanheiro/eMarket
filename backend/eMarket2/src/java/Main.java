@@ -62,12 +62,12 @@ public class Main {
          */
    // System.out.println(CargoDAO.retreave(1));
 
-    
+    /*
         ArrayList<Cargo> carg = CargoDAO.retreaveAll();
         for (Cargo c : carg) {
             System.out.println(c);
         }
-     
+     */
         
         
 //System.out.println(Fornecedor_EnderecoDAO.retreave(3));
@@ -115,13 +115,12 @@ public class Main {
         EnderecoDAO.update(e);
 */
 
-//Cargo e = CargoDAO.retreave(4);
-//CargoDAO.delete(e);
+//    Cargo e = CargoDAO.retreave(5);
+//    CargoDAO.delete(e);
 
 /*      
-        Cargo e = CargoDAO.retreave(2);
+        Cargo e = CargoDAO.retreave(5);
         e.setNome("Gerente");
-        e.setDescricao("Gerencia a Organização");
         CargoDAO.update(e);
 */
 

@@ -15,15 +15,18 @@ public class Fornecedor {
     private String representante;
 
     private int pessoaId;
+    
+    private Compra compra;//Associacao
 
-    public Fornecedor(String status, int IE, String IM, String representante) {
+    public Fornecedor(String status, int IE, String IM, String representante, Compra compra) {
         this.status = status;
         this.IE = IE;
         this.IM = IM;
         this.representante = representante;
+        this.compra = compra;
     }
 
-    public Fornecedor(int id, String status, String responsavel, int IE, String IM, String representante, int pessoaId) {
+    public Fornecedor(int id, String status, String responsavel, int IE, String IM, String representante, int pessoaId, Compra compra) {
         this.id = id;
         this.status = status;
         this.responsavel = responsavel;
@@ -31,6 +34,7 @@ public class Fornecedor {
         this.IM = IM;
         this.representante = representante;
         this.pessoaId = pessoaId;
+        this.compra = compra;
     }
 
     public int getId() {
@@ -87,6 +91,14 @@ public class Fornecedor {
 
     public void setPessoaId(int pessoaId) {
         this.pessoaId = pessoaId;
+    }
+
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 
     @Override

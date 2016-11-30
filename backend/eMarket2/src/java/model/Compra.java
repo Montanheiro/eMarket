@@ -14,7 +14,7 @@ public class Compra {
     
     private int empresaId;
     private int usuarioId;
-    private String fornecedorId;
+    private int fornecedorId;
 
     public Compra(String data, double valorTotal, String caixa) {
         this.data = data;
@@ -22,7 +22,7 @@ public class Compra {
         this.caixa = caixa;
     }
 
-    public Compra(int id, String data, double valorTotal, String caixa, int empresaId, int usuarioId, String fornecedorId) {
+    public Compra(int id, String data, double valorTotal, String caixa, int empresaId, int usuarioId, int fornecedorId) {
         this.id = id;
         this.data = data;
         this.valorTotal = valorTotal;
@@ -80,11 +80,11 @@ public class Compra {
         this.usuarioId = usuarioId;
     }
 
-    public String getFornecedorId() {
+    public int getFornecedorId() {
         return fornecedorId;
     }
 
-    public void setFornecedorId(String fornecedorId) {
+    public void setFornecedorId(int fornecedorId) {
         this.fornecedorId = fornecedorId;
     }
 

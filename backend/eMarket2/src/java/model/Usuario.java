@@ -14,21 +14,25 @@ public class Usuario {
     private String tokenSession;
     
     private int funcionarioId;
+    
+    private Compra compra;//Associacao
 
-    public Usuario(String login, String senha, String status, String tokenSession) {
+    public Usuario(String login, String senha, String status, String tokenSession, Compra compra) {
         this.login = login;
         this.senha = senha;
         this.status = status;
         this.tokenSession = tokenSession;
+        this.compra = compra;
     }
 
-    public Usuario(int id, String login, String senha, String status, String tokenSession, int funcionarioId) {
+    public Usuario(int id, String login, String senha, String status, String tokenSession, int funcionarioId, Compra compra) {
         this.id = id;
         this.login = login;
         this.senha = senha;
         this.status = status;
         this.tokenSession = tokenSession;
         this.funcionarioId = funcionarioId;
+        this.compra = compra;
     }
 
     public int getId() {
@@ -77,6 +81,14 @@ public class Usuario {
 
     public void setFuncionarioId(int funcionarioId) {
         this.funcionarioId = funcionarioId;
+    }
+
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 
     @Override

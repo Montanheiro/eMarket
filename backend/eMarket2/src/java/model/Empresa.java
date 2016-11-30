@@ -12,20 +12,25 @@ public class Empresa {
     private String razaoSocial;
     private String cnpj;
     private String dataContratacao;
+    
+    private Compra compra;//Associacao
+    
 
-    public Empresa(String nome, String razaoSocial, String cnpj, String dataContratacao) {
+    public Empresa(String nome, String razaoSocial, String cnpj, String dataContratacao, Compra compra) {
         this.nome = nome;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
         this.dataContratacao = dataContratacao;
+        this.compra = compra;
     }
 
-    public Empresa(int id, String nome, String razaoSocial, String cnpj, String dataContratacao) {
+    public Empresa(int id, String nome, String razaoSocial, String cnpj, String dataContratacao, Compra compra) {
         this.id = id;
         this.nome = nome;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
         this.dataContratacao = dataContratacao;
+        this.compra = compra;
     }
 
     public int getId() {
@@ -68,6 +73,14 @@ public class Empresa {
         this.dataContratacao = dataContratacao;
     }
 
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+    
     @Override
     public String toString() {
         return "Empresa{" + "id=" + id + ", nome=" + nome + ", razaoSocial=" + razaoSocial + ", cnpj=" + cnpj + ", dataContratacao=" + dataContratacao + '}';
