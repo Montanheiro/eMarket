@@ -1,0 +1,54 @@
+<div>
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
+				<md-icon md-svg-icon="img/icons/ic_menu_24px.svg"></md-icon>
+			</md-button>
+			<h2>
+				<span>{{name}}</span>
+			</h2>					    
+		</div>
+	</md-toolbar>
+	<div class="spaceToolbar"></div>
+	<md-content class="md-padding">
+    	<md-card>      
+     		<div>
+				
+				<md-card class="cardSubMenu verde">
+					<div class="icon">
+						<md-icon md-svg-icon="img/icons/ic_attach_money_white_24px.svg"></md-icon>
+					</div>
+					<md-card-content>{{name}}</md-card-content>
+					<md-card-actions layout="column" layout-align="start">
+						<md-button class="semMargem">Empresa</md-button>
+					</md-card-actions>
+				</md-card>
+
+				<md-card class="cardSubMenu laranjado">
+					<div class="icon">
+						<md-icon md-svg-icon="img/icons/add_white.svg"></md-icon>
+					</div>
+					<md-card-content>Cadastros</md-card-content>
+					<md-card-actions layout="column" layout-align="start">
+						<md-button class="semMargem">Funcionários</md-button>
+						<md-button class="semMargem">Usuários</md-button>
+						<md-button class="semMargem">Cargos</md-button>
+						<md-button class="semMargem">Permissões</md-button>
+					</md-card-actions>
+				</md-card>
+
+				<md-card class="cardSubMenu azul">
+					<div class="icon">
+						<md-icon md-svg-icon="img/icons/relatorio_white.svg"></md-icon>
+					</div>
+					<md-card-content>Relatórios</md-card-content>
+					<md-card-actions layout="column" layout-align="start">
+						<md-button class="semMargem">Logs de acesso</md-button>
+						<md-button class="semMargem">Logs de PDV</md-button>
+					</md-card-actions>
+				</md-card>
+
+		    </div>
+		</md-card>
+	</md-content>	
+</div>
