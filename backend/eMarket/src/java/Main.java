@@ -2,6 +2,8 @@
 import java.util.ArrayList;
 import model.Cargo;
 import model.DAO.CargoDAO;
+import model.DAO.EnderecoDAO;
+import model.Endereco;
 
 /**
  *
@@ -13,10 +15,56 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Cliente c = new Cliente("Batista", "6633613");
+ 
+/************Teste do Metodo CREATE do EnderecoDAO************
+        Endereco e = new Endereco("Rua das bolinhas", "Bairro Feliz", "Mhos", "GO", "BR", "75650000");
+        EnderecoDAO.create(e);
+*/ 
 
-        //Endereco e = new Endereco("Rua das bolinhas", "Bairro Feliz", "Mhos", "GO", "BR", "75650000");
-        // c.setEndereco(e);
+
+        
+/************Teste dos Metodos RETREAVE do EnderecoDAO************
+ * 
+ * 
+/System.out.println(EnderecoDAO.retreave(1));
+//System.out.println(EnderecoDAO.retreaveByPessoa(1));
+        
+        ArrayList<Endereco> teste = EnderecoDAO.retreaveAll();
+        for (Endereco e : teste) {
+            System.out.println(e);
+        }
+
+ * 
+ * 
+*/
+        
+/************Teste do Metodo UPDATE do EnderecoDAO************
+ * 
+ * 
+        Endereco e = EnderecoDAO.retreave(2);
+        e.setLogradouro("Rua das Pitangas");
+        e.setBairro("Noroeste");
+        EnderecoDAO.update(e);
+ * 
+ * 
+*/
+
+/************Teste do Metodo DELETE do EnderecoDAO************
+ * 
+ * 
+        Endereco e = EnderecoDAO.retreave(2);
+        EnderecoDAO.delete(e);        
+ * 
+ * 
+*/
+
+
+        
+
+       
+
+//Cliente c = new Cliente("Batista", "6633613");
+// c.setEndereco(e);
         
 //        Cargo c = new Cargo("Gerente");
 //        CargoDAO.create(c);
@@ -114,6 +162,7 @@ public class Main {
         e.setBairro("Bairro dos Chuchus");
         EnderecoDAO.update(e);
 */
+
 
 //    Cargo e = CargoDAO.retreave(5);
 //    CargoDAO.delete(e);

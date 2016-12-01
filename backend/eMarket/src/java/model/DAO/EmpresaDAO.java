@@ -58,13 +58,13 @@ public class EmpresaDAO {
             String sql = "SELECT * FROM emark.Empresa where id =" + id;
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
-            
+
             Compra c = CompraDAO.retreaveByEmpresa(id);
-            
+
             return new Empresa(id,
-                    rs.getString("nome"), 
-                    rs.getString("razaoSocial"), 
-                    rs.getString("cnpj"), 
+                    rs.getString("nome"),
+                    rs.getString("razaoSocial"),
+                    rs.getString("cnpj"),
                     rs.getString("dataContratacao"),
                     c);
 
@@ -72,37 +72,35 @@ public class EmpresaDAO {
             Logger.getLogger(EmpresaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-
     }
 
     public static ArrayList<Empresa> retreaveAll() {
         try {
-            Statement stm =
-                    BancoDados.createConnection().
+            Statement stm
+                    = BancoDados.createConnection().
                             createStatement();
-            
-            String sql = "select * from clientes";
-            
+
+            String sql = "SELECT * FROM emark.empresa";
             ResultSet rs = stm.executeQuery(sql);
-            
+
             ArrayList<Empresa> em = new ArrayList<>();
-            
-            while (rs.next()){
+
+            while (rs.next()) {
                 Compra c = CompraDAO.retreaveByEmpresa(rs.getInt("id"));
                 em.add(new Empresa(
-                        rs.getInt("pk_cliente"), 
+                        rs.getInt("id"),
                         rs.getString("nome"),
-                        rs.getString("nome"),
-                        rs.getString("cpf"), 
+                        rs.getString("razaoSocial"),
+                        rs.getString("cnpj"),
+                        rs.getString("dataContratacao"),
                         c));
             }
-            
-            return cs;
+
+            return em;
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EmpresaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         return null;
 
     }
@@ -112,13 +110,9 @@ public class EmpresaDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-            //DELETE FROM `emark`.`Empresa` WHERE `id`='4';
-            String sql = "DELETE FROM `emark`.`Empresa` WHERE `id`="
+            String sql = "DELETE FROM `emark`.`empresa` WHERE `id`="
                     + c.getId();
-
             stm.execute(sql);
-
         } catch (SQLException ex) {
             Logger.getLogger(EmpresaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -130,11 +124,14 @@ public class EmpresaDAO {
                     = BancoDados.createConnection().
                             createStatement();
 
-            //UPDATE `emark`.`Empresa` SET `Nome`='Atendente' WHERE `id`='4';
-            String sql = "UPDATE `emark`.`cargo` SET "
+//UPDATE `emark`.`empresa` SET `Nome`='Comercio de Verduras', `RazaoSocial`='Hort Frut verdurex',
+//`CNPJ`='1234567890', `DataContratacao`='2010-10-11' WHERE `id`='1';
+            String sql = "UPDATE `emark`.`empresa` SET "
                     + "`Nome`='" + c.getNome()
-                    + "' WHERE `id`= "
-                    + c.getId();
+                    + "`RazaoSocial`= '" + c.getRazaoSocial()
+                    + "', `CNPJ` = '" + c.getCnpj()
+                    + "', `DataContratacao` = '" + c.getDataContratacao()
+                    + "' WHERE `id`= " + c.getId();
 
             stm.execute(sql);
 

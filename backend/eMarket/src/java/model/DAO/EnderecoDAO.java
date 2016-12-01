@@ -13,25 +13,25 @@ import model.Endereco;
  * @author Bárbara
  */
 public class EnderecoDAO {
-
+    
+    //Metodo CREATE esta OK, testado e funcionando
     public static int create(Endereco e) {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            //INSERT INTO clientes_enderecos(
-            //pk_enderenco, fk_cliente, logradouro, bairro, cidade, estado, 
-            //pais, cep)VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+//INSERT INTO `emark`.`endereco` (`id`, `Logradouro`, `Bairro`, `Cidade`, `Estado`, `Pais`, `Cep`, `Pessoa_id`)
+//VALUES ('1', 'Rua 2', 'Centro', 'Morrinhos', 'Go', 'BR', '7565000', '1');
 
             String sql
-                    = "insert into clientes_enderecos (fk_cliente, logradouro, bairro, cidade, estado, pais, cep) values ("
-                    + e.getessoaId() + ",'"
+                    = "INSERT INTO `emark`.`endereco` (`Logradouro`, `Bairro`, `Cidade`, `Estado`, `Pais`, `Cep`, `Pessoa_id`) VALUES ('"
                     + e.getLogradouro() + "','"
                     + e.getBairro() + "','"
                     + e.getCidade() + "','"
                     + e.getEstado() + "','"
                     + e.getPais() + "','"
-                    + e.getCep() + "')";
+                    + e.getCep() + "','"         
+                    + e.getPessoaId() + "')";
             System.out.println(sql);
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
@@ -41,17 +41,18 @@ public class EnderecoDAO {
 
             return key;
         } catch (SQLException ex) {
-            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
 
+    //Metodo RETREAVE esta OK, testado e funcionando
     public static Endereco retreave(int id) {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "Select * from clientes_enderecos where pk_endereco =" + id;
+            String sql = "SELECT * FROM emark.endereco WHERE id =" + id;
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
 
@@ -71,12 +72,13 @@ public class EnderecoDAO {
         return null;
     }
 
+    //Metodo RETREAVE esta OK, testado e funcionando
     public static Endereco retreaveByPessoa(int pessoaId) {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "Select * from enderecos where fk_cliente =" + pessoaId;
+            String sql = "SELECT * FROM emark.endereco WHERE Pessoa_id = " + pessoaId;
             ResultSet rs = stm.executeQuery(sql);
             if (rs.next()) {
 
@@ -96,12 +98,13 @@ public class EnderecoDAO {
         return null;
     }
 
+    //Metodo RETREAVE esta OK, testado e funcionando
     public static ArrayList<Endereco> retreaveAll() {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "Select * from clientes_enderecos";
+            String sql = "SELECT * FROM emark.endereco;";
             ResultSet rs = stm.executeQuery(sql);
 
             ArrayList<Endereco> e = new ArrayList<>();
@@ -115,7 +118,7 @@ public class EnderecoDAO {
                         rs.getString("estado"),
                         rs.getString("pais"),
                         rs.getString("cep"),
-                        rs.getInt("fk_cliente")));
+                        rs.getInt("pessoa_id")));
             }
 
             return e;
@@ -126,14 +129,23 @@ public class EnderecoDAO {
         return null;
     }
 
-    public static void delete(Endereco e) {
+    //Metodo UPDATE esta OK, testado e funcionando
+    public static void update(Endereco e) {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "delete from "
-                    + "clientes_enderecos"
-                    + " where pk_endereco ="
+//UPDATE `emark`.`endereco` SET `Logradouro`='Rua 3', `Bairro`='Feliz', `Cidade`='Morrinhos',
+//`Estado`='Go', `Pais`='BR', `Cep`='7565000', `Pessoa_id`='3' WHERE `id`='2';
+            
+            String sql = "UPDATE `emark`.`endereco` SET "
+                    + "`Logradouro`='" + e.getLogradouro()
+                    + "', `Bairro`='" + e.getBairro()
+                    + "', `Cidade`='" + e.getCidade()
+                    + "', `Estado`='" + e.getEstado()
+                    + "', `Pais`='" + e.getPais()
+                    + "', `Cep`='" + e.getCep()
+                    + "' WHERE `id`="
                     + e.getId();
 
             stm.execute(sql);
@@ -143,19 +155,13 @@ public class EnderecoDAO {
         }
     }
 
-    public static void update(Endereco e) {
+    //Metodo DELETE esta OK, testado e funcionando
+    public static void delete(Endereco e) {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "update clientes_enderecos set "
-                    + "logradouro = '" + e.getLogradouro()
-                    + "', bairro = '" + e.getBairro()
-                    + "', cidade = '" + e.getCidade()
-                    + "', estado = '" + e.getEstado()
-                    + "', pais = '" + e.getPais()
-                    + "', cep = '" + e.getCep()
-                    + "' Where pk_endereco = "
+            String sql = "DELETE FROM `emark`.`endereco` WHERE `id`="
                     + e.getId();
 
             stm.execute(sql);
