@@ -22,11 +22,8 @@ public class CompraDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-            //INSERT INTO `emark`.`compras` (`id`, `Data`, `ValorTotal`, `Caixa`, `Empresa_id`,
-            //`Usuario_id`, `Fornecedor_id`) VALUES ('?', '?', '?', '?', '?', '?', '?');
             String sql
-                    = "INSERT INTO `emark`.`compras` (`Data`, `ValorTotal`, `Caixa`) VALUES ('"
+                    = "INSERT INTO `emark`.`compra` (`Data`, `ValorTotal`, `Caixa`) VALUES ('"
                     + c.getData() + "','"
                     + c.getValorTotal() + "','"
                     + c.getCaixa() + "')";
@@ -53,8 +50,7 @@ public class CompraDAO {
                     = BancoDados.createConnection().
                             createStatement();
 
-            //SELECT * FROM emark.compras where id =1;
-            String sql = "SELECT * FROM emark.compras where id =" + id;
+            String sql = "SELECT * FROM emark.compra where id =" + id;
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
 
@@ -79,7 +75,7 @@ public class CompraDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "SELECT * FROM emark.compras";
+            String sql = "SELECT * FROM emark.compra";
             ResultSet rs = stm.executeQuery(sql);
 
             ArrayList<Compra> c = new ArrayList<>();
@@ -105,14 +101,61 @@ public class CompraDAO {
 
     }
 
+    public static Compra retreaveByEmpresa(int empresaId) {
+        try {
+            Statement stm
+                    = BancoDados.createConnection().
+                            createStatement();
+            String sql = "SELECT * FROM emark.compra where Empresa_id =" + empresaId;
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()) {
+
+                return new Compra(
+                        rs.getInt("id"),
+                        rs.getString("data"),
+                        rs.getDouble("valorTotal"),
+                        rs.getString("caixa"),
+                        rs.getInt("empresaId"),
+                        rs.getInt("usuarioId"),
+                        rs.getInt("fornecedorId"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static Compra retreaveByUsuario(int usuarioId) {
+        try {
+            Statement stm
+                    = BancoDados.createConnection().
+                            createStatement();
+            String sql = "SELECT * FROM emark.compra where Usuario_id =" + usuarioId;
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()) {
+
+                return new Compra(
+                        rs.getInt("id"),
+                        rs.getString("data"),
+                        rs.getDouble("valorTotal"),
+                        rs.getString("caixa"),
+                        rs.getInt("empresaId"),
+                        rs.getInt("usuarioId"),
+                        rs.getInt("fornecedorId"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public static void delete(Compra c) {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
 
-            //DELETE FROM `emark`.`cargo` WHERE `id`='4';
-            String sql = "DELETE FROM `emark`.`compras` WHERE `id`="
+            String sql = "DELETE FROM `emark`.`compra` WHERE `id`="
                     + c.getId();
 
             stm.execute(sql);
@@ -133,8 +176,8 @@ public class CompraDAO {
             //'100', '1', '1', '1', '1');
             String sql = "UPDATE `emark`.`compras` SET "
                     + "`Data`='" + c.getData()
-                    +"', ValorTotal = '" + c.getValorTotal()
-                    +"', Caixa = '" + c.getCaixa()
+                    + "', ValorTotal = '" + c.getValorTotal()
+                    + "', Caixa = '" + c.getCaixa()
                     + "' WHERE `id`= "
                     + c.getId();
 

@@ -9,8 +9,8 @@ public class Pessoa {
     private int id;
 
     private String cpf_cnpj;
-    private String nome;  
-    
+    private String nome; 
+ 
     private Contato contato;//Associacao
     private Endereco endereco;//Associacao
 
