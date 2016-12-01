@@ -20,8 +20,6 @@ public class Main {
         Endereco e = new Endereco("Rua das bolinhas", "Bairro Feliz", "Mhos", "GO", "BR", "75650000");
         EnderecoDAO.create(e);
 */ 
-
-
         
 /************Teste dos Metodos RETREAVE do EnderecoDAO************
  * 

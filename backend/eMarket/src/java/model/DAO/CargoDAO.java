@@ -17,13 +17,12 @@ public class CargoDAO {
     private CargoDAO() {
     }
 
+    //Metodo CREATE esta OK, testado e funcionando
     public static int create(Cargo c) {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            //INSERT INTO `emark`.`cargo` (`id`, `Nome`) VALUES ('1', 'Secretario');
-
             String sql
                     = "INSERT INTO `emark`.`cargo` (`Nome`) VALUES ('"
                     + c.getNome() + "')";
@@ -33,29 +32,23 @@ public class CargoDAO {
             rs.next();
             int key = rs.getInt(1);
             c.setId(key);
-
             return key;
             
         } catch (SQLException ex) {
             Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
-        
-
     }
 
+    //Metodo RETREAVE esta OK, testado e funcionando
     public static Cargo retreave(int id) {
-
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-            //SELECT * FROM emark.cargo where id =1;
             String sql = "SELECT * FROM emark.cargo where id =" + id;
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
-
             return new Cargo(id,
                     rs.getString("nome"));
 
@@ -63,69 +56,55 @@ public class CargoDAO {
             Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-
     }
 
+    //Metodo RETREAVE esta OK, testado e funcionando
     public static ArrayList<Cargo> retreaveAll() {
-
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
             String sql = "SELECT * FROM emark.cargo";
             ResultSet rs = stm.executeQuery(sql);
-
-           ArrayList<Cargo> c = new ArrayList<>();
-
-                while (rs.next()) {
-                    c.add(new Cargo(
-                            rs.getInt("id"),
-                            rs.getString("nome")));
-                }
-
-                rs.next();
-                return c;
-
+            ArrayList<Cargo> c = new ArrayList<>();
+            while (rs.next()) {
+                c.add(new Cargo(
+                        rs.getInt("id"),
+                        rs.getString("nome")));
+            }
+            rs.next();
+            return c;
         } catch (SQLException ex) {
             Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-
     }
 
+    //Metodo DELETE esta OK, testado e funcionando
     public static void delete(Cargo c) {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-            //DELETE FROM `emark`.`cargo` WHERE `id`='4';
-            
             String sql = "DELETE FROM `emark`.`cargo` WHERE `id`="
                     + c.getId();
-
             stm.execute(sql);
-
         } catch (SQLException ex) {
             Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    //Metodo UPDATE esta OK, testado e funcionando
     public static void update(Cargo c) {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            
-            //UPDATE `emark`.`cargo` SET `Nome`='Atendente' WHERE `id`='4';
-            
             String sql = "UPDATE `emark`.`cargo` SET "
                     + "`Nome`='" + c.getNome()
                     + "' WHERE `id`= "
                     + c.getId();
-
             stm.execute(sql);
-
         } catch (SQLException ex) {
             Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
