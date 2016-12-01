@@ -33,6 +33,11 @@
             templateUrl: 'includes/vendas.html',
             controller: 'vendasCtrl'
         })
+
+        .when('/administracao', {
+            templateUrl: 'includes/administracao.html',
+            controller: 'administracaoCtrl'
+        })
         
         .otherwise({ redirectTo: '/'});
     });
