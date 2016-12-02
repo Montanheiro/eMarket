@@ -20,11 +20,8 @@ public class EnderecoDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-//INSERT INTO `emark`.`endereco` (`id`, `Logradouro`, `Bairro`, `Cidade`, `Estado`, `Pais`, `Cep`, `Pessoa_id`)
-//VALUES ('1', 'Rua 2', 'Centro', 'Morrinhos', 'Go', 'BR', '7565000', '1');
-
             String sql
-                    = "INSERT INTO `emark`.`endereco` (`Logradouro`, `Bairro`, `Cidade`, `Estado`, `Pais`, `Cep`, `Pessoa_id`) VALUES ('"
+                    = "INSERT INTO endereco (`Logradouro`, `Bairro`, `Cidade`, `Estado`, `Pais`, `Cep`, `Pessoa_id`) VALUES ('"
                     + e.getLogradouro() + "','"
                     + e.getBairro() + "','"
                     + e.getCidade() + "','"
@@ -52,7 +49,7 @@ public class EnderecoDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "SELECT * FROM emark.endereco WHERE id =" + id;
+            String sql = "SELECT * FROM endereco WHERE id =" + id;
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
 
@@ -78,7 +75,7 @@ public class EnderecoDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "SELECT * FROM emark.endereco WHERE Pessoa_id = " + pessoaId;
+            String sql = "SELECT * FROM endereco WHERE Pessoa_id = " + pessoaId;
             ResultSet rs = stm.executeQuery(sql);
             if (rs.next()) {
 
@@ -104,7 +101,7 @@ public class EnderecoDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "SELECT * FROM emark.endereco;";
+            String sql = "SELECT * FROM endereco;";
             ResultSet rs = stm.executeQuery(sql);
 
             ArrayList<Endereco> e = new ArrayList<>();
@@ -135,10 +132,7 @@ public class EnderecoDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-//UPDATE `emark`.`endereco` SET `Logradouro`='Rua 3', `Bairro`='Feliz', `Cidade`='Morrinhos',
-//`Estado`='Go', `Pais`='BR', `Cep`='7565000', `Pessoa_id`='3' WHERE `id`='2';
-            
-            String sql = "UPDATE `emark`.`endereco` SET "
+            String sql = "UPDATE endereco SET "
                     + "`Logradouro`='" + e.getLogradouro()
                     + "', `Bairro`='" + e.getBairro()
                     + "', `Cidade`='" + e.getCidade()
@@ -161,7 +155,7 @@ public class EnderecoDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "DELETE FROM `emark`.`endereco` WHERE `id`="
+            String sql = "DELETE FROM endereco WHERE `id`="
                     + e.getId();
 
             stm.execute(sql);

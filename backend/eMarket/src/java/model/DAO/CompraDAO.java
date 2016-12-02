@@ -23,7 +23,7 @@ public class CompraDAO {
                     = BancoDados.createConnection().
                             createStatement();
             String sql
-                    = "INSERT INTO `emark`.`compra` (`Data`, `ValorTotal`, `Caixa`) VALUES ('"
+                    = "INSERT INTO compra (`Data`, `ValorTotal`, `Caixa`) VALUES ('"
                     + c.getData() + "','"
                     + c.getValorTotal() + "','"
                     + c.getCaixa() + "')";
@@ -50,7 +50,7 @@ public class CompraDAO {
                     = BancoDados.createConnection().
                             createStatement();
 
-            String sql = "SELECT * FROM emark.compra where id =" + id;
+            String sql = "SELECT * FROM compra where id =" + id;
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
 
@@ -75,7 +75,7 @@ public class CompraDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "SELECT * FROM emark.compra";
+            String sql = "SELECT * FROM compra";
             ResultSet rs = stm.executeQuery(sql);
 
             ArrayList<Compra> c = new ArrayList<>();
@@ -106,7 +106,7 @@ public class CompraDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "SELECT * FROM emark.compra where Empresa_id =" + empresaId;
+            String sql = "SELECT * FROM compra where Empresa_id =" + empresaId;
             ResultSet rs = stm.executeQuery(sql);
             if (rs.next()) {
 
@@ -130,7 +130,7 @@ public class CompraDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "SELECT * FROM emark.compra where Usuario_id =" + usuarioId;
+            String sql = "SELECT * FROM compra where Usuario_id =" + usuarioId;
             ResultSet rs = stm.executeQuery(sql);
             if (rs.next()) {
 
@@ -155,7 +155,7 @@ public class CompraDAO {
                     = BancoDados.createConnection().
                             createStatement();
 
-            String sql = "DELETE FROM `emark`.`compra` WHERE `id`="
+            String sql = "DELETE FROM compra WHERE `id`="
                     + c.getId();
 
             stm.execute(sql);
@@ -174,7 +174,7 @@ public class CompraDAO {
             //INSERT INTO `emark`.`compras` (`id`, `Data`, `ValorTotal`, `Caixa`,
             //`Empresa_id`, `Usuario_id`, `Fornecedor_id`) VALUES ('1', '10/10', 
             //'100', '1', '1', '1', '1');
-            String sql = "UPDATE `emark`.`compras` SET "
+            String sql = "UPDATE compras SET "
                     + "`Data`='" + c.getData()
                     + "', ValorTotal = '" + c.getValorTotal()
                     + "', Caixa = '" + c.getCaixa()
