@@ -47,6 +47,7 @@ public class CargosResource {
         //System.out.println(c.getId());
 
         return gson.toJson(c);
+        
     }
 
     /**
