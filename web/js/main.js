@@ -1,6 +1,6 @@
 (function(){
 
-    angular.module('spa', ['iconesSVG','ngRoute']);
+    angular.module('spa', ['iconesSVG','ngRoute','ui.utils.masks']);
 
     angular.module('spa').config(function($routeProvider){
         $routeProvider
