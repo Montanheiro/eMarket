@@ -13,23 +13,59 @@
 	<md-content class="md-padding">
     	<md-card>      
      		<md-card-content>
-     			<span>Cadastro de novo cliente</span>
 				<form name="cliente">
+					<span>Dados Gerais</span>
 					<md-input-container class="md-block">
 						<label>Nome</label>
-						<input required ng-model="nome">
+						<input required ng-model="nome" type="text">
 					</md-input-container>
 					<div layout="row">
 						<md-input-container flex="50">
-							<label>CPF</label>
-							<input required ng-model="cpf" ng-pattern="/^[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}$/" ui-br-cpf-mask>
+							<label>CPF/CNPJ</label>
+							<input required ng-model="cpf" ng-pattern="/([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})$/" ui-br-cpfcnpj-mask>
 						</md-input-container>
 						<md-input-container flex="50">
 							<label>Telefone</label>
-							<input required ng-model="telefone" ng-pattern="/^\(?[0]?[1-9]{2}\)? ?[9]?[0-9]{4}\-?[0-9]{4}$/">
+							<input required ng-model="telefone" ng-pattern="/^\(?[0]?[1-9]{2}\)? ?[9]?[0-9]{4}\-?[0-9]{4}$/" ui-br-phone-number>
 						</md-input-container>
 					</div>
-
+					<span>Endereço</span>
+					<div layout="row">
+						<md-input-container flex="25">
+							<label>CEP</label>
+							<input required ng-model="cep" ng-pattern="/^\d{5}[-]\d{3}$/" ui-br-cep-mask>
+						</md-input-container>
+						<md-input-container flex="60">
+							<label>Logradouro</label>
+							<input required ng-model="logradouro" type="date">
+						</md-input-container>
+						<md-input-container flex="15">
+							<label>Nº</label>
+							<input required ng-model="numero" type="number">
+						</md-input-container>
+					</div>
+					<div layout="row">
+						<md-input-container flex="40">
+							<label>Bairro</label>
+							<input type="text" ng-model="bairro">
+						</md-input-container>
+						<md-input-container flex="60">
+							<label>Complemento</label>
+							<input type="text" ng-model="complemento">
+						</md-input-container>
+					</div>
+					<div layout="row">
+						<md-input-container flex="60">
+							<label>Cidade</label>
+							<input type="text" required ng-model="cidade">
+						</md-input-container>
+						
+					</div>
+					<md-input-container class="md-block">
+							<md-select name="type" ng-model="selecionarEstado" required>
+								<md-option value="estado" ng-repeat="estado in estados">{{estado.nome}}</md-option>
+							</md-select>
+						</md-input-container>
      			</form>
 
 			</md-card-content>
