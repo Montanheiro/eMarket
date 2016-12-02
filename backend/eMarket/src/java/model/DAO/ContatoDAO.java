@@ -22,25 +22,22 @@ public class ContatoDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            //INSERT INTO `emark`.`contatos` (`id`, `Nome`) VALUES ('1', 'Secretario');
-
             String sql
-                    = "INSERT INTO `emark`.`contatos` (`Nome`) VALUES ('"
+                    = "INSERT INTO contato (`Nome`) VALUES ('"
                     + c.getTelefone() + "')";
-            
+
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
             rs.next();
             int key = rs.getInt(1);
             c.setId(key);
-            
             return key;
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ContatoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
-        
+
     }
     
     public static Contato retreave(int id) {
