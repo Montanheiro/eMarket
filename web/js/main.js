@@ -22,6 +22,10 @@
             templateUrl: 'includes/financeiroCadCliente.html',
             controller: 'financeiroCadClienteCtrl'
         })
+        .when('/financeiro/cadastrar/fornecedores', {
+            templateUrl: 'includes/financeiroCadFornecedores.html',
+            controller: 'financeiroCadFornecedoresCtrl'
+        })
 
 
         .when('/compras', {
@@ -38,7 +42,7 @@
             templateUrl: 'includes/administracao.html',
             controller: 'administracaoCtrl'
         })
-        
+
         .otherwise({ redirectTo: '/'});
     });
 
@@ -50,13 +54,12 @@
 
 
 
-  
 
-    
+
+
 
 
 
 
 
 })();
-
