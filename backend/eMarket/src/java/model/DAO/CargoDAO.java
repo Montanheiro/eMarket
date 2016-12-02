@@ -24,7 +24,7 @@ public class CargoDAO {
                     = BancoDados.createConnection().
                             createStatement();
             String sql
-                    = "INSERT INTO `emark`.`cargo` (`Nome`) VALUES ('"
+                    = "INSERT INTO cargo (`Nome`) VALUES ('"
                     + c.getNome() + "')";
 
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
@@ -46,7 +46,7 @@ public class CargoDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "SELECT * FROM emark.cargo where id =" + id;
+            String sql = "SELECT * FROM cargo where id =" + id;
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
             return new Cargo(id,
@@ -64,7 +64,7 @@ public class CargoDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "SELECT * FROM emark.cargo";
+            String sql = "SELECT * FROM cargo";
             ResultSet rs = stm.executeQuery(sql);
             ArrayList<Cargo> c = new ArrayList<>();
             while (rs.next()) {
@@ -86,7 +86,7 @@ public class CargoDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "DELETE FROM `emark`.`cargo` WHERE `id`="
+            String sql = "DELETE FROM cargo WHERE `id`="
                     + c.getId();
             stm.execute(sql);
         } catch (SQLException ex) {
@@ -100,7 +100,7 @@ public class CargoDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "UPDATE `emark`.`cargo` SET "
+            String sql = "UPDATE cargo SET "
                     + "`Nome`='" + c.getNome()
                     + "' WHERE `id`= "
                     + c.getId();
