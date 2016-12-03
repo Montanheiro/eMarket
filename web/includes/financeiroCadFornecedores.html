@@ -78,11 +78,10 @@
 
 					</div>
 					<md-input-container class="md-block">
-							<md-select name="type" ng-model="selecionarEstado" required>
-								<md-option value="estado" ng-repeat="estado in estados">{{estado.nome}}</md-option>
+							<md-select ng-model="selecionarEstado" placeholder="Estado" required>
+								<md-option value="{{estado.nome}}" ng-repeat="estado in estados">{{estado.nome}}</md-option>
 							</md-select>
-						</md-input-container>
-
+          </md-input-container>
 						<span>Dados Bancários</span>
 						<div layout="row">
 							<md-input-container flex="30">
