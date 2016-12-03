@@ -23,28 +23,22 @@ public class EmpresaDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            //INSERT INTO `emark`.`empresa` (`id`, `Nome`, `RazaoSocial`, `CNPJ`, `DataContratacao`) VALUES ('1', 'Comercio de Balas', 'Balas e Cia', '123456789', '10/10/10');
-
             String sql
-                    = "INSERT INTO `emark`.`Empresa` (`Nome`, `RazaoSocial`, `CNPJ`, `DataContratacao`) VALUES ('"
+                    = "INSERT INTO Empresa (`Nome`, `RazaoSocial`, `CNPJ`, `DataContratacao`) VALUES ('"
                     + c.getNome() + ",'"
                     + c.getRazaoSocial() + "','"
                     + c.getCnpj() + "','"
                     + c.getDataContratacao() + "')";
-
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
             rs.next();
             int key = rs.getInt(1);
             c.setId(key);
-
             return key;
-
         } catch (SQLException ex) {
             Logger.getLogger(EmpresaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
-
     }
 
     public static Empresa retreave(int id) {
@@ -53,21 +47,16 @@ public class EmpresaDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-            //SELECT * FROM emark.cargo where id =1;
-            String sql = "SELECT * FROM emark.Empresa where id =" + id;
+            String sql = "SELECT * FROM Empresa where id =" + id;
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
-
             Compra c = CompraDAO.retreaveByEmpresa(id);
-
             return new Empresa(id,
                     rs.getString("nome"),
                     rs.getString("razaoSocial"),
                     rs.getString("cnpj"),
                     rs.getString("dataContratacao"),
                     c);
-
         } catch (SQLException ex) {
             Logger.getLogger(EmpresaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -79,12 +68,9 @@ public class EmpresaDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-            String sql = "SELECT * FROM emark.empresa";
+            String sql = "SELECT * FROM empresa";
             ResultSet rs = stm.executeQuery(sql);
-
             ArrayList<Empresa> em = new ArrayList<>();
-
             while (rs.next()) {
                 Compra c = CompraDAO.retreaveByEmpresa(rs.getInt("id"));
                 em.add(new Empresa(
@@ -95,14 +81,11 @@ public class EmpresaDAO {
                         rs.getString("dataContratacao"),
                         c));
             }
-
             return em;
         } catch (SQLException ex) {
             Logger.getLogger(EmpresaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return null;
-
     }
 
     public static void delete(Empresa c) {
@@ -110,7 +93,7 @@ public class EmpresaDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "DELETE FROM `emark`.`empresa` WHERE `id`="
+            String sql = "DELETE FROM empresa WHERE `id`="
                     + c.getId();
             stm.execute(sql);
         } catch (SQLException ex) {
@@ -123,10 +106,7 @@ public class EmpresaDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-//UPDATE `emark`.`empresa` SET `Nome`='Comercio de Verduras', `RazaoSocial`='Hort Frut verdurex',
-//`CNPJ`='1234567890', `DataContratacao`='2010-10-11' WHERE `id`='1';
-            String sql = "UPDATE `emark`.`empresa` SET "
+            String sql = "UPDATE empresa SET "
                     + "`Nome`='" + c.getNome()
                     + "`RazaoSocial`= '" + c.getRazaoSocial()
                     + "', `CNPJ` = '" + c.getCnpj()
@@ -134,7 +114,6 @@ public class EmpresaDAO {
                     + "' WHERE `id`= " + c.getId();
 
             stm.execute(sql);
-
         } catch (SQLException ex) {
             Logger.getLogger(EmpresaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
