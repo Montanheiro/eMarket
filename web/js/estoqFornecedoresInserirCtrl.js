@@ -1,5 +1,5 @@
 angular.module('spa')
-	.controller('financeiroCadFornecedoresCtrl', ['$scope', '$log', function($scope, $log){
+	.controller('estoqFornecedoresInserirCtrl', ['$scope', '$log', function($scope, $log){
 		$scope.name = 'Cadastro de Fornecedores';
 
 		$scope.sizes = ['480', '960', '1024', '1920'];

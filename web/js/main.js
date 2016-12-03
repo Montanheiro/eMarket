@@ -132,7 +132,7 @@
         //relatorios
         .when('/estoque/relatorios/compras', {
             templateUrl: 'includes/estoqRelCompras.html',
-            controller: 'estoqFornecedoresEditarCtrl'
+            controller: 'estoqRelComprasEditarCtrl'
         })
         .when('/estoque/relatorios/itenscompra', {
             templateUrl: 'includes/estoqRelIntensCompra.html',
@@ -171,7 +171,7 @@
             controller: 'finanFormasPagamentoInserirCtrl'
         })
         .when('/financeiro/cadastros/formaspagamento/editar', {
-            templateUrl: 'includes/estoqFornecedoresDados.html',
+            templateUrl: 'includes/estoqFormasPagamentoDados.html',
             controller: 'finanFormasPagamentoEditarCtrl'
         })
         //relatorios
