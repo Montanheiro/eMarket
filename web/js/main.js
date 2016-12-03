@@ -22,14 +22,6 @@
             templateUrl: 'includes/financeiroCadCliente.html',
             controller: 'financeiroCadClienteCtrl'
         })
-        .when('/financeiro/cadastrar/fornecedores', {
-            templateUrl: 'includes/financeiroCadFornecedores.html',
-            controller: 'financeiroCadFornecedoresCtrl'
-        })
-        .when('/financeiro/cadastrar/formasPagamento', {
-            templateUrl: 'includes/financeiroCadFormasPagamento.html',
-            controller: 'financeiroCadFormasPagamentoCtrl'
-        })
 
 
         .when('/compras', {
@@ -47,6 +39,11 @@
             controller: 'administracaoCtrl'
         })
 
+        .when('/estoque', {
+            templateUrl: 'includes/estoque.html',
+            controller: 'estoqueCtrl'
+        })
+        
         .otherwise({ redirectTo: '/'});
     });
 
@@ -58,12 +55,13 @@
 
 
 
+  
 
-
-
+    
 
 
 
 
 
 })();
+
