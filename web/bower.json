@@ -1,9 +1,9 @@
 {
-  "name": "eMarket",
+  "name": "emarket",
   "version": "1.0.0",
-  "homepage": "https://github.com/luizalexandrew/Cordova-Noticias-IFGoiano",
+  "homepage": "https://github.com/Montanheiro/eMarket",
   "authors": [
-    "luizalexandrew <luiz.alexandre@live.com>"
+    "montanheiro <lucasmontanheiro10@gmail.com>"
   ],
   "description": "Sistema de supermercado.",
   "keywords": [

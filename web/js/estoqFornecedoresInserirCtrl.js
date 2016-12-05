@@ -1,11 +1,8 @@
-
 angular.module('spa')
-	.controller('financeiroCadClienteCtrl', ['$scope', '$log', function($scope, $log){
-		$scope.name = 'Cadastro de Clientes';
-
+	.controller('estoqFornecedoresInserirCtrl', ['$scope', '$log', function($scope, $log){
+		$scope.name = 'Cadastro de Fornecedores';
 
 		$scope.sizes = ['480', '960', '1024', '1920'];
-
 
 		$scope.estados = [
 
@@ -36,14 +33,10 @@ angular.module('spa')
 			{id: "25", uf: "SE", nome: "Sergipe"},
 			{id: "26", uf: "SP", nome: "São Paulo"},
 			{id: "27", uf: "TO", nome: "Tocantins"}
-
 		];
 
 		$scope.selecionarEstado = [
 			{id: 1, nome: 'São Paulo'}
 		];
 
-
-
-		
 }]);
