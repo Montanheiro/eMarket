@@ -1,6 +1,6 @@
 (function(){
 
-    angular.module('spa', ['iconesSVG','ngRoute','ui.utils.masks']);
+    let main = angular.module('spa', ['iconesSVG','ngRoute','ui.utils.masks']);
 
     angular.module('spa').config(function($routeProvider){
         $routeProvider
@@ -260,5 +260,12 @@
         .otherwise({ redirectTo: '/'});
     });
 
+    main.controller('mainCtrl', function($rootScope) {
+
+        $rootScope.api = "http://teste.com.br";
+    });
+
 })();
+
+
 
