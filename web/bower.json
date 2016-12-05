@@ -24,6 +24,7 @@
     "angular-material": "^0.9.8",
     "angular-route": "~1.4.1",
     "angular-messages": "~1.4.1",
-    "angular-input-masks": "^2.5.0"
+    "angular-input-masks": "^2.5.0",
+    "md-data-table": "^2.2.0"
   }
 }

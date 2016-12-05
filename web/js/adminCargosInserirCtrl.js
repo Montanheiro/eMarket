@@ -8,7 +8,7 @@ angular.module('spa')
             var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");     
             if(!token) {
                 $http({ 
-                        url: $rootScope.api + '/category/new', 
+                        url: $rootScope.api + '/administracao/cargos/inserir', 
                         dataType: 'json', 
                         method:'POST',
                         headers: {'x-access-token': token,'Content-Type': 'application/json'},
@@ -23,6 +23,7 @@ angular.module('spa')
                         console.log(response.msg);
                     });
             }else{
+            	alert("sem token");
                 window.location = "/#/login";
             }
         };

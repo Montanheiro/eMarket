@@ -1,5 +1,5 @@
 angular.module('spa')
-	.controller('finanFormaspagamentoInserirCtrl', ['$scope', '$log', function($scope, $log){
+	.controller('finanFormasPagamentoInserirCtrl', ['$scope', '$log', function($scope, $log){
 		$scope.name = 'Formas de Pagamentos';
 
 
