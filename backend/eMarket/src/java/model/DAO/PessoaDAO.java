@@ -24,24 +24,18 @@ public class PessoaDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            //INSERT INTO `emark`.`pessoa` (`id`, `CPF/CPNJ`, `Nome`) VALUES ('?', '?', '?');
-
             String sql
-                    = "INSERT INTO `emark`.`pessoa` (`CPF/CPNJ`, `Nome`) VALUES ('"
+                    = "INSERT INTO pessoa (`cpf_cnpj`, `Nome`) VALUES ('"
                     + p.getCpf_cnpj() + "','"
                     + p.getNome() + "')";
-
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
             rs.next();
             int key = rs.getInt(1);
             p.setId(key);
-
             ContatoDAO.create(p.getContato());
-            //EnderecoDAO.create(p.getEndereco());
-
+            EnderecoDAO.create(p.getEndereco());
             return key;
-
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,61 +43,50 @@ public class PessoaDAO {
     }
 
     public static Pessoa retreave(int id) {
-
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-            //SELECT * FROM emark.cargo where id =1;
-            String sql = "SELECT * FROM emark.pessoa where id =" + id;
+            String sql = "SELECT * FROM pessoa where id =" + id;
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
-
             Endereco e = EnderecoDAO.retreaveByPessoa(id);
             Contato c = ContatoDAO.retreaveByPessoa(id);
-
             return new Pessoa(id,
                     rs.getString("cpf_cnpj"),
-                    rs.getString("nome"),
+                    rs.getString("Nome"),
                     c, e);
-
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-
     }
 
-    public static ArrayList<Pessoa> retreaveAll() {
 
+
+    public static ArrayList<Pessoa> retreaveAll() {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-            String sql = "SELECT * FROM emark.pessoa";
+            String sql = "SELECT * FROM pessoa";
             ResultSet rs = stm.executeQuery(sql);
-
             ArrayList<Pessoa> p = new ArrayList<>();
-
             while (rs.next()) {
                 Endereco e = EnderecoDAO.retreaveByPessoa(rs.getInt("id"));
                 Contato c = ContatoDAO.retreaveByPessoa(rs.getInt("id"));
                 p.add(new Pessoa(
                         rs.getInt("id"),
                         rs.getString("cpf_cnpj"),
-                        rs.getString("nome"),
+                        rs.getString("Nome"),
                         c, e));
             }
-
             rs.next();
             return p;
-
         } catch (SQLException ex) {
-            Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-
     }
 
     public static void delete(Pessoa p) {
@@ -111,13 +94,9 @@ public class PessoaDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-            //DELETE FROM `emark`.`pessoa` WHERE `id`='4';
-            String sql = "DELETE FROM `emark`.`pessoa` WHERE `id`="
+            String sql = "DELETE FROM pessoa WHERE `id`="
                     + p.getId();
-
             stm.execute(sql);
-
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -128,16 +107,12 @@ public class PessoaDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-            //UPDATE `emark`.`pessoa` SET `Nome`='Atendente' WHERE `id`='4';
-            String sql = "UPDATE `emark`.`pessoa` SET "
-                    + "`CPF/CNPJ`= '" + c.getCpf_cnpj()
+            String sql = "UPDATE pessoa SET "
+                    + "`cpf_cnpj`= '" + c.getCpf_cnpj()
                     + "', `Nome`= '" + c.getNome()
                     + "' WHERE `id`= "
                     + c.getId();
-
             stm.execute(sql);
-
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
