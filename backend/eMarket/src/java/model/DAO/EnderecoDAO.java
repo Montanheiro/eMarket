@@ -15,10 +15,10 @@ import model.Endereco;
 public class EnderecoDAO {
     
     //Metodo CREATE esta OK, testado e funcionando
-    public static int create(Endereco e) {
+        public static int create(Endereco e){
         try {
-            Statement stm
-                    = BancoDados.createConnection().
+            Statement stm =
+                    BancoDados.createConnection().
                             createStatement();
             String sql
                     = "INSERT INTO endereco (`Logradouro`, `Bairro`, `Cidade`, `Estado`, `Pais`, `Cep`, `Pessoa_id`) VALUES ('"
@@ -29,19 +29,19 @@ public class EnderecoDAO {
                     + e.getPais() + "','"
                     + e.getCep() + "','"         
                     + e.getPessoaId() + "')";
-            System.out.println(sql);
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
             rs.next();
             int key = rs.getInt(1);
             e.setId(key);
-
+            
             return key;
         } catch (SQLException ex) {
             Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
+
 
     //Metodo RETREAVE esta OK, testado e funcionando
     public static Endereco retreave(int id) {
