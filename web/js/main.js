@@ -1,6 +1,6 @@
 (function(){
 
-    let main = angular.module('spa', ['iconesSVG','ngRoute','ui.utils.masks']);
+    let main = angular.module('spa', ['iconesSVG','ngRoute','ui.utils.masks', 'mdDataTable', 'ngMdIcons', 'ngSanitize']);
 
     angular.module('spa').config(function($routeProvider){
         $routeProvider

@@ -10,29 +10,23 @@
 		</div>
 	</md-toolbar>
 	<div class="spaceToolbar"></div>
-	<md-content class="md-padding">
-    	<md-card>      
-     		<md-card-content>
-				<h3>Lista de {{name}}</h3>
-				{{cargos}}
+	
 
+<div ng-controller="adminCargosCtrl" layout-margin class="md-padding">
+        
 
-				<table class="table" ng-show="cargos.length > 0">
-					<tr>
-						<th></th>
-						<th>ID</th>
-						<th>Descrição</th>
-						<th>Edit</th>
-						<th>Del</th>
-					</tr>
-					<tr ng-repeat="cargo in cargos">
-						<td>{{cargo.id}}</td>
-						<td>{{cargo.descricao}}</td>
-						<td>Edit</td>
-						<td>Del</td>
-					</tr>
-				</table>
-			</md-card-content>
-		</md-card>
-	</md-content>	
-</div>
+        <mdt-table paginated-rows="{isEnabled: false, rowsPerPageValues: [5,10,20,100]}" 
+        	
+        	 	mdt-row="{
+                    data: cargos,
+                    'column-keys': [
+                    	'id',
+                    	'descricao'
+                    ]
+                }">
+            <mdt-header-row>
+                <mdt-column align-rule="left">ID</mdt-column>
+                <mdt-column align-rule="center">Cargo</mdt-column>
+            </mdt-header-row>
+        </mdt-table>
+    </div>
