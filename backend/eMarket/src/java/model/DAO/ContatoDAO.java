@@ -18,28 +18,30 @@ public class ContatoDAO {
     }
     
     //Metodo CREATE esta OK, testado e funcionando
-    public static int create(Contato c) {
+        public static int create(Contato c){
         try {
-            Statement stm
-                    = BancoDados.createConnection().
+            Statement stm =
+                    BancoDados.createConnection().
                             createStatement();
             String sql
                     = "INSERT INTO contato (`Telefone`, `Pessoa_id`) VALUES ('"
                     + c.getTelefone() + "','"
-                    + c.getId() + "')";
+                    + c.getPessoaId() + "')";
 
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
             rs.next();
             int key = rs.getInt(1);
             c.setId(key);
+            
             return key;
         } catch (SQLException ex) {
             Logger.getLogger(ContatoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
-
     }
+
+    
     //Metodo RETREAVE esta OK, testado e funcionando
     public static Contato retreave(int id) {
         try {

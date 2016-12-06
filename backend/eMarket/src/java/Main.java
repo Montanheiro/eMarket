@@ -5,7 +5,9 @@ import model.Contato;
 import model.DAO.CargoDAO;
 import model.DAO.ContatoDAO;
 import model.DAO.EnderecoDAO;
+import model.DAO.PessoaDAO;
 import model.Endereco;
+import model.Pessoa;
 
 /**
  *
@@ -101,9 +103,56 @@ System.out.println(ContatoDAO.retreaveByPessoa(1));
 */
 
 
+/*************************************************************************************************/
+/************Teste do Metodo CREATE de PessoaDAO************
+        Pessoa p = new Pessoa("987654", "Antonio");
+        Contato con = new Contato("9999-9999");
+        p.setContato(con);
+        Endereco en = new Endereco("Rua das Flores", "Bairro Alegre", "Mhos", "GO", "BR", "75650000");
+        p.setEndereco(en);
 
+        PessoaDAO.create(p);
+        System.out.println(p.getId());
+*/ 
 
+/************Teste dos Metodos RETREAVE de PessoaDAO************
+ * 
+ * 
+System.out.println(PessoaDAO.retreave(1));
+        
 
+        ArrayList<Pessoa> teste = PessoaDAO.retreaveAll();
+        for (Pessoa p : teste) {
+            System.out.println(p);
+        }
+
+ * 
+ * 
+*/
+
+/************Teste do Metodo UPDATE de PessoaDAO************
+ * 
+ * 
+        Pessoa p = PessoaDAO.retreave(3);
+        p.setNome("Joaquim");
+        PessoaDAO.update(p);
+ * 
+ * 
+*/
+
+/************Teste do Metodo DELETE de PessoaDAO************
+ * 
+ * 
+        Contato c = ContatoDAO.retreave(2);
+        ContatoDAO.delete(c);        
+ * 
+ * 
+*/
+        
+ 
+
+        Pessoa p = PessoaDAO.retreave(3);
+        PessoaDAO.delete(p);        
 
 
 

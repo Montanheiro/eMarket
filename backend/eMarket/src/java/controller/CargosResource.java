@@ -1,6 +1,7 @@
 package controller;
 
 import com.google.gson.Gson;
+import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -36,17 +37,17 @@ public class CargosResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
+    public ArrayList<Cargo> getJson() {
 
         Gson gson = new Gson();
 
-        Cargo c = new Cargo("Vendedor");
-
-        CargoDAO.create(c);
+        ArrayList<Cargo> teste = CargoDAO.retreaveAll();
+        
+        return teste;
 
         //System.out.println(c.getId());
 
-        return gson.toJson(c);
+        
         
     }
 

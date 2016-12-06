@@ -14,11 +14,9 @@ public class Pessoa {
     private Contato contato;//Associacao
     private Endereco endereco;//Associacao
 
-    public Pessoa(String cpf_cnpj, String nome, Contato contato, Endereco endereco) {
+    public Pessoa(String cpf_cnpj, String nome) {
         this.cpf_cnpj = cpf_cnpj;
         this.nome = nome;
-        this.contato = contato;
-        this.endereco = endereco;
     }
 
     public Pessoa(int id, String cpf_cnpj, String nome, Contato contato, Endereco endereco) {
@@ -36,6 +34,8 @@ public class Pessoa {
     public void setId(int id) {
         this.id = id;
         this.contato.setPessoaId(id);
+        this.endereco.setPessoaId(id);
+
     }
 
     public String getCpf_cnpj() {

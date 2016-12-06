@@ -19,6 +19,7 @@ public class PessoaDAO {
     private PessoaDAO() {
     }
 
+    //Metodo CREATE esta OK, testado e funcionando
     public static int create(Pessoa p) {
         try {
             Statement stm
@@ -42,6 +43,7 @@ public class PessoaDAO {
         return 0;
     }
 
+    //Metodo RETREAVE esta OK, testado e funcionando
     public static Pessoa retreave(int id) {
         try {
             Statement stm
@@ -62,8 +64,7 @@ public class PessoaDAO {
         return null;
     }
 
-
-
+    //Metodo RETREAVE esta OK, testado e funcionando
     public static ArrayList<Pessoa> retreaveAll() {
         try {
             Statement stm
@@ -73,8 +74,8 @@ public class PessoaDAO {
             ResultSet rs = stm.executeQuery(sql);
             ArrayList<Pessoa> p = new ArrayList<>();
             while (rs.next()) {
-                Endereco e = EnderecoDAO.retreaveByPessoa(rs.getInt("id"));
                 Contato c = ContatoDAO.retreaveByPessoa(rs.getInt("id"));
+                Endereco e = EnderecoDAO.retreaveByPessoa(rs.getInt("id"));
                 p.add(new Pessoa(
                         rs.getInt("id"),
                         rs.getString("cpf_cnpj"),
@@ -89,19 +90,7 @@ public class PessoaDAO {
         return null;
     }
 
-    public static void delete(Pessoa p) {
-        try {
-            Statement stm
-                    = BancoDados.createConnection().
-                            createStatement();
-            String sql = "DELETE FROM pessoa WHERE `id`="
-                    + p.getId();
-            stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
+    //Metodo UPDATE esta OK, testado e funcionando
     public static void update(Pessoa c) {
         try {
             Statement stm
@@ -112,6 +101,20 @@ public class PessoaDAO {
                     + "', `Nome`= '" + c.getNome()
                     + "' WHERE `id`= "
                     + c.getId();
+            stm.execute(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //Metodo DELETE esta OK, testado e funcionando
+    public static void delete(Pessoa p) {
+        try {
+            Statement stm
+                    = BancoDados.createConnection().
+                            createStatement();
+            String sql = "DELETE FROM pessoa WHERE `id`="
+                    + p.getId();
             stm.execute(sql);
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
