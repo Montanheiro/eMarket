@@ -5,8 +5,10 @@ import model.Contato;
 import model.DAO.CargoDAO;
 import model.DAO.ContatoDAO;
 import model.DAO.EnderecoDAO;
+import model.DAO.FuncionarioDAO;
 import model.DAO.PessoaDAO;
 import model.Endereco;
+import model.Funcionario;
 import model.Pessoa;
 
 /**
@@ -150,6 +152,54 @@ System.out.println(PessoaDAO.retreave(1));
 */
         
  
+
+/*************************************************************************************************/
+/************Teste do Metodo CREATE de FuncionarioDAO************
+        Funcionario f = new Funcionario(1, 1000, 10, "10/01/10", "10/01/16", 1, 1);
+        FuncionarioDAO.create(f);
+*/ 
+
+/************Teste dos Metodos RETREAVE de FuncionarioDAO************
+ * 
+ * 
+System.out.println(ContatoDAO.retreave(1));
+System.out.println(ContatoDAO.retreaveByPessoa(1));
+        
+
+        ArrayList<Contato> teste = ContatoDAO.retreaveAll();
+        for (Contato c : teste) {
+            System.out.println(c);
+        }
+
+ * 
+ * 
+*/
+
+/************Teste do Metodo UPDATE do ContatoDAO************
+ * 
+ * 
+        Contato c = ContatoDAO.retreave(2);
+        c.setTelefone("88888888");
+        ContatoDAO.update(c);
+ * 
+ * 
+*/
+
+/************Teste do Metodo DELETE do ContatoDAO************
+ * 
+ * 
+        Contato c = ContatoDAO.retreave(2);
+        ContatoDAO.delete(c);        
+ * 
+ * 
+*/
+
+
+
+
+System.out.println(FuncionarioDAO.retreave(1));
+//System.out.println(ContatoDAO.retreaveByPessoa(1));
+
 
 
 
