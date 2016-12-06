@@ -1,6 +1,6 @@
 (function(){
 
-    angular.module('spa', ['iconesSVG','ngRoute','ui.utils.masks']);
+    let main = angular.module('spa', ['iconesSVG','ngRoute','ui.utils.masks']);
 
     angular.module('spa').config(function($routeProvider){
         $routeProvider
@@ -25,11 +25,11 @@
             controller: 'adminFuncionariosCtrl'
         })
         .when('/administracao/cadastros/funcionarios/inserir', {
-            templateUrl: 'includes/adminFuncionariosDados.html',
+            templateUrl: 'includes/adminFuncionariosInserir.html',
             controller: 'adminFuncionariosInserirCtrl'
         })
         .when('/administracao/cadastros/funcionarios/editar', {
-            templateUrl: 'includes/adminFuncionariosDados.html',
+            templateUrl: 'includes/adminFuncionariosEditar.html',
             controller: 'adminFuncionariosEditarCtrl'
         })
 
@@ -38,11 +38,11 @@
             controller: 'adminUsuariosCtrl'
         })
         .when('/administracao/cadastros/usuarios/inserir', {
-            templateUrl: 'includes/adminUsuariosDados.html',
+            templateUrl: 'includes/adminUsuariosInserir.html',
             controller: 'adminUsuariosInserirCtrl'
         })
         .when('/administracao/cadastros/usuarios/editar', {
-            templateUrl: 'includes/adminUsuariosDados.html',
+            templateUrl: 'includes/adminUsuariosEditar.html',
             controller: 'adminUsuariosEditarCtrl'
         })
         
@@ -51,11 +51,11 @@
             controller: 'adminCargosCtrl'
         })
         .when('/administracao/cadastros/cargos/inserir', {
-            templateUrl: 'includes/adminCargosDados.html',
+            templateUrl: 'includes/adminCargosInserir.html',
             controller: 'adminCargosInserirCtrl'
         })
         .when('/administracao/cadastros/cargos/editar', {
-            templateUrl: 'includes/adminCargosDados.html',
+            templateUrl: 'includes/adminCargosEditar.html',
             controller: 'adminCargosEditarCtrl'
         })
         
@@ -64,11 +64,11 @@
             controller: 'adminPermissoesCtrl'
         })
         .when('/administracao/cadastros/permissoes/inserir', {
-            templateUrl: 'includes/adminPermissoesDados.html',
+            templateUrl: 'includes/adminPermissoesInserir.html',
             controller: 'adminPermissoesInserirCtrl'
         })
         .when('/administracao/cadastros/permissoes/editar', {
-            templateUrl: 'includes/adminPermissoesDados.html',
+            templateUrl: 'includes/adminPermissoesEditar.html',
             controller: 'adminPermissoesEditarCtrl'
         })
         //relatorios
@@ -109,11 +109,11 @@
             controller: 'estoqProdutosCtrl'
         })
         .when('/estoque/cadastros/produtos/inserir', {
-            templateUrl: 'includes/estoqProdutosDados.html',
+            templateUrl: 'includes/estoqProdutosInserir.html',
             controller: 'estoqProdutosInserirCtrl'
         })
         .when('/estoque/cadastros/produtos/editar', {
-            templateUrl: 'includes/estoqProdutosDados.html',
+            templateUrl: 'includes/estoqProdutosEditar.html',
             controller: 'estoqProdutosEditarCtrl'
         })
 
@@ -122,11 +122,11 @@
             controller: 'estoqFornecedoresCtrl'
         })
         .when('/estoque/cadastros/fornecedores/inserir', {
-            templateUrl: 'includes/estoqFornecedoresDados.html',
+            templateUrl: 'includes/estoqFornecedoresInserir.html',
             controller: 'estoqFornecedoresInserirCtrl'
         })
         .when('/estoque/cadastros/fornecedores/editar', {
-            templateUrl: 'includes/estoqFornecedoresDados.html',
+            templateUrl: 'includes/estoqFornecedoresEditar.html',
             controller: 'estoqFornecedoresEditarCtrl'
         })
         //relatorios
@@ -167,11 +167,11 @@
             controller: 'finanFormasPagamentoCtrl'
         })
         .when('/financeiro/cadastros/formaspagamento/inserir', {
-            templateUrl: 'includes/finanFormasPagamentoDados.html',
+            templateUrl: 'includes/finanFormasPagamentoInserir.html',
             controller: 'finanFormasPagamentoInserirCtrl'
         })
         .when('/financeiro/cadastros/formaspagamento/editar', {
-            templateUrl: 'includes/estoqFormasPagamentoDados.html',
+            templateUrl: 'includes/estoqFormasPagamentoEditar.html',
             controller: 'finanFormasPagamentoEditarCtrl'
         })
         //relatorios
@@ -204,11 +204,11 @@
             controller: 'vendPromocoesCtrl'
         })
         .when('/vendas/cadastros/promocoes/inserir', {
-            templateUrl: 'includes/vendPromocoesDados.html',
+            templateUrl: 'includes/vendPromocoesInserir.html',
             controller: 'vendPromocoesInserirCtrl'
         })
         .when('/vendas/cadastros/promocoes/editar', {
-            templateUrl: 'includes/vendPromocoesDados.html',
+            templateUrl: 'includes/vendPromocoesEditar.html',
             controller: 'vendPromocoesEditarCtrl'
         })
         
@@ -217,11 +217,11 @@
             controller: 'vendProdutosCtrl'
         })
         .when('/vendas/cadastros/produtos/inserir', {
-            templateUrl: 'includes/vendProdutosDados.html',
+            templateUrl: 'includes/vendProdutosInserir.html',
             controller: 'vendProdutosInserirCtrl'
         })
         .when('/vendas/cadastros/produtos/editar', {
-            templateUrl: 'includes/vendProdutosDados.html',
+            templateUrl: 'includes/vendProdutosEditar.html',
             controller: 'vendProdutosEditarCtrl'
         })
 
@@ -230,7 +230,7 @@
             controller: 'vendPdvsCtrl'
         })
         .when('/vendas/cadastros/pdvs/inserir', {
-            templateUrl: 'includes/vendPdvsDados.html',
+            templateUrl: 'includes/vendPdvsInserir.html',
             controller: 'vendPdvsInserirCtrl'
         }) //regra de negócio, não se edita um PDV
         //relatorios
@@ -260,5 +260,12 @@
         .otherwise({ redirectTo: '/'});
     });
 
+    main.controller('mainCtrl', function($rootScope) {
+
+        $rootScope.api = "http://teste.com.br";
+    });
+
 })();
+
+
 
