@@ -143,16 +143,14 @@ System.out.println(PessoaDAO.retreave(1));
 /************Teste do Metodo DELETE de PessoaDAO************
  * 
  * 
-        Contato c = ContatoDAO.retreave(2);
-        ContatoDAO.delete(c);        
+        Pessoa p = PessoaDAO.retreave(3);
+        PessoaDAO.delete(p);        
  * 
  * 
 */
         
  
 
-        Pessoa p = PessoaDAO.retreave(3);
-        PessoaDAO.delete(p);        
 
 
 
