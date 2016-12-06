@@ -37,18 +37,14 @@ public class CargosResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<Cargo> getJson() {
+    public String getJson() {
 
         Gson gson = new Gson();
 
         ArrayList<Cargo> teste = CargoDAO.retreaveAll();
         
-        return teste;
-
-        //System.out.println(c.getId());
-
         
-        
+       return gson.toJson(teste);
     }
 
     /**
