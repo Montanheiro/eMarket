@@ -20,10 +20,9 @@
 						<input required ng-model="nome" type="text">
 					</md-input-container>
 					<md-input-container >
-						<label>Tipo de Pagamento</label>
+						<span>Tipo de Pagamento</span>
 					</md-input-container>
           <div layout="row">
-
             <md-input-container class="md-block">
   							<md-select  ng-model="selecionarFormaPagamento" placeholder="Pagamentos" required>
   								<md-option value="{{pagamento.tipo}}" ng-repeat="pagamento in pagamentos">{{pagamento.tipo}}</md-option>

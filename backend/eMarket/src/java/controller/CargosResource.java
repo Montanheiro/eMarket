@@ -7,6 +7,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
@@ -37,18 +38,10 @@ public class CargosResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<Cargo> getJson() {
-
+    public String getJson() {
         Gson gson = new Gson();
-
         ArrayList<Cargo> teste = CargoDAO.retreaveAll();
-        
-        return teste;
-
-        //System.out.println(c.getId());
-
-        
-        
+        return gson.toJson(teste);
     }
 
     /**
@@ -59,5 +52,16 @@ public class CargosResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void putJson(String content) {
+    }
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void postCargo(String nome) {
+        Gson gson = new Gson();
+        Cargo c = gson.fromJson(nome, Cargo.class);
+        CargoDAO.create(c);
+        //return gson.toJson(CargoDAO.create(c));
+
     }
 }
