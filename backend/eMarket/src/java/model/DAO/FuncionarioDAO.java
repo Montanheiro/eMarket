@@ -36,6 +36,8 @@ public class FuncionarioDAO {
             rs.next();
             int key = rs.getInt(1);
             f.setId(key);
+            //PessoaDAO.create(f.getPessoaId());
+            //EnderecoDAO.create(p.getEndereco());
             return key;
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
