@@ -141,3 +141,15 @@ md-list-item{
 md-input-container{
 	padding: 3px;
 }
+
+.campoPesquisa{
+	margin:15px;
+}
+
+.md-fab {
+	position: fixed;
+	right: 0;
+	top: calc(100% - 2.5em);
+	width: 8em;
+	margin-top: -2.5em;
+}

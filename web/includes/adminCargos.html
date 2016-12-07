@@ -10,23 +10,35 @@
 		</div>
 	</md-toolbar>
 	<div class="spaceToolbar"></div>
-	
+	<div class="md-padding" layout-margin>
 
-<div ng-controller="adminCargosCtrl" layout-margin class="md-padding">
-        
+	 	<md-card class="semMargem">
+            <md-input-container class="campoPesquisa">
+                <label>Pesquisar...</label>
+                <input type="text" ng-model="filtro">
+            </md-input-container>
 
-        <mdt-table paginated-rows="{isEnabled: false, rowsPerPageValues: [5,10,20,100]}" 
-        	
-        	 	mdt-row="{
-                    data: cargos,
-                    'column-keys': [
-                    	'id',
-                    	'descricao'
-                    ]
-                }">
-            <mdt-header-row>
-                <mdt-column align-rule="left">ID</mdt-column>
-                <mdt-column align-rule="center">Cargo</mdt-column>
-            </mdt-header-row>
-        </mdt-table>
-    </div>
+            <div ng-hide="true">
+                {{(itensFiltrados = (cargos | filter: filtro))}}
+            </div>
+        </md-card>
+		<mdt-table mdt-row="{
+                      data: itensFiltrados,
+                      'table-row-id-key': 'id',
+                      'column-keys': [
+                          'nome'
+                      ]
+                      }">
+        <mdt-header-row>
+            <mdt-column align-rule="left">Cargo</mdt-column>
+        </mdt-header-row>
+        <mdt-custom-cell column-key="nome">
+          <a ng-href="/#/administracao/cadastros/cargos/editar?id={{clientScope.getCargosPorId(rowId).id}}">{{clientScope.getCargosPorId(rowId).nome}}</a>
+        </mdt-custom-cell>
+    </mdt-table>
+
+    <md-button class="md-fab md-primary" ng-href="/#/administracao/cadastros/cargos/inserir" aria-label="Adicionar">
+         <md-icon md-svg-src="img/icons/add.svg"></md-icon>
+    </md-button>
+	</div>    
+</div>

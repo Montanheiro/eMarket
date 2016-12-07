@@ -262,7 +262,7 @@
 
     main.controller('mainCtrl', function($rootScope) {
 
-        $rootScope.api = "http://teste.com.br";
+        $rootScope.api = "http://192.168.0.138:37157";
     });
 
 })();

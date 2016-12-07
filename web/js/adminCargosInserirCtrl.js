@@ -8,7 +8,7 @@ angular.module('spa')
             var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");     
             if(!token) {
                 $http({ 
-                        url: $rootScope.api + '/administracao/cargos/inserir', 
+                        url: $rootScope.api + '/eMarket/webresources/cargos', 
                         dataType: 'json', 
                         method:'POST',
                         headers: {'x-access-token': token,'Content-Type': 'application/json'},
