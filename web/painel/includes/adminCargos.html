@@ -1,4 +1,4 @@
-<div ng-controller="adminCargosCtrl">
+<div ng-controller="adminCargosCtrl"> <!-- EDITAR CONTROLLER -->
 	<md-toolbar>
 		<div class="md-toolbar-tools">
 			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
@@ -10,35 +10,42 @@
 		</div>
 	</md-toolbar>
 	<div class="spaceToolbar"></div>
+
+  <div class="md-padding" layout-margin>
+  <md-card class="semMargem">
+    <md-input-container class="campoPesquisa">
+      <label>Pesquisar...</label>
+      <input type="text" ng-model="filtro">
+    </md-input-container>
+     <!--- EDITAR NOME DO ARRAY ABAIXO-->
+    <div ng-hide="true">{{(itensFiltrados = (cargos | filter: filtro))}}</div>
+  </md-card>
+  </div>
+
 	<div class="md-padding" layout-margin>
 
-	 	<md-card class="semMargem">
-            <md-input-container class="campoPesquisa">
-                <label>Pesquisar...</label>
-                <input type="text" ng-model="filtro">
-            </md-input-container>
-
-            <div ng-hide="true">
-                {{(itensFiltrados = (cargos | filter: filtro))}}
-            </div>
-        </md-card>
+    <!-- EDITAR COLUMNS-KEYS COM AS COLUNAS QUE IRÃO EXIBIR -->
 		<mdt-table mdt-row="{
-                      data: itensFiltrados,
-                      'table-row-id-key': 'id',
-                      'column-keys': [
-                          'nome'
-                      ]
-                      }">
-        <mdt-header-row>
-            <mdt-column align-rule="left">Cargo</mdt-column>
-        </mdt-header-row>
-        <mdt-custom-cell column-key="nome">
-          <a ng-href="#/administracao/cadastros/cargos/editar?id={{clientScope.getCargosPorId(rowId).id}}">{{clientScope.getCargosPorId(rowId).nome}}</a>
-        </mdt-custom-cell>
+      data: itensFiltrados,
+      'table-row-id-key': 'id',
+      'column-keys': [
+        'nome',
+        'descricao'
+      ]
+    }">
+      <mdt-header-row>
+        <!-- COLOCAR UM MD-COLUMN PRA CADA COLUNA EXIBIDA ACIMA NO COLUMN-KEYS-->
+        <mdt-column align-rule="left">Cargo</mdt-column>
+        <mdt-column align-rule="left">Descrição</mdt-column>
+      </mdt-header-row>
+      <mdt-custom-cell column-key="nome"> <!-- COLOCAR O COLUMN-KEY CLICAVEL-->
+        <!-- EDITAR CAMINHO DO LINK ABAIXO -->
+        <a ng-href="#/administracao/cadastros/cargos/editar?id={{clientScope.getCargosPorId(rowId).id}}">{{clientScope.getCargosPorId(rowId).nome}}</a>
+      </mdt-custom-cell>
     </mdt-table>
 
-    <md-button class="md-fab md-primary" ng-href="#/administracao/cadastros/cargos/inserir" aria-label="Adicionar">
-         <md-icon md-svg-src="img/icons/add.svg"></md-icon>
+    <md-button class="md-fab md-primary" ng-href="#/administracao/cadastros/cargos/inserir" aria-label="Adicionar"><!-- EDITAR CAMINHO ACIMA -->
+      <md-icon md-svg-src="img/icons/add.svg"></md-icon>
     </md-button>
 	</div>    
 </div>

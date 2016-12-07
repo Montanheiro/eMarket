@@ -265,6 +265,12 @@
         $rootScope.api = "http://192.168.0.138:37157";
     });
 
+    main.config(function($mdThemingProvider) {
+      $mdThemingProvider.theme('default')
+        .primaryPalette('indigo')
+        .accentPalette('red');
+    });
+
 })();
 
 

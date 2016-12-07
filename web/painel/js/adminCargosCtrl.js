@@ -1,23 +1,7 @@
 angular.module('spa')
-	.controller('adminCargosCtrl', ['$scope', '$rootScope', '$mdToast', '$http', 
-	function($scope, $rootScope, $mdToast, $http){
+	.controller('adminCargosCtrl', ['$scope', '$rootScope', '$mdToast', '$http', '$location',
+	function($scope, $rootScope, $mdToast, $http, location){
 		$scope.name = 'Cargos - Administração';
-
-		$scope.deleteRowCallback = function(rows){
-            $mdToast.show(
-                $mdToast.simple()
-                    .content('Deleted row id(s): '+rows)
-                    .hideDelay(3000)
-            );
-        };
-
-        $scope.selecionaElementos = function(rows){
-            $mdToast.show(
-                $mdToast.simple()
-                    .content('Elemento selecionado: '+rows)
-                    .hideDelay(3000)
-            );
-        };
 
 		/*$scope.cargos = $http.get($rootScope.api + '/eMarket/webresources/cargos')
 		    .then(function(response) {
@@ -64,6 +48,24 @@ angular.module('spa')
         };
 
 
+
+
+        /*  SE FOR USAR SELECT NA TABELA
+        $scope.deleteRowCallback = function(rows){
+            $mdToast.show(
+                $mdToast.simple()
+                    .content('Deleted row id(s): '+rows)
+                    .hideDelay(3000)
+            );
+        };
+
+        $scope.selecionaElementos = function(rows){
+            $mdToast.show(
+                $mdToast.simple()
+                    .content('Elemento selecionado: '+rows)
+                    .hideDelay(3000)
+            );
+        };*/
 
 	}]
 );

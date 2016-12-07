@@ -23,7 +23,6 @@ md-sidenav{
 }
 
 md-toolbar{
-	background-color: #3F51B5;
 	position: fixed;
 	margin-top: 0;
 }
@@ -43,7 +42,6 @@ md-list-item{
 @media screen and (max-width: 959px) {
 	.slidenav{
 		width: 0px;
-		background-color: #3F51B5;
 	}
 }
 
@@ -51,9 +49,7 @@ md-list-item{
 	.slidenav{
 		width: 304px;
 		height: 64px;
-		float: left;
-		background-color: #3F51B5;
-		
+		float: left;		
 	}
 }
 
@@ -157,4 +153,8 @@ md-input-container{
 
 .md-padding{
 	background-color: #F2F2F2;
+}
+
+.right{
+	float: right;
 }

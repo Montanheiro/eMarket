@@ -3,6 +3,10 @@ angular.module('spa')
 	function($scope, $rootScope,$routeParams, $http, $location){
     	$scope.name = 'Inserir novo cargo';
 
+        $scope.cancelar = function(){
+            $location.path('administracao/cadastros/cargos');
+        };
+
 
     	$scope.inserirCargo = function(){
             var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");     
@@ -13,14 +17,24 @@ angular.module('spa')
                         method:'POST',
                         headers: {'x-access-token': token,'Content-Type': 'application/json'},
                         data: { 
-                                'descricao': $scope.nome
-                            }
+                            'descricao': $scope.nome
+                        }
                     }).success(function (response) {                        
                         console.log(response.msg);
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .content(response.msg)
+                                .hideDelay(3000)
+                        );
                         $location.path('/administracao/cadastros/cargos');
 
                     }).error(function (response) {
                         console.log(response.msg);
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .content(response.msg)
+                                .hideDelay(3000)
+                        );
                     });
             }else{
             	alert("sem token");
