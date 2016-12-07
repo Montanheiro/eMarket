@@ -33,11 +33,11 @@
             <mdt-column align-rule="left">Cargo</mdt-column>
         </mdt-header-row>
         <mdt-custom-cell column-key="nome">
-          <a ng-href="/#/administracao/cadastros/cargos/editar?id={{clientScope.getCargosPorId(rowId).id}}">{{clientScope.getCargosPorId(rowId).nome}}</a>
+          <a ng-href="#/administracao/cadastros/cargos/editar?id={{clientScope.getCargosPorId(rowId).id}}">{{clientScope.getCargosPorId(rowId).nome}}</a>
         </mdt-custom-cell>
     </mdt-table>
 
-    <md-button class="md-fab md-primary" ng-href="/#/administracao/cadastros/cargos/inserir" aria-label="Adicionar">
+    <md-button class="md-fab md-primary" ng-href="#/administracao/cadastros/cargos/inserir" aria-label="Adicionar">
          <md-icon md-svg-src="img/icons/add.svg"></md-icon>
     </md-button>
 	</div>    
