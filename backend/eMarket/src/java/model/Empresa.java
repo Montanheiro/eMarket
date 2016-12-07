@@ -12,25 +12,31 @@ public class Empresa {
     private String RazaoSocial;
     private String CNPJ;
     private String DataContratacao;
+    private String DataCancelamentoContrato;
+    private int Status;
     
     
     //private Compra compra;//Associacao
     
 
-    public Empresa(String nome, String razaoSocial, String cnpj, String dataContratacao/*, Compra compra*/) {
+    public Empresa(String nome, String razaoSocial, String cnpj, String dataContratacao, String dataCancelamentoContrato, int status /*, Compra compra*/) {
         this.Nome = nome;
         this.RazaoSocial = razaoSocial;
         this.CNPJ = cnpj;
         this.DataContratacao = dataContratacao;
+        this.DataCancelamentoContrato = dataCancelamentoContrato;
+        this.Status = status;
        // this.compra = compra;
     }
 
-    public Empresa(int id, String nome, String razaoSocial, String cnpj, String dataContratacao/*, Compra compra*/) {
+    public Empresa(int id, String nome, String razaoSocial, String cnpj, String dataContratacao, String dataCancelamentoContrato, int status/*, Compra compra*/) {
         this.id = id;
         this.Nome = nome;
         this.RazaoSocial = razaoSocial;
         this.CNPJ = cnpj;
         this.DataContratacao = dataContratacao;
+        this.DataCancelamentoContrato = dataCancelamentoContrato;
+        this.Status = status;
        // this.compra = compra;
     }
 
@@ -73,6 +79,20 @@ public class Empresa {
     public void setDataContratacao(String dataContratacao) {
         this.DataContratacao = dataContratacao;
     }
+    
+    public String getDataCancelamentoContrato(){
+        return DataCancelamentoContrato;
+    }
+    public void setDataCancelamentoContrato(String dataCancelamentoContrato){
+        this.DataCancelamentoContrato = dataCancelamentoContrato;
+    }
+    
+    public int getStatus(){
+        return Status;
+    }
+    public void setStatus(int status) {
+    this.Status = status;
+}
 
 //    public Compra getCompra() {
 //        return compra;
@@ -84,7 +104,7 @@ public class Empresa {
     
     @Override
     public String toString() {
-        return "Empresa{" + "id=" + id + ", nome=" + Nome + ", razaoSocial=" + RazaoSocial + ", cnpj=" + CNPJ + ", dataContratacao=" + DataContratacao + '}';
+        return "Empresa{" + "id=" + id + ", nome=" + Nome + ", razaoSocial=" + RazaoSocial + ", cnpj=" + CNPJ + ", dataContratacao=" + DataContratacao +", dataCancelamentoContrato="+DataCancelamentoContrato+", status="+Status+ '}';
     }
     
 }

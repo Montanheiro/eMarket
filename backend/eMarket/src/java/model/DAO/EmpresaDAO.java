@@ -18,25 +18,26 @@ public class EmpresaDAO {
     private EmpresaDAO() {
     }
 
-    public static int create(Empresa c) {
+    public static int create(Empresa e) {
         try {
             Statement stm
                     = BancoDados.createConnection().
-                            createStatement();
-            //INSERT INTO `emark`.`empresa` (`id`, `Nome`, `RazaoSocial`, `CNPJ`, `DataContratacao`) VALUES ('1', 'Comercio de Balas', 'Balas e Cia', '123456789', '10/10/10');
-
+                            createStatement();        
             String sql
-                    = "INSERT INTO empresa (`Nome`, `RazaoSocial`, `CNPJ`, `DataContratacao`) VALUES ('"
-                    + c.getNome() + ",'"
-                    + c.getRazaoSocial() + "','"
-                    + c.getCnpj() + "','"
-                    + c.getDataContratacao() + "')";
+                    = "INSERT INTO empresa (Nome, RazaoSocial, CNPJ, DataContratacao,DataCancelamnetoContrato, status_id) VALUES ('"
+                    + e.getNome() + ",'"
+                    + e.getRazaoSocial() + "','"
+                    + e.getCnpj() + "','"
+                    + e.getDataContratacao() + "','"
+                    +e.getDataCancelamentoContrato()+"','"
+                    +e.getStatus()+ "','"
+                    +"')";
 
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
             rs.next();
             int key = rs.getInt(1);
-            c.setId(key);
+            e.setId(key);
 
             return key;
 
@@ -65,7 +66,9 @@ public class EmpresaDAO {
                     rs.getString("Nome"),
                     rs.getString("RazaoSocial"),
                     rs.getString("CNPJ"),
-                    rs.getString("DataContratacao"));
+                    rs.getString("DataContratacao"),
+                    rs.getString("DataCancelamentoContrato"),
+                    rs.getInt("Status"));
             /*,
                     c);*/
 
@@ -93,7 +96,9 @@ public class EmpresaDAO {
                         rs.getString("Nome"),
                         rs.getString("RazaoSocial"),
                         rs.getString("CNPJ"),
-                        rs.getString("DataContratacao")));
+                        rs.getString("DataContratacao"),
+                        rs.getString("DataCancelamentoContrato"),
+                        rs.getInt("Status")));
                 /*,
                         c)*/
             }
@@ -126,13 +131,13 @@ public class EmpresaDAO {
                     = BancoDados.createConnection().
                             createStatement();
 
-//UPDATE `emark`.`empresa` SET `Nome`='Comercio de Verduras', `RazaoSocial`='Hort Frut verdurex',
-//`CNPJ`='1234567890', `DataContratacao`='2010-10-11' WHERE `id`='1';
             String sql = "UPDATE empresa SET "
                     + "`Nome`='" + c.getNome()
                     + "`RazaoSocial`= '" + c.getRazaoSocial()
                     + "', `CNPJ` = '" + c.getCnpj()
                     + "', `DataContratacao` = '" + c.getDataContratacao()
+                    +"', DataCancelamentoContrato='"+ c.getDataCancelamentoContrato()
+                    +"', status_id='"+ c.getStatus()
                     + "' WHERE `id`= " + c.getId();
 
             stm.execute(sql);

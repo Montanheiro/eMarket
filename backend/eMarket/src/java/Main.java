@@ -4,10 +4,13 @@ import model.Cargo;
 import model.Contato;
 import model.DAO.CargoDAO;
 import model.DAO.ContatoDAO;
+import model.DAO.EmpresaDAO;
 import model.DAO.EnderecoDAO;
 import model.DAO.FuncionarioDAO;
 import model.DAO.PessoaDAO;
+import model.Empresa;
 import model.Endereco;
+import model.Fornecedor;
 import model.Funcionario;
 import model.Pessoa;
 
@@ -197,7 +200,7 @@ System.out.println(ContatoDAO.retreaveByPessoa(1));
 
 
 
-System.out.println(FuncionarioDAO.retreave(1));
+//System.out.println(FuncionarioDAO.retreave(1));
 //System.out.println(ContatoDAO.retreaveByPessoa(1));
 
 
@@ -215,14 +218,15 @@ System.out.println(FuncionarioDAO.retreave(1));
 
         
         
- /*     Fornecedor f = new Fornecedor("Comercio de Bugingangas", "8888888");
-        Fornecedor_Endereco fe = new Fornecedor_Endereco("Rua das Flores", "Bairro Alegre", "Mhos", "GO", "BR", "75650000");
-        f.setEndereco(fe);
-        
-        FornecedorDAO.create(f);
-
-        System.out.println(f.getPk_fornecedor());
-         */
+//// /*     
+//        Fornecedor f = new Fornecedor("Comercio de Bugingangas", "8888888");
+//        Fornecedor_Endereco fe = new Fornecedor_Endereco("Rua das Flores", "Bairro Alegre", "Mhos", "GO", "BR", "75650000");
+//        f.setEndereco(fe);
+//        
+//        FornecedorDAO.create(f);
+//
+//        System.out.println(f.getPk_fornecedor());
+////         */
  /*
         Funcionario func = new Funcionario("Getulio da Silva", "8888888", 1);
         Funcionario_Endereco fe = new Funcionario_Endereco("Rua das Abelhas", "Bairro das Flores", "Gtba", "GO", "BR", "75650000");
@@ -351,6 +355,11 @@ System.out.println(FuncionarioDAO.retreave(1));
  
    // new TelaControleClientes().setVisible(true);
 
+   
+   Empresa e = new Empresa("eMatket", "Projeto_IFGOIANO", "01.002.003/0004-05","2016-12-07",null,1);       
+        EmpresaDAO.create(e);
+
+        System.out.println(e);
 
     }
 }
