@@ -11,6 +11,7 @@ body{
     margin:0px;
     padding:0px;
     width:100%;
+    background-color: #F2F2F2;
 }
 
 a:hover, a:visited, a:link, a:active{
@@ -152,4 +153,8 @@ md-input-container{
 	top: calc(100% - 2.5em);
 	width: 8em;
 	margin-top: -2.5em;
+}
+
+.md-padding{
+	background-color: #F2F2F2;
 }
