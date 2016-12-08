@@ -1,0 +1,37 @@
+<!--<div ng-controller="loginCtrl" id="login-page" ng-init="isLogado()">-->
+<div ng-controller="loginCtrl" id="login-page">
+	<a href="#/">
+		<img src="img/logoemarket-transparente.png" class="logo">
+	</a>
+	<md-card id="card-input">
+		<md-card-content>
+
+			<form ng-submit="login()">	
+				<p class="login-erro">{{login.error}}</p>
+				<md-input-container class="md-block input"></md-input-container>
+				<md-input-container class="md-block input">
+					<label>Email</label>
+					<input type="email" ng-model="usuario.email" required>
+				</md-input-container>
+
+				<md-input-container class="md-block input">
+					<label>Senha</label>
+					<input type="password" ng-model="usuario.senha" required>
+				</md-input-container>
+
+				<md-checkbox ng-model="usuario.manterLogado" aria-label="Manter Logado" class="ng-pristine ng-valid md-default-theme ng-empty ng-touched">
+            		Manter logado
+          		</md-checkbox>
+
+				<md-input-container layout-margin class="md-block login">
+					<md-button class="md-raised md-primary" type="submit" id="submit" value="Submit">Login</md-button>				
+				</md-input-container>
+			</form>
+
+		</md-card-content>		
+	</md-card>
+
+	<div id="card-input">
+		<p class="text-register">Não tem uma conta? <a href="#/registrar">Registre-se</a></p>
+	</div>
+</div>

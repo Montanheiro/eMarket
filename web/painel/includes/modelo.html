@@ -60,13 +60,10 @@
 								<md-option value="{{estado.nome}}" ng-repeat="estado in estados">{{estado.nome}}</md-option>
 							</md-select>
 						</md-input-container>
-						<md-input-container>
-							<md-select ng-model="selecionarCidade" placeholder="Cidade" required>
-								<md-option value="{{cidade.nome}}" ng-repeat="cidade in cidades ">{{cidade.nome}}</md-option>
-							</md-select>
+						<md-input-container flex="60">
+							<label>Cidade</label>
+							<input type="text" ng-model="cidade">
 						</md-input-container>
-
-
 					</div>
 					<md-button type="submit" class="md-raised md-primary">Salvar</md-button>
 

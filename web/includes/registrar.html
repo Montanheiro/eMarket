@@ -1,0 +1,104 @@
+<!--<div ng-controller="registrarCtrl" ng-init="isLogado()">-->
+<div ng-controller="registrarCtrl" id="login-page">
+
+	<a href="#/">
+		<img src="img/logoemarket-transparente.png" class="logo">
+	</a>
+	<md-card id="card-input">
+		<md-card-content>
+
+			<form ng-submit="registrar()">	
+				<p class="login-erro">{{error}}</p>
+				<md-input-container class="md-block input"></md-input-container>
+				<p>Dados da empresa</p>
+				<md-input-container class="md-block input">
+					<label>Nome Fantasia</label>
+					<input type="text" ng-model="nomeFantasia" required>
+				</md-input-container>
+				<md-input-container class="md-block input">
+					<label>Razão Social</label>
+					<input type="text" ng-model="razaoSocial" required>
+				</md-input-container>
+				<md-input-container class="md-block input">
+					<label>CNPJ</label>
+					<input type="text" ng-model="cnpjEmpresa" required ui-br-cnpj-mask>
+				</md-input-container>
+				<p>Endereço da Empresa</p>
+					<div layout="row">
+						<md-input-container flex="25" class="input">
+							<label>CEP</label>
+							<input required ng-model="cep" ng-pattern="/^\d{5}[-]\d{3}$/" ui-br-cep-mask>
+						</md-input-container>
+						<md-input-container flex="60" class="input">
+							<label>Logradouro</label>
+							<input required ng-model="logradouro" type="text">
+						</md-input-container>
+						<md-input-container flex="15" class="input">
+							<label>Nº</label>
+							<input required ng-model="numero" type="text">
+						</md-input-container>
+					</div>
+					<div layout="row">
+						<md-input-container flex="40" class="input">
+							<label>Bairro</label>
+							<input type="text" ng-model="bairro">
+						</md-input-container>
+						<md-input-container flex="60" class="input">
+							<label>Complemento</label>
+							<input type="text" ng-model="complemento">
+						</md-input-container>
+					</div>
+					<div layout="row">
+						<md-input-container flex="100%" class="input">
+							<label>Cidade</label>
+							<input type="text" ng-model="cidadeUsuario">
+						</md-input-container>
+						<md-input-container class="input">
+							<md-select ng-model="selecionarEstado" placeholder="Estado" required>
+								<md-option value="{{estado.nome}}" ng-repeat="estado in estados">{{estado.nome}}</md-option>
+							</md-select>
+						</md-input-container>
+					</div>
+				<p>Dados do proprietário</p>
+				<md-input-container class="md-block input">
+					<label>CPF</label>
+					<input type="text" ng-model="cpfUsuario" required ui->
+				</md-input-container>
+				<md-input-container class="md-block input">
+					<label>Nome</label>
+					<input type="text" ng-model="nomeUsuario" required ui->
+				</md-input-container>
+				<md-input-container class="md-block input">
+					<label>Telefone</label>
+					<input type="text" ng-model="telefoneUsuario" required ui->
+				</md-input-container>
+
+
+				<md-input-container class="md-block input">
+					<label>Email</label>
+					<input type="email" ng-model="emailUsuario" required>
+				</md-input-container>
+
+				<md-input-container class="md-block input">
+					<label>Digite sua senha</label>
+					<input ng-model="senha" minlength="6" type="password" required>
+				</md-input-container>
+
+				<md-input-container class="md-block input">
+					<label>Repita sua senha</label>
+					<input ng-model="senhaRepetida" minlength="6" type="password" required>
+				</md-input-container>
+
+
+				<md-input-container layout-margin class="md-block login">
+					<md-button class="md-raised md-primary" type="submit" id="submit" value="Submit">Registrar</md-button>				
+				</md-input-container>
+			</form>
+
+		</md-card-content>		
+	</md-card>
+
+	<div id="card-input">
+		<p class="text-register">Já fez seu cadastro? <a href="#/login">Entre já!</a></p>
+	</div>
+</div>
