@@ -66,8 +66,8 @@ public class EmpresaDAO {
                     rs.getString("Nome"),
                     rs.getString("RazaoSocial"),
                     rs.getString("CNPJ"),
-                    rs.getString("DataContratacao"),
-                    rs.getString("DataCancelamentoContrato"),
+                    rs.getDate("DataContratacao"),
+                    rs.getDate("DataCancelamentoContrato"),
                     rs.getInt("Status"));
             /*,
                     c);*/
@@ -96,8 +96,8 @@ public class EmpresaDAO {
                         rs.getString("Nome"),
                         rs.getString("RazaoSocial"),
                         rs.getString("CNPJ"),
-                        rs.getString("DataContratacao"),
-                        rs.getString("DataCancelamentoContrato"),
+                        rs.getDate("DataContratacao"),
+                        rs.getDate("DataCancelamentoContrato"),
                         rs.getInt("Status")));
                 /*,
                         c)*/
