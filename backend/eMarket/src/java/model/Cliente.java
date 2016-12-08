@@ -8,13 +8,6 @@ import java.sql.Date;
  */
 public class Cliente {
     
-/*    id int(11) AI PK 
-Limite varchar(45) 
-DataNascimento date 
-RG int(11) 
-pessoa_id int(11)*/
-    
-    
     private int id;
     
     private Date dataNascimento;

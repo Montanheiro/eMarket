@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Bárbara,Mateus
@@ -11,15 +13,15 @@ public class Empresa {
     private String Nome;
     private String RazaoSocial;
     private String CNPJ;
-    private String DataContratacao;
-    private String DataCancelamentoContrato;
+    private Date DataContratacao;
+    private Date DataCancelamentoContrato;
     private int Status;
     
     
     //private Compra compra;//Associacao
     
 
-    public Empresa(String nome, String razaoSocial, String cnpj, String dataContratacao, String dataCancelamentoContrato, int status /*, Compra compra*/) {
+    public Empresa(String nome, String razaoSocial, String cnpj, Date dataContratacao, Date dataCancelamentoContrato, int status /*, Compra compra*/) {
         this.Nome = nome;
         this.RazaoSocial = razaoSocial;
         this.CNPJ = cnpj;
@@ -29,7 +31,7 @@ public class Empresa {
        // this.compra = compra;
     }
 
-    public Empresa(int id, String nome, String razaoSocial, String cnpj, String dataContratacao, String dataCancelamentoContrato, int status/*, Compra compra*/) {
+    public Empresa(int id, String nome, String razaoSocial, String cnpj, Date dataContratacao, Date dataCancelamentoContrato, int status/*, Compra compra*/) {
         this.id = id;
         this.Nome = nome;
         this.RazaoSocial = razaoSocial;
@@ -72,18 +74,18 @@ public class Empresa {
         this.CNPJ = cnpj;
     }
 
-    public String getDataContratacao() {
+    public Date getDataContratacao() {
         return DataContratacao;
     }
 
-    public void setDataContratacao(String dataContratacao) {
+    public void setDataContratacao(Date dataContratacao) {
         this.DataContratacao = dataContratacao;
     }
     
-    public String getDataCancelamentoContrato(){
+    public Date getDataCancelamentoContrato(){
         return DataCancelamentoContrato;
     }
-    public void setDataCancelamentoContrato(String dataCancelamentoContrato){
+    public void setDataCancelamentoContrato(Date dataCancelamentoContrato){
         this.DataCancelamentoContrato = dataCancelamentoContrato;
     }
     
