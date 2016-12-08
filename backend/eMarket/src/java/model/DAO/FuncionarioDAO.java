@@ -35,7 +35,8 @@ public class FuncionarioDAO {
                     + f.getSalario() + "','"
                     + f.getComissao() + "','"
                     + f.getDataAdimissao() + "','"
-                    + f.getDataDemissao() + "','1','"//+ f.getCargo().getId() + "','"
+                    + f.getDataDemissao() + "','"
+                    + f.getCargoId() + "','"
                     + f.getPessoa().getId() + "')";
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
@@ -60,8 +61,8 @@ public class FuncionarioDAO {
             return new Funcionario(id,
                     rs.getDouble("Salario"),
                     rs.getInt("Comissao"),
-                    rs.getString("DataAdmissao"),
-                    rs.getString("DataDemissao"),
+                    rs.getDate("DataAdmissao"),
+                    rs.getDate("DataDemissao"),
                     rs.getInt("Cargo_id"),
                     rs.getInt("Pessoa_id"));
         } catch (SQLException ex) {
@@ -83,8 +84,8 @@ public class FuncionarioDAO {
                         rs.getInt("id"),
                         rs.getDouble("Salario"),
                         rs.getInt("Comissao"),
-                        rs.getString("DataAdmissao"),
-                        rs.getString("DataDemissao"),
+                        rs.getDate("DataAdmissao"),
+                        rs.getDate("DataDemissao"),
                         rs.getInt("Cargo_id"),
                         rs.getInt("Pessoa_id")));
             }
@@ -103,10 +104,10 @@ public class FuncionarioDAO {
                     = BancoDados.createConnection().
                             createStatement();
             String sql = "UPDATE funcionario SET "
-                    + "`cpf_cnpj`= '" + f.getSalario()
-                    + "`cpf_cnpj`= '" + f.getComissao()
-                    + "`cpf_cnpj`= '" + f.getDataAdimissao()
-                    + "', `Nome`= '" + f.getDataDemissao()
+                    + "`Salario`= '" + f.getSalario()
+                    + "', `Comissao`= '" + f.getComissao()
+                    + "', `DataAdmissao`= '" + f.getDataAdimissao()
+                    + "', `DataDemissao`= '" + f.getDataDemissao()
                     + "' WHERE `id`= "
                     + f.getId();
             stm.execute(sql);

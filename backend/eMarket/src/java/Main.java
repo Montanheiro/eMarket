@@ -1,4 +1,5 @@
 
+import java.sql.Date;
 import java.util.ArrayList;
 import model.Cargo;
 import model.Contato;
@@ -212,7 +213,7 @@ System.out.println(ContatoDAO.retreaveByPessoa(1));
         Funcionario f = new Funcionario(1000, 10, "10/01/10", "10/01/16", 1, p.getId());
         FuncionarioDAO.create(f);*/
         
-        Funcionario f = new Funcionario(2000, 5, "01/01/01", "01/01/12", 1, new Pessoa("0000000000", "barba", new Contato("9999-9999"), new Endereco("Rua das Flores", "Bairro Alegre", "Mhos", "GO", "BR", "75650000")));
+        Funcionario f = new Funcionario(2000, 5, new Date(10-01-12), new Date(15-10-16), 1, new Pessoa("9876543210", "Lucas Cagao", new Contato("1234-6789"), new Endereco("Rua das Flores", "Centro", "Mhos", "GO", "BR", "75650000")));
         FuncionarioDAO.create(f);
 
 

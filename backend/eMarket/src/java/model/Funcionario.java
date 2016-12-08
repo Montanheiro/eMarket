@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Bárbara
@@ -10,20 +12,19 @@ public class Funcionario{
 
     private double salario;
     private int comissao;
-    private String dataAdimissao;
-    private String dataDemissao;
+    private Date dataAdimissao;
+    private Date dataDemissao;
     
     private Pessoa pessoa;
     private Cargo cargo;
    
-    
     private int cargoId;
     private int pessoaId;
 
     public Funcionario() {
     }
 
-    public Funcionario(double salario, int comissao, String dataAdimissao, String dataDemissao, int cargoId, Pessoa pessoa) {
+    public Funcionario(double salario, int comissao, Date dataAdimissao, Date dataDemissao, int cargoId, Pessoa pessoa) {
         this.salario = salario;
         this.comissao = comissao;
         this.dataAdimissao = dataAdimissao;
@@ -32,7 +33,7 @@ public class Funcionario{
         this.pessoa = pessoa;
     }
 
-    public Funcionario(int id, double salario, int comissao, String dataAdimissao, String dataDemissao, int cargoId, int pessoaId) {
+    public Funcionario(int id, double salario, int comissao, Date dataAdimissao, Date dataDemissao, int cargoId, int pessoaId) {
         this.id = id;
         this.salario = salario;
         this.comissao = comissao;
@@ -66,19 +67,19 @@ public class Funcionario{
         this.comissao = comissao;
     }
 
-    public String getDataAdimissao() {
+    public Date getDataAdimissao() {
         return dataAdimissao;
     }
 
-    public void setDataAdimissao(String dataAdimissao) {
+    public void setDataAdimissao(Date dataAdimissao) {
         this.dataAdimissao = dataAdimissao;
     }
 
-    public String getDataDemissao() {
+    public Date getDataDemissao() {
         return dataDemissao;
     }
 
-    public void setDataDemissao(String dataDemissao) {
+    public void setDataDemissao(Date dataDemissao) {
         this.dataDemissao = dataDemissao;
     }
 
