@@ -26,6 +26,13 @@ public class Pessoa {
         this.contato = contato;
         this.endereco = endereco;
     }
+    
+    public Pessoa(String cpf_cnpj, String nome, Contato contato, Endereco endereco) {
+        this.cpf_cnpj = cpf_cnpj;
+        this.nome = nome;
+        this.contato = contato;
+        this.endereco = endereco;
+    }
 
     public int getId() {
         return id;

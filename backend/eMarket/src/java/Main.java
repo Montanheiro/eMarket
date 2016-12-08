@@ -199,10 +199,21 @@ System.out.println(ContatoDAO.retreaveByPessoa(1));
 
 
 
-
-//System.out.println(FuncionarioDAO.retreave(1));
-//System.out.println(ContatoDAO.retreaveByPessoa(1));
-
+        /*Pessoa p = new Pessoa("123456789", "Geovana");
+       
+        Contato con = new Contato("9999-9999");
+        p.setContato(con);
+        Endereco en = new Endereco("Rua das Flores", "Bairro Alegre", "Mhos", "GO", "BR", "75650000");
+        p.setEndereco(en);
+        PessoaDAO.create(p);
+        
+        System.out.print(p.getId());
+            
+        Funcionario f = new Funcionario(1000, 10, "10/01/10", "10/01/16", 1, p.getId());
+        FuncionarioDAO.create(f);*/
+        
+        Funcionario f = new Funcionario(2000, 5, "01/01/01", "01/01/12", 1, new Pessoa("0000000000", "barba", new Contato("9999-9999"), new Endereco("Rua das Flores", "Bairro Alegre", "Mhos", "GO", "BR", "75650000")));
+        FuncionarioDAO.create(f);
 
 
 
@@ -355,11 +366,11 @@ System.out.println(ContatoDAO.retreaveByPessoa(1));
  
    // new TelaControleClientes().setVisible(true);
 
-   
+   /*
    Empresa e = new Empresa("eMatket", "Projeto_IFGOIANO", "01.002.003/0004-05","2016-12-07",null,1);       
         EmpresaDAO.create(e);
 
         System.out.println(e);
-
+*/
     }
 }

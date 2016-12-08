@@ -4,7 +4,7 @@ package model;
  *
  * @author Bárbara
  */
-public class Funcionario {
+public class Funcionario{
 
     private int id;
 
@@ -12,15 +12,24 @@ public class Funcionario {
     private int comissao;
     private String dataAdimissao;
     private String dataDemissao;
-
+    
+    private Pessoa pessoa;
+    private Cargo cargo;
+   
+    
     private int cargoId;
     private int pessoaId;
 
-    public Funcionario(double salario, int comissao, String dataAdimissao, String dataDemissao) {
+    public Funcionario() {
+    }
+
+    public Funcionario(double salario, int comissao, String dataAdimissao, String dataDemissao, int cargoId, Pessoa pessoa) {
         this.salario = salario;
         this.comissao = comissao;
         this.dataAdimissao = dataAdimissao;
         this.dataDemissao = dataDemissao;
+        this.cargoId = cargoId;
+        this.pessoa = pessoa;
     }
 
     public Funcionario(int id, double salario, int comissao, String dataAdimissao, String dataDemissao, int cargoId, int pessoaId) {
@@ -88,6 +97,24 @@ public class Funcionario {
     public void setPessoaId(int pessoaId) {
         this.pessoaId = pessoaId;
     }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
+    
+    
 
     @Override
     public String toString() {

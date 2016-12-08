@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Funcionario;
+import model.Pessoa;
 
 /**
  *
@@ -14,30 +15,33 @@ import model.Funcionario;
  */
 public class FuncionarioDAO {
     
+    
     private FuncionarioDAO() {
     }
 
     
     public static int create(Funcionario f) {
+
         try {
+            
+            PessoaDAO.create(f.getPessoa());
+            //CargoDAO.retreave(f.getCargo().getId());
+            
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
             String sql
                     = "INSERT INTO funcionario (`Salario`, `Comissao`, `DataAdmissao`, `DataDemissao`, `Cargo_id`, `Pessoa_id`) VALUES ('"
-                    + f.getSalario()+ "','"
-                    + f.getComissao()+ "','"
-                    + f.getDataAdimissao()+ "','"
-                    + f.getDataDemissao()+ "','"
-                    + f.getCargoId()+ "','"
-                    + f.getPessoaId()+ "')";
+                    + f.getSalario() + "','"
+                    + f.getComissao() + "','"
+                    + f.getDataAdimissao() + "','"
+                    + f.getDataDemissao() + "','1','"//+ f.getCargo().getId() + "','"
+                    + f.getPessoa().getId() + "')";
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
             rs.next();
             int key = rs.getInt(1);
             f.setId(key);
-            //PessoaDAO.create(f.getPessoaId());
-            //EnderecoDAO.create(p.getEndereco());
             return key;
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
