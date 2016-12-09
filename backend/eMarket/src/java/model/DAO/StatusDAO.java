@@ -4,8 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Status;
 
 /**
@@ -18,8 +16,7 @@ public class StatusDAO {
     }
 
   
-    public static int create(Status s) {
-        try {
+    public static int create(Status s) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -34,15 +31,10 @@ public class StatusDAO {
             s.setId(key);
             return key;
             
-        } catch (SQLException ex) {
-            Logger.getLogger(StatusDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
     }
 
 
-    public static Status retreave(int id) {
-        try {
+    public static Status retreave(int id) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -51,16 +43,10 @@ public class StatusDAO {
             rs.next();
             return new Status(id,
                     rs.getString("decricao"));
-
-        } catch (SQLException ex) {
-            Logger.getLogger(StatusDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
     
-    public static ArrayList<Status> retreaveAll() {
-        try {
+    public static ArrayList<Status> retreaveAll() throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -74,29 +60,20 @@ public class StatusDAO {
             }
             rs.next();
             return c;
-        } catch (SQLException ex) {
-            Logger.getLogger(StatusDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
     
-    public static void delete(Status s) {
-        try {
-            Statement stm
-                    = BancoDados.createConnection().
-                            createStatement();
-            String sql = "DELETE FROM status WHERE `id`="
-                    + s.getId();
-            stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(StatusDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public static void delete(Status s) throws SQLException {
+        Statement stm
+                = BancoDados.createConnection().
+                        createStatement();
+        String sql = "DELETE FROM status WHERE `id`="
+                + s.getId();
+        stm.execute(sql);
     }
 
     
-    public static void update(Status s) {
-        try {
+    public static void update(Status s) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -105,9 +82,6 @@ public class StatusDAO {
                     + "' WHERE `id`= "
                     + s.getId();
             stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(StatusDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
 }

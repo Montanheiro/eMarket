@@ -51,7 +51,6 @@ public class Pessoa {
 
     public void setId(int id) {
         this.id = id;
-        //this.contato.setPessoaId(id);
         this.endereco.setPessoaId(id);
      }
 

@@ -4,8 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Contato;
 
 /**
@@ -18,8 +16,7 @@ public class ContatoDAO {
     }
     
     //Metodo CREATE esta OK, testado e funcionando
-        public static int create(Contato c){
-        try {
+        public static int create(Contato c) throws SQLException{
             Statement stm =
                     BancoDados.createConnection().
                             createStatement();
@@ -35,16 +32,11 @@ public class ContatoDAO {
             c.setId(key);
             
             return key;
-        } catch (SQLException ex) {
-            Logger.getLogger(ContatoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
     }
 
     
     //Metodo RETREAVE esta OK, testado e funcionando
-    public static Contato retreave(int id) {
-        try {
+    public static Contato retreave(int id) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -54,15 +46,10 @@ public class ContatoDAO {
             return new Contato(rs.getInt("id"),
                     rs.getString("Telefone"),
                     rs.getInt("Pessoa_id"));
-        } catch (SQLException ex) {
-            Logger.getLogger(ContatoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
     //Metodo RETREAVE esta OK, testado e funcionando
-    public static ArrayList<Contato> retreaveByPessoa(int pessoaId) {
-        try {
+    public static ArrayList<Contato> retreaveByPessoa(int pessoaId) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -76,16 +63,10 @@ public class ContatoDAO {
                         rs.getInt("Pessoa_id")));
             }
             return temp;
-        } catch (SQLException ex) {
-            Logger.getLogger(ContatoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
     //Metodo RETREAVE esta OK, testado e funcionando
-    public static ArrayList<Contato> retreaveAll() {
-
-        try {
+    public static ArrayList<Contato> retreaveAll() throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -100,15 +81,10 @@ public class ContatoDAO {
             }
             rs.next();
             return c;
-        } catch (SQLException ex) {
-            Logger.getLogger(ContatoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
     //Metodo UPDATE esta OK, testado e funcionando
-    public static void update(Contato c) {
-        try {
+    public static void update(Contato c) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -117,23 +93,16 @@ public class ContatoDAO {
                     + "' WHERE `id`= "
                     + c.getId();
             stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(ContatoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
 //Metodo DELETE esta OK, testado e funcionando    
-    public static void delete(Contato c) {
-        try {
+    public static void delete(Contato c) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
             String sql = "DELETE FROM contato WHERE `id`="
                     + c.getId();
             stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(ContatoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
 
