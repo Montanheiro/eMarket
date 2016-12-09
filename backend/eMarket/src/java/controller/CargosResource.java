@@ -1,6 +1,7 @@
 package controller;
 
 import com.google.gson.Gson;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -20,54 +21,54 @@ import model.DAO.CargoDAO;
 public class CargosResource {
 
  
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-     @Path("/consultar")
-    public String getJson(@QueryParam("id") int id) {
-        Gson gson = new Gson();
-
-       
-         Cargo cargo = CargoDAO.retreave(id);
-          return gson.toJson(cargo);
-      
-           // ArrayList<Cargo> cargos = CargoDAO.retreaveAll();
-            //return gson.toJson(cargos);
-       
-
-      }
-   
-    /**
-     * PUT method for updating or creating an instance of CargosResource
-     *
-     * @param content representation for the resource
-     * @path nome
-     * @return
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String putJson(@QueryParam("nome") String nome) {
-
-        Gson gson = new Gson();
-
-        return gson.toJson(nome);
-
-    }
-    
-    
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/inserir")
-    public int postJson(String x) {
-        Gson gson = new Gson();
-        System.out.println(x);
-
-        Cargo c = gson.fromJson(x, Cargo.class);
-        System.out.println(c);
-
-        CargoDAO.create(c);
-
-        return 200;
-
-    }
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//     @Path("/consultar")
+//    public String getJson() {
+//        Gson gson = new Gson();
+//
+//       
+//         ArrayList<Cargo> cargo = CargoDAO.retreaveAll();
+//          return gson.toJson(cargo);
+//      
+//           // ArrayList<Cargo> cargos = CargoDAO.retreaveAll();
+//            //return gson.toJson(cargos);
+//       
+//
+//      }
+//   
+//    /**
+//     * PUT method for updating or creating an instance of CargosResource
+//     *
+//     * @param content representation for the resource
+//     * @path nome
+//     * @return
+//     */
+//    @PUT
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public String putJson(@QueryParam("nome") String nome) {
+//
+//        Gson gson = new Gson();
+//
+//        return gson.toJson(nome);
+//
+//    }
+//    
+//    
+//    @POST
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Path("/inserir")
+//    public int postJson(String x) {
+//        Gson gson = new Gson();
+//        System.out.println(x);
+//
+//        Cargo c = gson.fromJson(x, Cargo.class);
+//        System.out.println(c);
+//
+//        CargoDAO.create(c);
+//
+//        return 200;
+//
+//    }
     
 }
