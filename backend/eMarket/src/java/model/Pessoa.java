@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Bárbara
@@ -11,7 +13,7 @@ public class Pessoa {
     private String cpf_cnpj;
     private String nome; 
  
-    private Contato contato;//Associacao
+    private ArrayList<Contato> contato = new ArrayList<>();//Associacao
     private Endereco endereco;//Associacao
 
     public Pessoa() {
@@ -22,20 +24,26 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public Pessoa(String cpf_cnpj, String nome, Contato contato, Endereco endereco) {
+    public Pessoa(String cpf_cnpj, String nome, Endereco endereco) {
         this.cpf_cnpj = cpf_cnpj;
         this.nome = nome;
-        this.contato = contato;
         this.endereco = endereco;
     }
-    
-    public Pessoa(int id, String cpf_cnpj, String nome, Contato contato, Endereco endereco) {
+
+    public Pessoa(int id, String cpf_cnpj, String nome, Endereco endereco) {
         this.id = id;
         this.cpf_cnpj = cpf_cnpj;
         this.nome = nome;
-        this.contato = contato;
         this.endereco = endereco;
     }
+    
+    public Pessoa(int id, String cpf_cnpj, String nome, Endereco endereco, ArrayList<Contato> cs) {
+        this.id = id;
+        this.cpf_cnpj = cpf_cnpj;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.contato = cs;
+    }    
 
     public int getId() {
         return id;
@@ -43,10 +51,9 @@ public class Pessoa {
 
     public void setId(int id) {
         this.id = id;
-        this.contato.setPessoaId(id);
+        //this.contato.setPessoaId(id);
         this.endereco.setPessoaId(id);
-
-    }
+     }
 
     public String getCpf_cnpj() {
         return cpf_cnpj;
@@ -64,14 +71,6 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public Contato getContato() {
-        return contato;
-    }
-
-    public void setContato(Contato contato) {
-        this.contato = contato;
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
@@ -80,10 +79,18 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
+    public ArrayList<Contato> getContato() {
+        return contato;
+    }
+
+    public void setContato(ArrayList<Contato> contato) {
+        this.contato = contato;
+    }
+
     @Override
     public String toString() {
         return "Pessoa{" + "id=" + id + ", cpf_cnpj=" + cpf_cnpj + ", nome=" + nome + ", contato=" + contato + ", endereco=" + endereco + '}';
     }
-
+    
     
 }

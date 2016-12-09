@@ -61,19 +61,21 @@ public class ContatoDAO {
     }
 
     //Metodo RETREAVE esta OK, testado e funcionando
-    public static Contato retreaveByPessoa(int pessoaId) {
+    public static ArrayList<Contato> retreaveByPessoa(int pessoaId) {
         try {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
             String sql = "SELECT * FROM contato where Pessoa_id =" + pessoaId;
             ResultSet rs = stm.executeQuery(sql);
+            ArrayList<Contato> temp = new ArrayList<>();
             if (rs.next()) {
-                return new Contato(
+                temp.add(new Contato(
                         rs.getInt("id"),
                         rs.getString("Telefone"),
-                        rs.getInt("Pessoa_id"));
+                        rs.getInt("Pessoa_id")));
             }
+            return temp;
         } catch (SQLException ex) {
             Logger.getLogger(ContatoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

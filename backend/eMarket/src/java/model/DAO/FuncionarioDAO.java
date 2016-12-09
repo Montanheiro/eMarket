@@ -4,10 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Funcionario;
-import model.Pessoa;
 
 /**
  *
@@ -20,10 +17,7 @@ public class FuncionarioDAO {
     }
 
     
-    public static int create(Funcionario f) {
-
-        try {
-            
+    public static int create(Funcionario f) throws SQLException {
             PessoaDAO.create(f.getPessoa());
             //CargoDAO.retreave(f.getCargo().getId());
             
@@ -36,7 +30,7 @@ public class FuncionarioDAO {
                     + f.getComissao() + "','"
                     + f.getDataAdimissao() + "','"
                     + f.getDataDemissao() + "','"
-                    + f.getCargoId() + "','"
+                    + f.getCargo().getId() + "','"
                     + f.getPessoa().getId() + "')";
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
@@ -44,14 +38,9 @@ public class FuncionarioDAO {
             int key = rs.getInt(1);
             f.setId(key);
             return key;
-        } catch (SQLException ex) {
-            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
     }
 
-    public static Funcionario retreave(int id) {
-        try {
+    public static Funcionario retreave(int id) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -65,14 +54,9 @@ public class FuncionarioDAO {
                     rs.getDate("DataDemissao"),
                     rs.getInt("Cargo_id"),
                     rs.getInt("Pessoa_id"));
-        } catch (SQLException ex) {
-            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
-    public static ArrayList<Funcionario> retreaveAll() {
-        try {
+    public static ArrayList<Funcionario> retreaveAll() throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -91,15 +75,10 @@ public class FuncionarioDAO {
             }
             rs.next();
             return p;
-        } catch (SQLException ex) {
-            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
    
-    public static void update(Funcionario f) {
-        try {
+    public static void update(Funcionario f) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -111,23 +90,16 @@ public class FuncionarioDAO {
                     + "' WHERE `id`= "
                     + f.getId();
             stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     
-    public static void delete(Funcionario f) {
-        try {
+    public static void delete(Funcionario f) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
             String sql = "DELETE FROM funcionario WHERE `id`="
                     + f.getId();
             stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
 }

@@ -1,5 +1,6 @@
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Cargo;
 import model.Contato;
@@ -24,7 +25,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
  
 /************Teste do Metodo CREATE do EnderecoDAO************
         Endereco e = new Endereco("Rua das bolinhas", "Bairro Feliz", "Mhos", "GO", "BR", "75650000");

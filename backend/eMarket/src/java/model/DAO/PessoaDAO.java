@@ -4,8 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Contato;
 import model.Endereco;
 import model.Pessoa;
@@ -20,8 +18,7 @@ public class PessoaDAO {
     }
 
     //Metodo CREATE esta OK, testado e funcionando
-    public static int create(Pessoa p) {
-        try {
+    public static int create(Pessoa p) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -34,18 +31,19 @@ public class PessoaDAO {
             rs.next();
             int key = rs.getInt(1);
             p.setId(key);
-            ContatoDAO.create(p.getContato());
+            
             EnderecoDAO.create(p.getEndereco());
+            
+            for (Contato c: p.getContato()){
+                c.setPessoaId(key);
+                ContatoDAO.create(c);
+            }
+            
             return key;
-        } catch (SQLException ex) {
-            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
     }
 
     //Metodo RETREAVE esta OK, testado e funcionando
-    public static Pessoa retreave(int id) {
-        try {
+    public static Pessoa retreave(int id) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -53,46 +51,37 @@ public class PessoaDAO {
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
             Endereco e = EnderecoDAO.retreaveByPessoa(id);
-            Contato c = ContatoDAO.retreaveByPessoa(id);
+            ArrayList<Contato> todosOscontatos = ContatoDAO.retreaveByPessoa(id);
             return new Pessoa(id,
                     rs.getString("cpf_cnpj"),
                     rs.getString("Nome"),
-                    c, e);
-        } catch (SQLException ex) {
-            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+                    e, todosOscontatos);
     }
 
     //Metodo RETREAVE esta OK, testado e funcionando
-    public static ArrayList<Pessoa> retreaveAll() {
-        try {
+    public static ArrayList<Pessoa> retreaveAll() throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
             String sql = "SELECT * FROM pessoa";
             ResultSet rs = stm.executeQuery(sql);
             ArrayList<Pessoa> p = new ArrayList<>();
+            ArrayList<Contato> todosOscontatos;
             while (rs.next()) {
-                Contato c = ContatoDAO.retreaveByPessoa(rs.getInt("id"));
+                todosOscontatos = ContatoDAO.retreaveByPessoa(rs.getInt("id"));
                 Endereco e = EnderecoDAO.retreaveByPessoa(rs.getInt("id"));
                 p.add(new Pessoa(
                         rs.getInt("id"),
                         rs.getString("cpf_cnpj"),
                         rs.getString("Nome"),
-                        c, e));
+                        e,todosOscontatos));
             }
             rs.next();
             return p;
-        } catch (SQLException ex) {
-            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
     //Metodo UPDATE esta OK, testado e funcionando
-    public static void update(Pessoa c) {
-        try {
+    public static void update(Pessoa c) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -102,23 +91,27 @@ public class PessoaDAO {
                     + "' WHERE `id`= "
                     + c.getId();
             stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            
+            EnderecoDAO.update(c.getEndereco());
+            
+            for (Contato cs: c.getContato()){
+                if (cs.getPessoaId()!=0){
+                    ContatoDAO.update(cs);
+                } else {
+                    cs.setPessoaId(c.getId());
+                    ContatoDAO.create(cs);
+                }
+            }
     }
     
     //Metodo DELETE esta OK, testado e funcionando
-    public static void delete(Pessoa p) {
-        try {
+    public static void delete(Pessoa p) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
             String sql = "DELETE FROM pessoa WHERE `id`="
                     + p.getId();
             stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
 }
