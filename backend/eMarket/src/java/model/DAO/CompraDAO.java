@@ -25,8 +25,7 @@ public class CompraDAO {
             String sql
                     = "INSERT INTO compra (`Data`, `ValorTotal`, `Caixa`) VALUES ('"
                     + c.getData() + "','"
-                    + c.getValorTotal() + "','"
-                    + c.getCaixa() + "')";
+                    + c.getValorTotal() + "')";
 
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stm.getGeneratedKeys();
@@ -55,9 +54,8 @@ public class CompraDAO {
             rs.next();
 
             return new Compra(rs.getInt("id"),
-                    rs.getString("data"),
+                    rs.getDate("data"),
                     rs.getDouble("valorTotal"),
-                    rs.getString("caixa"),
                     rs.getInt("empresaId"),
                     rs.getInt("usuarioId"),
                     rs.getInt("fornecedorId"));
@@ -83,9 +81,8 @@ public class CompraDAO {
             while (rs.next()) {
                 c.add(new Compra(
                         rs.getInt("id"),
-                        rs.getString("data"),
+                        rs.getDate("data"),
                         rs.getDouble("valorTotal"),
-                        rs.getString("caixa"),
                         rs.getInt("empresaId"),
                         rs.getInt("usuarioId"),
                         rs.getInt("fornecedorId")));
@@ -112,9 +109,8 @@ public class CompraDAO {
 
                 return new Compra(
                         rs.getInt("id"),
-                        rs.getString("data"),
+                        rs.getDate("data"),
                         rs.getDouble("valorTotal"),
-                        rs.getString("caixa"),
                         rs.getInt("empresaId"),
                         rs.getInt("usuarioId"),
                         rs.getInt("fornecedorId"));
@@ -136,9 +132,8 @@ public class CompraDAO {
 
                 return new Compra(
                         rs.getInt("id"),
-                        rs.getString("data"),
+                        rs.getDate("data"),
                         rs.getDouble("valorTotal"),
-                        rs.getString("caixa"),
                         rs.getInt("empresaId"),
                         rs.getInt("usuarioId"),
                         rs.getInt("fornecedorId"));
@@ -170,14 +165,9 @@ public class CompraDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-            //INSERT INTO `emark`.`compras` (`id`, `Data`, `ValorTotal`, `Caixa`,
-            //`Empresa_id`, `Usuario_id`, `Fornecedor_id`) VALUES ('1', '10/10', 
-            //'100', '1', '1', '1', '1');
             String sql = "UPDATE compras SET "
                     + "`Data`='" + c.getData()
                     + "', ValorTotal = '" + c.getValorTotal()
-                    + "', Caixa = '" + c.getCaixa()
                     + "' WHERE `id`= "
                     + c.getId();
 
