@@ -5,4 +5,4 @@ setup/
 test/
 web/
 *.class/
-src/java/modem/DAO/BDConfig/
+
