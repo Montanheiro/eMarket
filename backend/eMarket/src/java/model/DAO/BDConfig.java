@@ -9,4 +9,5 @@ public class BDConfig {
     public static final String USR = "admin_emarket";
     public static final String PWD = "4wrRqoJPrs";
     public static final String DRIVER = "com.mysql.jdbc.Driver";
+    
 }
