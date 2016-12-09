@@ -30,7 +30,7 @@ public class EmpresaDAO {
                     + e.getCnpj() + "','"
                     + e.getDataContratacao() + "','"
                     +e.getDataCancelamentoContrato()+"','"
-                    +e.getStatus()+ "','"
+                    +e.getStatusId()+ "','"
                     +"')";
 
             stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
@@ -54,8 +54,6 @@ public class EmpresaDAO {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
-
-            //SELECT * FROM emark.cargo where id =1;
             String sql = "SELECT * FROM empresa where id =" + id;
             ResultSet rs = stm.executeQuery(sql);
             rs.next();
@@ -137,7 +135,7 @@ public class EmpresaDAO {
                     + "', `CNPJ` = '" + c.getCnpj()
                     + "', `DataContratacao` = '" + c.getDataContratacao()
                     +"', DataCancelamentoContrato='"+ c.getDataCancelamentoContrato()
-                    +"', status_id='"+ c.getStatus()
+                    +"', status_id='"+ c.getStatusId()
                     + "' WHERE `id`= " + c.getId();
 
             stm.execute(sql);
