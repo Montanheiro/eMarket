@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Bárbara
@@ -8,18 +10,21 @@ public class Venda {
     
     private int id;
 
-    private String dataVenda;
+    private Date dataVenda;
     private double valorTotal;
     
     private int empresaId;
     private int usuarioId;
 
-    public Venda(String dataVenda, double valorTotal) {
+    public Venda() {
+    }
+
+    public Venda(Date dataVenda, double valorTotal) {
         this.dataVenda = dataVenda;
         this.valorTotal = valorTotal;
     }
 
-    public Venda(int id, String dataVenda, double valorTotal, int empresaId, int usuarioId) {
+    public Venda(int id, Date dataVenda, double valorTotal, int empresaId, int usuarioId) {
         this.id = id;
         this.dataVenda = dataVenda;
         this.valorTotal = valorTotal;
@@ -35,11 +40,11 @@ public class Venda {
         this.id = id;
     }
 
-    public String getDataVenda() {
+    public Date getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(String dataVenda) {
+    public void setDataVenda(Date dataVenda) {
         this.dataVenda = dataVenda;
     }
 

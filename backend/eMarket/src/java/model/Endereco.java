@@ -17,6 +17,9 @@ public class Endereco {
     
     private int pessoaId;
 
+    public Endereco() {
+    }
+    
     public Endereco(String logradouro, String bairro, String cidade, String estado, String pais, String cep) {
         this.logradouro = logradouro;
         this.bairro = bairro;

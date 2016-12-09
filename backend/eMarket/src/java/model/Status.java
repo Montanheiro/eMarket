@@ -4,20 +4,20 @@ package model;
  *
  * @author Bárbara
  */
-public class TipoPagamento {
-    
-    private int id;
+public class Status {
 
+    private int id;
+    
     private String descricao;
 
-    public TipoPagamento() {
+    public Status() {
     }
 
-    public TipoPagamento(String descricao) {
+    public Status(String descricao) {
         this.descricao = descricao;
     }
-
-    public TipoPagamento(int id, String descricao) {
+    
+    public Status(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
@@ -40,8 +40,7 @@ public class TipoPagamento {
 
     @Override
     public String toString() {
-        return "TipoPagamento{" + "id=" + id + ", descricao=" + descricao + '}';
+        return "Status{" + "id=" + id + ", descricao=" + descricao + '}';
     }
-    
     
 }

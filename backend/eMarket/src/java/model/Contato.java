@@ -12,6 +12,9 @@ public class Contato {
         
     private int pessoaId;
 
+    public Contato() {
+    }
+    
     public Contato(String telefone) {
         this.telefone = telefone;
     }

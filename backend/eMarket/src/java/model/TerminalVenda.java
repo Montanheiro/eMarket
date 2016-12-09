@@ -14,6 +14,9 @@ public class TerminalVenda {
     private int empresaId;
     private int usuarioId;
 
+    public TerminalVenda() {
+    }
+
     public TerminalVenda(int numeroMaquina, String token) {
         this.numeroMaquina = numeroMaquina;
         this.token = token;

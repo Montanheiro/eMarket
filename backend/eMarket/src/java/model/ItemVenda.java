@@ -10,26 +10,28 @@ public class ItemVenda {
 
     private double quantidade;
     private double valorVenda;
-    private String status;
     
     private int vendaId;
     private int financeiroCaixaId;
     private int produtoId;
+    private int statusId;
 
-    public ItemVenda(double quantidade, double valorVenda, String status) {
-        this.quantidade = quantidade;
-        this.valorVenda = valorVenda;
-        this.status = status;
+    public ItemVenda() {
     }
 
-    public ItemVenda(int id, double quantidade, double valorVenda, String status, int vendaId, int financeiroCaixaId, int produtoId) {
+    public ItemVenda(double quantidade, double valorVenda) {
+        this.quantidade = quantidade;
+        this.valorVenda = valorVenda;
+    }
+
+    public ItemVenda(int id, double quantidade, double valorVenda, int vendaId, int financeiroCaixaId, int produtoId, int statusId) {
         this.id = id;
         this.quantidade = quantidade;
         this.valorVenda = valorVenda;
-        this.status = status;
         this.vendaId = vendaId;
         this.financeiroCaixaId = financeiroCaixaId;
         this.produtoId = produtoId;
+        this.statusId = statusId;
     }
 
     public int getId() {
@@ -56,14 +58,6 @@ public class ItemVenda {
         this.valorVenda = valorVenda;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public int getVendaId() {
         return vendaId;
     }
@@ -88,9 +82,18 @@ public class ItemVenda {
         this.produtoId = produtoId;
     }
 
+    public int getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
+
     @Override
     public String toString() {
-        return "ItemVenda{" + "id=" + id + ", quantidade=" + quantidade + ", valorVenda=" + valorVenda + ", status=" + status + ", vendaId=" + vendaId + ", financeiroCaixaId=" + financeiroCaixaId + ", produtoId=" + produtoId + '}';
+        return "ItemVenda{" + "id=" + id + ", quantidade=" + quantidade + ", valorVenda=" + valorVenda + ", vendaId=" + vendaId + ", financeiroCaixaId=" + financeiroCaixaId + ", produtoId=" + produtoId + ", statusId=" + statusId + '}';
     }
+
     
 }

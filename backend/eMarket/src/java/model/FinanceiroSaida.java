@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Bárbara
@@ -8,34 +10,36 @@ public class FinanceiroSaida {
         
     private int id;
 
-    private String dataVencimento;
-    private String dataBaixa;
-    private String dataEmissao;
+    private Date dataVencimento;
+    private Date dataBaixa;
+    private Date dataEmissao;
     private double valor;
-    private String status;
         
     private int movimentacaoFinanceiraId;
     private int compraId;
     private int formaPagamentoId;
+    private int statusId;
 
-    public FinanceiroSaida(String dataVencimento, String dataBaixa, String dataEmissao, double valor, String status) {
+    public FinanceiroSaida() {
+    }
+
+    public FinanceiroSaida(Date dataVencimento, Date dataBaixa, Date dataEmissao, double valor) {
         this.dataVencimento = dataVencimento;
         this.dataBaixa = dataBaixa;
         this.dataEmissao = dataEmissao;
         this.valor = valor;
-        this.status = status;
     }
 
-    public FinanceiroSaida(int id, String dataVencimento, String dataBaixa, String dataEmissao, double valor, String status, int movimentacaoFinanceiraId, int compraId, int formaPagamentoId) {
+    public FinanceiroSaida(int id, Date dataVencimento, Date dataBaixa, Date dataEmissao, double valor, int movimentacaoFinanceiraId, int compraId, int formaPagamentoId, int statusId) {
         this.id = id;
         this.dataVencimento = dataVencimento;
         this.dataBaixa = dataBaixa;
         this.dataEmissao = dataEmissao;
         this.valor = valor;
-        this.status = status;
         this.movimentacaoFinanceiraId = movimentacaoFinanceiraId;
         this.compraId = compraId;
         this.formaPagamentoId = formaPagamentoId;
+        this.statusId = statusId;
     }
 
     public int getId() {
@@ -46,27 +50,27 @@ public class FinanceiroSaida {
         this.id = id;
     }
 
-    public String getDataVencimento() {
+    public Date getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(String dataVencimento) {
+    public void setDataVencimento(Date dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
 
-    public String getDataBaixa() {
+    public Date getDataBaixa() {
         return dataBaixa;
     }
 
-    public void setDataBaixa(String dataBaixa) {
+    public void setDataBaixa(Date dataBaixa) {
         this.dataBaixa = dataBaixa;
     }
 
-    public String getDataEmissao() {
+    public Date getDataEmissao() {
         return dataEmissao;
     }
 
-    public void setDataEmissao(String dataEmissao) {
+    public void setDataEmissao(Date dataEmissao) {
         this.dataEmissao = dataEmissao;
     }
 
@@ -76,14 +80,6 @@ public class FinanceiroSaida {
 
     public void setValor(double valor) {
         this.valor = valor;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public int getMovimentacaoFinanceiraId() {
@@ -110,10 +106,17 @@ public class FinanceiroSaida {
         this.formaPagamentoId = formaPagamentoId;
     }
 
+    public int getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
+
     @Override
     public String toString() {
-        return "FinanceiroSaida{" + "id=" + id + ", dataVencimento=" + dataVencimento + ", dataBaixa=" + dataBaixa + ", dataEmissao=" + dataEmissao + ", valor=" + valor + ", status=" + status + ", movimentacaoFinanceiraId=" + movimentacaoFinanceiraId + ", compraId=" + compraId + ", formaPagamentoId=" + formaPagamentoId + '}';
+        return "FinanceiroSaida{" + "id=" + id + ", dataVencimento=" + dataVencimento + ", dataBaixa=" + dataBaixa + ", dataEmissao=" + dataEmissao + ", valor=" + valor + ", movimentacaoFinanceiraId=" + movimentacaoFinanceiraId + ", compraId=" + compraId + ", formaPagamentoId=" + formaPagamentoId + ", statusId=" + statusId + '}';
     }
-    
-    
+
 }

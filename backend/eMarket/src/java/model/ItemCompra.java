@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Bárbara
@@ -10,27 +12,29 @@ public class ItemCompra {
 
     private double quantidade;
     private double valorCompra;
-    private String dataCompra;
-    private String status;
+    private Date dataCompra;
 
     private int compraId;
     private int produtoId;
+    private int statusId;
 
-    public ItemCompra(double quantidade, double valorCompra, String dataCompra, String status) {
+    public ItemCompra() {
+    }
+
+    public ItemCompra(double quantidade, double valorCompra, Date dataCompra) {
         this.quantidade = quantidade;
         this.valorCompra = valorCompra;
         this.dataCompra = dataCompra;
-        this.status = status;
     }
 
-    public ItemCompra(int id, double quantidade, double valorCompra, String dataCompra, String status, int compraId, int produtoId) {
+    public ItemCompra(int id, double quantidade, double valorCompra, Date dataCompra, int compraId, int produtoId, int statusId) {
         this.id = id;
         this.quantidade = quantidade;
         this.valorCompra = valorCompra;
         this.dataCompra = dataCompra;
-        this.status = status;
         this.compraId = compraId;
         this.produtoId = produtoId;
+        this.statusId = statusId;
     }
 
     public int getId() {
@@ -57,20 +61,12 @@ public class ItemCompra {
         this.valorCompra = valorCompra;
     }
 
-    public String getDataCompra() {
+    public Date getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(String dataCompra) {
+    public void setDataCompra(Date dataCompra) {
         this.dataCompra = dataCompra;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public int getCompraId() {
@@ -89,9 +85,18 @@ public class ItemCompra {
         this.produtoId = produtoId;
     }
 
+    public int getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
+
     @Override
     public String toString() {
-        return "ItemCompra{" + "id=" + id + ", quantidade=" + quantidade + ", valorCompra=" + valorCompra + ", dataCompra=" + dataCompra + ", status=" + status + ", compraId=" + compraId + ", produtoId=" + produtoId + '}';
+        return "ItemCompra{" + "id=" + id + ", quantidade=" + quantidade + ", valorCompra=" + valorCompra + ", dataCompra=" + dataCompra + ", compraId=" + compraId + ", produtoId=" + produtoId + ", statusId=" + statusId + '}';
     }
+
 
 }

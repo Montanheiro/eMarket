@@ -1,24 +1,30 @@
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Bárbara
  */
 public class FinanceiroCaixa {
-
+    
     private int id;
 
     private double valorInicial;
     private double valorFinal;
-    private String dataAbertura;
-    private String dataFechamento;
+    private Date dataAbertura;
+    private Date dataFechamento;
     private double sangria;
     private double suprimento;
     private String descricao;
     
     private int terminalVendaId;
 
-    public FinanceiroCaixa(double valorInicial, double valorFinal, String dataAbertura, String dataFechamento, double suprimento, String descricao) {
+    
+    public FinanceiroCaixa() {
+    }
+
+    public FinanceiroCaixa(double valorInicial, double valorFinal, Date dataAbertura, Date dataFechamento, double suprimento, String descricao) {
         this.valorInicial = valorInicial;
         this.valorFinal = valorFinal;
         this.dataAbertura = dataAbertura;
@@ -27,7 +33,7 @@ public class FinanceiroCaixa {
         this.descricao = descricao;
     }
 
-    public FinanceiroCaixa(int id, double valorInicial, double valorFinal, String dataAbertura, String dataFechamento, double sangria, double suprimento, String descricao, int terminalVendaId) {
+    public FinanceiroCaixa(int id, double valorInicial, double valorFinal, Date dataAbertura, Date dataFechamento, double sangria, double suprimento, String descricao, int terminalVendaId) {
         this.id = id;
         this.valorInicial = valorInicial;
         this.valorFinal = valorFinal;
@@ -63,19 +69,19 @@ public class FinanceiroCaixa {
         this.valorFinal = valorFinal;
     }
 
-    public String getDataAbertura() {
+    public Date getDataAbertura() {
         return dataAbertura;
     }
 
-    public void setDataAbertura(String dataAbertura) {
+    public void setDataAbertura(Date dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
-    public String getDataFechamento() {
+    public Date getDataFechamento() {
         return dataFechamento;
     }
 
-    public void setDataFechamento(String dataFechamento) {
+    public void setDataFechamento(Date dataFechamento) {
         this.dataFechamento = dataFechamento;
     }
 

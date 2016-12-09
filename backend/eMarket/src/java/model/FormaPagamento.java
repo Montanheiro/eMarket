@@ -5,23 +5,26 @@ package model;
  * @author Bárbara
  */
 public class FormaPagamento {
-   
+    
     private int id;
 
     private String nome;
-    private String tipoPagamento;
+    private int maxParcela;
     
     private int tipoPagamentoId;
 
-    public FormaPagamento(String nome, String tipoPagamento) {
-        this.nome = nome;
-        this.tipoPagamento = tipoPagamento;
+    public FormaPagamento() {
     }
 
-    public FormaPagamento(int id, String nome, String tipoPagamento, int tipoPagamentoId) {
+    public FormaPagamento(String nome, int maxParcela) {
+        this.nome = nome;
+        this.maxParcela = maxParcela;
+    }
+
+    public FormaPagamento(int id, String nome, int maxParcela, int tipoPagamentoId) {
         this.id = id;
         this.nome = nome;
-        this.tipoPagamento = tipoPagamento;
+        this.maxParcela = maxParcela;
         this.tipoPagamentoId = tipoPagamentoId;
     }
 
@@ -41,12 +44,12 @@ public class FormaPagamento {
         this.nome = nome;
     }
 
-    public String getTipoPagamento() {
-        return tipoPagamento;
+    public int getMaxParcela() {
+        return maxParcela;
     }
 
-    public void setTipoPagamento(String tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
+    public void setMaxParcela(int maxParcela) {
+        this.maxParcela = maxParcela;
     }
 
     public int getTipoPagamentoId() {
@@ -59,8 +62,8 @@ public class FormaPagamento {
 
     @Override
     public String toString() {
-        return "FormaPagamento{" + "id=" + id + ", nome=" + nome + ", tipoPagamento=" + tipoPagamento + ", tipoPagamentoId=" + tipoPagamentoId + '}';
+        return "FormaPagamento{" + "id=" + id + ", nome=" + nome + ", maxParcela=" + maxParcela + ", tipoPagamentoId=" + tipoPagamentoId + '}';
     }
-
+    
     
 }

@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Bárbara
@@ -8,25 +10,25 @@ public class Compra {
 
     private int id;
 
-    private String data;
+    private Date data;
     private double valorTotal;
-    private String caixa;
     
     private int empresaId;
     private int usuarioId;
     private int fornecedorId;
 
-    public Compra(String data, double valorTotal, String caixa) {
-        this.data = data;
-        this.valorTotal = valorTotal;
-        this.caixa = caixa;
+    public Compra() {
     }
 
-    public Compra(int id, String data, double valorTotal, String caixa, int empresaId, int usuarioId, int fornecedorId) {
+    public Compra(Date data, double valorTotal) {
+        this.data = data;
+        this.valorTotal = valorTotal;
+    }
+
+    public Compra(int id, Date data, double valorTotal, int empresaId, int usuarioId, int fornecedorId) {
         this.id = id;
         this.data = data;
         this.valorTotal = valorTotal;
-        this.caixa = caixa;
         this.empresaId = empresaId;
         this.usuarioId = usuarioId;
         this.fornecedorId = fornecedorId;
@@ -40,11 +42,11 @@ public class Compra {
         this.id = id;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
@@ -54,14 +56,6 @@ public class Compra {
 
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
-    }
-
-    public String getCaixa() {
-        return caixa;
-    }
-
-    public void setCaixa(String caixa) {
-        this.caixa = caixa;
     }
 
     public int getEmpresaId() {
@@ -90,7 +84,7 @@ public class Compra {
 
     @Override
     public String toString() {
-        return "Compra{" + "id=" + id + ", data=" + data + ", valorTotal=" + valorTotal + ", caixa=" + caixa + ", empresaId=" + empresaId + ", usuarioId=" + usuarioId + ", fornecedorId=" + fornecedorId + '}';
+        return "Compra{" + "id=" + id + ", data=" + data + ", valorTotal=" + valorTotal + ", empresaId=" + empresaId + ", usuarioId=" + usuarioId + ", fornecedorId=" + fornecedorId + '}';
     }
 
 }

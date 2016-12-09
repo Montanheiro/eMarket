@@ -54,19 +54,20 @@ public class CargosResource {
     }
     
     
-/*    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/inserir")
-    public void postJson(@Context HttpServletRequest req) {
+    public int postJson(String x) {
         Gson gson = new Gson();
-        
-        Cargo c = gson.fromJson(req, Cargo.class);
+        System.out.println(x);
+
+        Cargo c = gson.fromJson(x, Cargo.class);
+        System.out.println(c);
+
         CargoDAO.create(c);
 
-//          System.out.println("Nome " + nome);
-//          System.out.println("c " + c);
+        return 200;
+
     }
-*/    
     
 }

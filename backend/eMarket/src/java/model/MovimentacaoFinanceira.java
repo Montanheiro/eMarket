@@ -11,6 +11,9 @@ public class MovimentacaoFinanceira {
     private double realizado;
     private double aReceber;
 
+    public MovimentacaoFinanceira() {
+    }
+
     public MovimentacaoFinanceira(double realizado) {
         this.realizado = realizado;
     }

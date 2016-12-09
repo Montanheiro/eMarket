@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Bárbara
@@ -9,18 +11,21 @@ public class Promocao {
     private int id;
 
     private String descricao;
-    private String dataInicio;
-    private String dataFim;
-    private double porcentagem;
+    private Date dataInicio;
+    private Date dataFim;
+    private int porcentagem;
 
-    public Promocao(String descricao, String dataInicio, String dataFim, double porcentagem) {
+    public Promocao() {
+    }
+
+    public Promocao(String descricao, Date dataInicio, Date dataFim, int porcentagem) {
         this.descricao = descricao;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.porcentagem = porcentagem;
     }
 
-    public Promocao(int id, String descricao, String dataInicio, String dataFim, double porcentagem) {
+    public Promocao(int id, String descricao, Date dataInicio, Date dataFim, int porcentagem) {
         this.id = id;
         this.descricao = descricao;
         this.dataInicio = dataInicio;
@@ -44,27 +49,27 @@ public class Promocao {
         this.descricao = descricao;
     }
 
-    public String getDataInicio() {
+    public Date getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(String dataInicio) {
+    public void setDataInicio(Date dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public String getDataFim() {
+    public Date getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(String dataFim) {
+    public void setDataFim(Date dataFim) {
         this.dataFim = dataFim;
     }
 
-    public double getPorcentagem() {
+    public int getPorcentagem() {
         return porcentagem;
     }
 
-    public void setPorcentagem(double porcentagem) {
+    public void setPorcentagem(int porcentagem) {
         this.porcentagem = porcentagem;
     }
 
@@ -72,5 +77,6 @@ public class Promocao {
     public String toString() {
         return "Promocao{" + "id=" + id + ", descricao=" + descricao + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", porcentagem=" + porcentagem + '}';
     }
+
     
 }

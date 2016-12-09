@@ -10,16 +10,22 @@ public class Permissao {
 
     private String descricao;
     private String moduloURL;
+    private String icon;
 
-    public Permissao(String descricao, String moduloURL) {
-        this.descricao = descricao;
-        this.moduloURL = moduloURL;
+    public Permissao() {
     }
 
-    public Permissao(int id, String descricao, String moduloURL) {
+    public Permissao(String descricao, String moduloURL, String icon) {
+        this.descricao = descricao;
+        this.moduloURL = moduloURL;
+        this.icon = icon;
+    }
+
+    public Permissao(int id, String descricao, String moduloURL, String icon) {
         this.id = id;
         this.descricao = descricao;
         this.moduloURL = moduloURL;
+        this.icon = icon;
     }
 
     public int getId() {
@@ -46,10 +52,18 @@ public class Permissao {
         this.moduloURL = moduloURL;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
     @Override
     public String toString() {
-        return "Permissao{" + "id=" + id + ", descricao=" + descricao + ", moduloURL=" + moduloURL + '}';
+        return "Permissao{" + "id=" + id + ", descricao=" + descricao + ", moduloURL=" + moduloURL + ", icon=" + icon + '}';
     }
-    
+
     
 }

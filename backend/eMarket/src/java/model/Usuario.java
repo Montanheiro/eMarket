@@ -10,29 +10,29 @@ public class Usuario {
 
     private String login;
     private String senha;
-    private String status;
     private String tokenSession;
     
     private int funcionarioId;
-    
-    private Compra compra;//Associacao
+    private int statusId;
 
-    public Usuario(String login, String senha, String status, String tokenSession, Compra compra) {
-        this.login = login;
-        this.senha = senha;
-        this.status = status;
-        this.tokenSession = tokenSession;
-        this.compra = compra;
+    //private Compra compra;//Associacao
+
+    public Usuario() {
     }
 
-    public Usuario(int id, String login, String senha, String status, String tokenSession, int funcionarioId, Compra compra) {
+    public Usuario(String login, String senha, String tokenSession) {
+        this.login = login;
+        this.senha = senha;
+        this.tokenSession = tokenSession;
+    }
+
+    public Usuario(int id, String login, String senha, String tokenSession, int funcionarioId, int statusId) {
         this.id = id;
         this.login = login;
         this.senha = senha;
-        this.status = status;
         this.tokenSession = tokenSession;
         this.funcionarioId = funcionarioId;
-        this.compra = compra;
+        this.statusId = statusId;
     }
 
     public int getId() {
@@ -59,14 +59,6 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getTokenSession() {
         return tokenSession;
     }
@@ -83,19 +75,18 @@ public class Usuario {
         this.funcionarioId = funcionarioId;
     }
 
-    public Compra getCompra() {
-        return compra;
+    public int getStatusId() {
+        return statusId;
     }
 
-    public void setCompra(Compra compra) {
-        this.compra = compra;
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
     }
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", login=" + login + ", senha=" + senha + ", status=" + status + ", tokenSession=" + tokenSession + ", funcionarioId=" + funcionarioId + '}';
+        return "Usuario{" + "id=" + id + ", login=" + login + ", senha=" + senha + ", tokenSession=" + tokenSession + ", funcionarioId=" + funcionarioId + ", statusId=" + statusId + '}';
     }
-    
-    
+
     
 }

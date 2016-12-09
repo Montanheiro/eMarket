@@ -4,42 +4,42 @@ import java.sql.Date;
 
 /**
  *
- * @author Bárbara,Mateus
+ * @author Bárbara, Mateus
  */
 public class Empresa {
     
     private int id;
 
-    private String Nome;
-    private String RazaoSocial;
-    private String CNPJ;
-    private Date DataContratacao;
-    private Date DataCancelamentoContrato;
-    private int Status;
+    private String nome;
+    private String razaoSocial;
+    private String cnpj;
+    private Date dataContratacao;
+    private Date dataCancelamentoContrato;
+    
+    private int statusId;
     
     
     //private Compra compra;//Associacao
-    
 
-    public Empresa(String nome, String razaoSocial, String cnpj, Date dataContratacao, Date dataCancelamentoContrato, int status /*, Compra compra*/) {
-        this.Nome = nome;
-        this.RazaoSocial = razaoSocial;
-        this.CNPJ = cnpj;
-        this.DataContratacao = dataContratacao;
-        this.DataCancelamentoContrato = dataCancelamentoContrato;
-        this.Status = status;
-       // this.compra = compra;
+    public Empresa() {
     }
 
-    public Empresa(int id, String nome, String razaoSocial, String cnpj, Date dataContratacao, Date dataCancelamentoContrato, int status/*, Compra compra*/) {
+    public Empresa(String nome, String razaoSocial, String cnpj, Date dataContratacao, Date dataCancelamentoContrato) {
+        this.nome = nome;
+        this.razaoSocial = razaoSocial;
+        this.cnpj = cnpj;
+        this.dataContratacao = dataContratacao;
+        this.dataCancelamentoContrato = dataCancelamentoContrato;
+    }
+
+    public Empresa(int id, String nome, String razaoSocial, String cnpj, Date dataContratacao, Date dataCancelamentoContrato, int statusId) {
         this.id = id;
-        this.Nome = nome;
-        this.RazaoSocial = razaoSocial;
-        this.CNPJ = cnpj;
-        this.DataContratacao = dataContratacao;
-        this.DataCancelamentoContrato = dataCancelamentoContrato;
-        this.Status = status;
-       // this.compra = compra;
+        this.nome = nome;
+        this.razaoSocial = razaoSocial;
+        this.cnpj = cnpj;
+        this.dataContratacao = dataContratacao;
+        this.dataCancelamentoContrato = dataCancelamentoContrato;
+        this.statusId = statusId;
     }
 
     public int getId() {
@@ -51,62 +51,56 @@ public class Empresa {
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String nome) {
-        this.Nome = nome;
+        this.nome = nome;
     }
 
     public String getRazaoSocial() {
-        return RazaoSocial;
+        return razaoSocial;
     }
 
     public void setRazaoSocial(String razaoSocial) {
-        this.RazaoSocial = razaoSocial;
+        this.razaoSocial = razaoSocial;
     }
 
     public String getCnpj() {
-        return CNPJ;
+        return cnpj;
     }
 
     public void setCnpj(String cnpj) {
-        this.CNPJ = cnpj;
+        this.cnpj = cnpj;
     }
 
     public Date getDataContratacao() {
-        return DataContratacao;
+        return dataContratacao;
     }
 
     public void setDataContratacao(Date dataContratacao) {
-        this.DataContratacao = dataContratacao;
+        this.dataContratacao = dataContratacao;
     }
-    
-    public Date getDataCancelamentoContrato(){
-        return DataCancelamentoContrato;
-    }
-    public void setDataCancelamentoContrato(Date dataCancelamentoContrato){
-        this.DataCancelamentoContrato = dataCancelamentoContrato;
-    }
-    
-    public int getStatus(){
-        return Status;
-    }
-    public void setStatus(int status) {
-    this.Status = status;
-}
 
-//    public Compra getCompra() {
-//        return compra;
-//    }
+    public Date getDataCancelamentoContrato() {
+        return dataCancelamentoContrato;
+    }
 
-//    public void setCompra(Compra compra) {
-//        this.compra = compra;
-//    }
-    
+    public void setDataCancelamentoContrato(Date dataCancelamentoContrato) {
+        this.dataCancelamentoContrato = dataCancelamentoContrato;
+    }
+
+    public int getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
+
     @Override
     public String toString() {
-        return "Empresa{" + "id=" + id + ", nome=" + Nome + ", razaoSocial=" + RazaoSocial + ", cnpj=" + CNPJ + ", dataContratacao=" + DataContratacao +", dataCancelamentoContrato="+DataCancelamentoContrato+", status="+Status+ '}';
+        return "Empresa{" + "id=" + id + ", nome=" + nome + ", razaoSocial=" + razaoSocial + ", cnpj=" + cnpj + ", dataContratacao=" + dataContratacao + ", dataCancelamentoContrato=" + dataCancelamentoContrato + ", statusId=" + statusId + '}';
     }
     
 }

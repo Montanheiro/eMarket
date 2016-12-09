@@ -13,6 +13,11 @@ public class PessoaEmpresa {
     public PessoaEmpresa() {
     }
 
+    public PessoaEmpresa(int empresaId, int pessoaId) {
+        this.empresaId = empresaId;
+        this.pessoaId = pessoaId;
+    }
+
     public PessoaEmpresa(int id, int empresaId, int pessoaId) {
         this.id = id;
         this.empresaId = empresaId;

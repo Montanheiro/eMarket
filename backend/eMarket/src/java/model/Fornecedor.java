@@ -5,36 +5,37 @@ package model;
  * @author Bárbara
  */
 public class Fornecedor {
-
+    
     private int id;
-
-    private String status;
+    
     private String responsavel;
     private int IE;
     private String IM;
     private String representante;
 
     private int pessoaId;
+    private int statusId;
     
-    private Compra compra;//Associacao
+    //private Compra compra;//Associacao
 
-    public Fornecedor(String status, int IE, String IM, String representante, Compra compra) {
-        this.status = status;
+    public Fornecedor() {
+    }
+
+    public Fornecedor(String responsavel, int IE, String IM, String representante) {
+        this.responsavel = responsavel;
         this.IE = IE;
         this.IM = IM;
         this.representante = representante;
-        this.compra = compra;
     }
 
-    public Fornecedor(int id, String status, String responsavel, int IE, String IM, String representante, int pessoaId, Compra compra) {
+    public Fornecedor(int id, String responsavel, int IE, String IM, String representante, int pessoaId, int statusId) {
         this.id = id;
-        this.status = status;
         this.responsavel = responsavel;
         this.IE = IE;
         this.IM = IM;
         this.representante = representante;
         this.pessoaId = pessoaId;
-        this.compra = compra;
+        this.statusId = statusId;
     }
 
     public int getId() {
@@ -43,14 +44,6 @@ public class Fornecedor {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getResponsavel() {
@@ -93,17 +86,18 @@ public class Fornecedor {
         this.pessoaId = pessoaId;
     }
 
-    public Compra getCompra() {
-        return compra;
+    public int getStatusId() {
+        return statusId;
     }
 
-    public void setCompra(Compra compra) {
-        this.compra = compra;
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
     }
 
     @Override
     public String toString() {
-        return "Fornecedor{" + "id=" + id + ", status=" + status + ", responsavel=" + responsavel + ", IE=" + IE + ", IM=" + IM + ", representante=" + representante + ", pessoaId=" + pessoaId + '}';
+        return "Fornecedor{" + "id=" + id + ", responsavel=" + responsavel + ", IE=" + IE + ", IM=" + IM + ", representante=" + representante + ", pessoaId=" + pessoaId + ", statusId=" + statusId + '}';
     }
+
 
 }

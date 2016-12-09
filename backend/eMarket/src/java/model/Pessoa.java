@@ -14,20 +14,23 @@ public class Pessoa {
     private Contato contato;//Associacao
     private Endereco endereco;//Associacao
 
+    public Pessoa() {
+    }
+    
     public Pessoa(String cpf_cnpj, String nome) {
         this.cpf_cnpj = cpf_cnpj;
         this.nome = nome;
     }
 
-    public Pessoa(int id, String cpf_cnpj, String nome, Contato contato, Endereco endereco) {
-        this.id = id;
+    public Pessoa(String cpf_cnpj, String nome, Contato contato, Endereco endereco) {
         this.cpf_cnpj = cpf_cnpj;
         this.nome = nome;
         this.contato = contato;
         this.endereco = endereco;
     }
     
-    public Pessoa(String cpf_cnpj, String nome, Contato contato, Endereco endereco) {
+    public Pessoa(int id, String cpf_cnpj, String nome, Contato contato, Endereco endereco) {
+        this.id = id;
         this.cpf_cnpj = cpf_cnpj;
         this.nome = nome;
         this.contato = contato;

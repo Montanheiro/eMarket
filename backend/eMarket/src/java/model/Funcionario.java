@@ -7,7 +7,7 @@ import java.sql.Date;
  * @author Bárbara
  */
 public class Funcionario{
-
+    
     private int id;
 
     private double salario;

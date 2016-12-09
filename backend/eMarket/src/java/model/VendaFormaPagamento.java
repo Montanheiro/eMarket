@@ -13,6 +13,11 @@ public class VendaFormaPagamento {
     public VendaFormaPagamento() {
     }
 
+    public VendaFormaPagamento(int vendaId, int formaPagamentoId) {
+        this.vendaId = vendaId;
+        this.formaPagamentoId = formaPagamentoId;
+    }
+    
     public VendaFormaPagamento(int id, int vendaId, int formaPagamentoId) {
         this.id = id;
         this.vendaId = vendaId;

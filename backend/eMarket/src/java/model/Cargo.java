@@ -10,6 +10,9 @@ public class Cargo {
 
     private String nome;
 
+    public Cargo() {
+    }
+
     public Cargo(String nome) {
         this.nome = nome;
     }
