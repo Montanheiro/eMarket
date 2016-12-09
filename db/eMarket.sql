@@ -653,7 +653,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Cliente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Cliente` (
+CREATE TABLE IF NOT EXISTS `cliente` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Limite` VARCHAR(45) NOT NULL,
   `DataNascimento` DATE NOT NULL,
