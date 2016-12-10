@@ -18,8 +18,7 @@ public class CargoDAO {
     }
 
     //Metodo CREATE esta OK, testado e funcionando
-    public static int create(Cargo c) {
-        try {
+    public static int create(Cargo c) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -33,16 +32,10 @@ public class CargoDAO {
             int key = rs.getInt(1);
             c.setId(key);
             return key;
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
     }
 
     //Metodo RETREAVE esta OK, testado e funcionando
-    public static Cargo retreave(int id) {
-        try {
+    public static Cargo retreave(int id) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -52,15 +45,10 @@ public class CargoDAO {
             return new Cargo(id,
                     rs.getString("nome"));
 
-        } catch (SQLException ex) {
-            Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
     //Metodo RETREAVE esta OK, testado e funcionando
-    public static ArrayList<Cargo> retreaveAll() {
-        try {
+    public static ArrayList<Cargo> retreaveAll() throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -74,29 +62,20 @@ public class CargoDAO {
             }
             rs.next();
             return c;
-        } catch (SQLException ex) {
-            Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
     //Metodo DELETE esta OK, testado e funcionando
-    public static void delete(Cargo c) {
-        try {
+    public static void delete(Cargo c) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
             String sql = "DELETE FROM cargo WHERE `id`="
                     + c.getId();
             stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     //Metodo UPDATE esta OK, testado e funcionando
-    public static void update(Cargo c) {
-        try {
+    public static void update(Cargo c) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -105,9 +84,6 @@ public class CargoDAO {
                     + "' WHERE `id`= "
                     + c.getId();
             stm.execute(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(CargoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
 }
