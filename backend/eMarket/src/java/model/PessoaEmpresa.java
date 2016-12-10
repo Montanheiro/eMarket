@@ -7,6 +7,10 @@ package model;
 public class PessoaEmpresa {
     
     private int id;
+    
+    private Pessoa pessoa;
+    private Empresa empresa;
+    
     private int empresaId;
     private int pessoaId;
 
@@ -24,6 +28,12 @@ public class PessoaEmpresa {
         this.pessoaId = pessoaId;
     }
 
+    public PessoaEmpresa(int id, Pessoa pessoa, Empresa empresa) {
+        this.id = id;
+        this.pessoa = pessoa;
+        this.empresa = empresa;
+    }
+    
     public int getId() {
         return id;
     }
@@ -48,9 +58,25 @@ public class PessoaEmpresa {
         this.pessoaId = pessoaId;
     }
 
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa Empresa) {
+        this.empresa = Empresa;
+    }
+
     @Override
     public String toString() {
-        return "PessoaEmpresa{" + "id=" + id + ", empresaId=" + empresaId + ", pessoaId=" + pessoaId + '}';
+        return "PessoaEmpresa{" + "id=" + id + ", pessoa=" + pessoa + ", Empresa=" + empresa + ", empresaId=" + empresaId + ", pessoaId=" + pessoaId + '}';
     }
     
 }
