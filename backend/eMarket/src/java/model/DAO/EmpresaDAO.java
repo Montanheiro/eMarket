@@ -80,31 +80,31 @@ public class EmpresaDAO {
         return em;
     }
 
-    public static void delete(Empresa c) throws SQLException {
-        Statement stm
-                = BancoDados.createConnection().
-                        createStatement();
-        String sql = "DELETE FROM empresa WHERE `id`="
-                + c.getId();
-        stm.execute(sql);
-    }
-
-    public static void update(Empresa c) throws SQLException {
+    public static void update(Empresa em) throws SQLException {
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
 
         String sql = "UPDATE empresa SET "
-                + "`Nome`='" + c.getNome()
-                + "`RazaoSocial`= '" + c.getRazaoSocial()
-                + "', `CNPJ` = '" + c.getCnpj()
-                + "', `DataContratacao` = '" + c.getDataContratacao()
-                + "', DataCancelamentoContrato='" + c.getDataCancelamentoContrato()
-                + "', status_id='" + c.getStatusId()
-                + "' WHERE `id`= " + c.getId();
+                + "`Nome` = '" + em.getNome()
+                + "', `RazaoSocial` = '" + em.getRazaoSocial()
+                + "', `CNPJ` = '" + em.getCnpj()
+                + "', `DataContratacao` = '" + em.getDataContratacao()
+                + "', DataCancelamentoContrato = '" + em.getDataCancelamentoContrato()
+                + "', status_id = '" + em.getStatusId()
+                + "' WHERE `id` = " + em.getId();
 
         stm.execute(sql);
 
+    }
+
+    public static void delete(Empresa em) throws SQLException {
+        Statement stm
+                = BancoDados.createConnection().
+                        createStatement();
+        String sql = "DELETE FROM empresa WHERE `id`="
+                + em.getId();
+        stm.execute(sql);
     }
 
 }

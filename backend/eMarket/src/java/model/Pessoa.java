@@ -14,6 +14,7 @@ public class Pessoa {
     private String nome; 
  
     private ArrayList<Contato> contato = new ArrayList<>();//Associacao
+    private ArrayList<Email> email = new ArrayList<>();//Associacao
     private Endereco endereco;//Associacao
 
     public Pessoa() {
@@ -37,12 +38,13 @@ public class Pessoa {
         this.endereco = endereco;
     }
     
-    public Pessoa(int id, String cpf_cnpj, String nome, Endereco endereco, ArrayList<Contato> cs) {
+    public Pessoa(int id, String cpf_cnpj, String nome, Endereco endereco, ArrayList<Contato> cs, ArrayList<Email> email) {
         this.id = id;
         this.cpf_cnpj = cpf_cnpj;
         this.nome = nome;
         this.endereco = endereco;
         this.contato = cs;
+        this.email = email;
     }    
 
     public int getId() {
@@ -86,10 +88,17 @@ public class Pessoa {
         this.contato = contato;
     }
 
+    public ArrayList<Email> getEmail() {
+        return email;
+    }
+
+    public void setEmail(ArrayList<Email> email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", cpf_cnpj=" + cpf_cnpj + ", nome=" + nome + ", contato=" + contato + ", endereco=" + endereco + '}';
+        return "Pessoa{" + "id=" + id + ", cpf_cnpj=" + cpf_cnpj + ", nome=" + nome + ", contato=" + contato + ", email=" + email + ", endereco=" + endereco + '}';
     }
-    
     
 }

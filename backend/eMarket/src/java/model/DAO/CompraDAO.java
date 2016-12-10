@@ -4,8 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Compra;
 
 /**
@@ -17,8 +15,7 @@ public class CompraDAO {
     private CompraDAO() {
     }
 
-    public static int create(Compra c) {
-        try {
+    public static int create(Compra c) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -35,16 +32,9 @@ public class CompraDAO {
 
             return key;
 
-        } catch (SQLException ex) {
-            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
-
     }
 
-    public static Compra retreave(int id) {
-
-        try {
+    public static Compra retreave(int id) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -60,16 +50,9 @@ public class CompraDAO {
                     rs.getInt("usuarioId"),
                     rs.getInt("fornecedorId"));
 
-        } catch (SQLException ex) {
-            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-
     }
 
-    public static ArrayList<Compra> retreaveAll() {
-
-        try {
+    public static ArrayList<Compra> retreaveAll() throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -91,15 +74,9 @@ public class CompraDAO {
             rs.next();
             return c;
 
-        } catch (SQLException ex) {
-            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-
     }
 
-    public static Compra retreaveByEmpresa(int empresaId) {
-        try {
+    public static Compra retreaveByEmpresa(int empresaId) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -115,14 +92,10 @@ public class CompraDAO {
                         rs.getInt("usuarioId"),
                         rs.getInt("fornecedorId"));
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return null;
     }
 
-    public static Compra retreaveByUsuario(int usuarioId) {
-        try {
+    public static Compra retreaveByUsuario(int usuarioId) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -138,14 +111,10 @@ public class CompraDAO {
                         rs.getInt("usuarioId"),
                         rs.getInt("fornecedorId"));
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return null;
     }
 
-    public static void delete(Compra c) {
-        try {
+    public static void delete(Compra c) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -155,13 +124,9 @@ public class CompraDAO {
 
             stm.execute(sql);
 
-        } catch (SQLException ex) {
-            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
-    public static void update(Compra c) {
-        try {
+    public static void update(Compra c) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -173,9 +138,6 @@ public class CompraDAO {
 
             stm.execute(sql);
 
-        } catch (SQLException ex) {
-            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
 }
