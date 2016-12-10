@@ -64,7 +64,7 @@ public class CargosResource {
    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/inserir")
-    public int postJson(String cargo) throws SQLException {
+    public int inserir(String cargo) throws SQLException {
         Gson gson = new Gson();
         Cargo c = gson.fromJson(cargo, Cargo.class);
         CargoDAO.create(c);
@@ -73,12 +73,13 @@ public class CargosResource {
 
     }
 
-    /**
-     * PUT method for updating or creating an instance of CargosResource
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putCargos(String content) {
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/deletar")
+    public void deletar(@QueryParam("id")int id) throws SQLException {
+        Gson gson = new Gson();
+        Cargo c = CargoDAO.retreave(id);
+        CargoDAO.delete(c);
     }
+
 }
