@@ -11,7 +11,7 @@ import model.Promocao;
  * @author Bárbara
  */
 public class PromocaoDAO {
-    
+
     private PromocaoDAO() {
     }
 
@@ -21,15 +21,10 @@ public class PromocaoDAO {
                         createStatement();
         String sql
                 = "INSERT INTO promocao (`Descricao`, `DataInicio`, `DataFinal`, `Porcentagem`) VALUES ('"
-                + e.getCodBarras() + "','"
-                + e.getNome() + "','"
                 + e.getDescricao() + "','"
-                + e.getMargem() + "','"
-                + e.getNcm() + "','"
-                + e.getValorUnitario() + "','"
-                + e.getDataVencimento() + "','"
-                + e.getEmpresaId() + "','"
-                + e.getPromocaoId() + "')";
+                + e.getDataInicio() + "','"
+                + e.getDataFim() + "','"
+                + e.getPorcentagem() + "')";
 
         stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = stm.getGeneratedKeys();
@@ -44,19 +39,14 @@ public class PromocaoDAO {
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
-        String sql = "SELECT * FROM produto where id =" + id;
+        String sql = "SELECT * FROM promocao where id =" + id;
         ResultSet rs = stm.executeQuery(sql);
         rs.next();
         return new Promocao(rs.getInt("id"),
-                rs.getInt("CodBarras"),
-                rs.getString("Nome"),
                 rs.getString("Descricao"),
-                rs.getString("Margem"),
-                rs.getString("NCM"),
-                rs.getDouble("ValorUnitario"),
-                rs.getDate("DataVencimento"),
-                rs.getInt("Empresa_id"),
-                rs.getInt("Promocao_id"));
+                rs.getDate("DataInicio"),
+                rs.getDate("DataFinal"),
+                rs.getInt("Porcentagem"));
     }
 
     public static ArrayList<Promocao> retreaveAll() throws SQLException {
@@ -69,15 +59,10 @@ public class PromocaoDAO {
         while (rs.next()) {
             e.add(new Promocao(
                     rs.getInt("id"),
-                    rs.getInt("CodBarras"),
-                    rs.getString("Nome"),
                     rs.getString("Descricao"),
-                    rs.getString("Margem"),
-                    rs.getString("NCM"),
-                    rs.getDouble("ValorUnitario"),
-                    rs.getDate("DataVencimento"),
-                    rs.getInt("Empresa_id"),
-                    rs.getInt("Promocao_id")));
+                    rs.getDate("DataInicio"),
+                    rs.getDate("DataFinal"),
+                    rs.getInt("Porcentagem")));
         }
         rs.next();
         return e;
@@ -87,14 +72,11 @@ public class PromocaoDAO {
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
-        String sql = "UPDATE produto SET "
-                + "`CodBarras`='" + e.getCodBarras()
-                + ", `Nome`='" + e.getNome()
-                + ", `Descricao`='" + e.getDescricao()
-                + ", `Margem`='" + e.getMargem()
-                + ", `NCM`='" + e.getNcm()
-                + ", `ValorUnitario`='" + e.getValorUnitario()
-                + ", `DataVencimento`='" + e.getDataVencimento()
+        String sql = "UPDATE promocao SET "
+                + "`Descricao`='" + e.getDescricao()
+                + ", `DataInicio`='" + e.getDataInicio()
+                + ", `DataFinal`='" + e.getDataFim()
+                + ", `Porcentagem`='" + e.getPorcentagem()
                 + "' WHERE `id`= "
                 + e.getId();
         stm.execute(sql);
@@ -104,7 +86,7 @@ public class PromocaoDAO {
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
-        String sql = "DELETE FROM produto WHERE `id`="
+        String sql = "DELETE FROM promocao WHERE `id`="
                 + e.getId();
         stm.execute(sql);
     }
