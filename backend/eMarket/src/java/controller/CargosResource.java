@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import com.google.gson.Gson;
@@ -12,6 +7,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -61,14 +57,48 @@ public class CargosResource {
         return gson.toJson(c);
     }
     
-   
+   @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/inserir")
+    public int inserir(String nome) throws SQLException {
+        Gson gson = new Gson();
+        Cargo c = gson.fromJson(nome, Cargo.class);
+        CargoDAO.create(c); 
+        return 200;
 
-    /**
-     * PUT method for updating or creating an instance of CargosResource
-     * @param content representation for the resource
-     */
+    }
+
+//    @DELETE
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/deletar")
+//    public String deletar(@QueryParam("id")int id) throws SQLException {
+//        Gson gson = new Gson();
+//        Cargo c = CargoDAO.retreave(id);
+//        CargoDAO.delete(c);
+//        return "deletado";
+//    }
+//    
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/deletar")
+    public int deletar(String id) throws SQLException {
+        Gson gson = new Gson();
+        Cargo c = gson.fromJson(id, Cargo.class);
+        CargoDAO.delete(c);
+        return 200;
+    }
+    
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void putCargos(String content) {
+    @Path("/atualizar")
+    public int alterar(String data) throws SQLException {
+        Gson gson = new Gson();
+        System.out.println(data);
+        Cargo c = gson.fromJson(data, Cargo.class);
+        CargoDAO.update(c);
+        return 200;
+        
     }
+
 }
