@@ -61,7 +61,17 @@ public class CargosResource {
         return gson.toJson(c);
     }
     
-   
+   @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/inserir")
+    public int postJson(String cargo) throws SQLException {
+        Gson gson = new Gson();
+        Cargo c = gson.fromJson(cargo, Cargo.class);
+        CargoDAO.create(c);
+       
+        return 200;
+
+    }
 
     /**
      * PUT method for updating or creating an instance of CargosResource
