@@ -21,8 +21,8 @@ public class PessoaEmpresaDAO {
                         createStatement();
         String sql
                 = "INSERT INTO pessoa_empresa (`Pessoa_id`, `Empresa_id`) VALUES ('"
-                + e.getPessoaId() + "','"
-                + e.getEmpresaId() + "')";
+                + e.getPessoa().getId() + "','"
+                + e.getEmpresa().getId() + "')";
 
         stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = stm.getGeneratedKeys();
