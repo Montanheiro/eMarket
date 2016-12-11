@@ -201,8 +201,8 @@ System.out.println(ContatoDAO.retreaveByPessoa(1));
 
 
 
-        Funcionario f = new Funcionario(2000, 5, new Date(10-01-12), new Date(15-10-16), 1, new Pessoa("9876543210", "Lucas Cagao", new Contato("1234-6789"), new Endereco("Rua das Flores", "Centro", "Mhos", "GO", "BR", "75650000")));
-        FuncionarioDAO.create(f);
+//        Funcionario f = new Funcionario(2000, 5, new Date(10-01-12), new Date(15-10-16), 1, new Pessoa("9876543210", "Lucas Cagao", new Contato("1234-6789"), new Endereco("Rua das Flores", "Centro", "Mhos", "GO", "BR", "75650000")));
+//        FuncionarioDAO.create(f);
 
 
 
