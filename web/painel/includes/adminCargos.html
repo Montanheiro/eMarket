@@ -1,4 +1,4 @@
-<div ng-controller="adminCargosCtrl"> <!-- EDITAR CONTROLLER -->
+<div ng-controller="adminCargosCtrl" md-> <!-- EDITAR CONTROLLER -->
 	<md-toolbar>
 		<div class="md-toolbar-tools">
 			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
@@ -11,7 +11,7 @@
 	</md-toolbar>
 	<div class="spaceToolbar"></div>
 
-  <div class="md-padding" layout-margin>
+  <div class="md-padding" layout-margin ng-init="consultarCargos()">
   <md-card class="semMargem">
     <md-input-container class="campoPesquisa">
       <label>Pesquisar...</label>

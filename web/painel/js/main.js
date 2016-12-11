@@ -262,7 +262,7 @@
 
     main.controller('mainCtrl', function($rootScope) {
 
-        $rootScope.api = "http://192.168.0.138:37157";
+        $rootScope.api = "http://backend-emarket.montanheiro.me:8080";
     });
 
     main.config(function($mdThemingProvider) {
