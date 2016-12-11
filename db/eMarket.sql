@@ -247,8 +247,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `financeiro_caixa` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `ValorInicial` DECIMAL(10000000,5) NOT NULL,
-  `ValorFinal` DECIMAL(10000000,5) NULL,
+  `ValorInicial` DECIMAL(65,5) NOT NULL,
+  `ValorFinal` DECIMAL(65,5) NULL,
   `DataAbertura` DATETIME NOT NULL,
   `DataFechamento` DATETIME NULL,
   `Sangria` DECIMAL(10,2) NULL,
@@ -309,8 +309,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `movimentacao_financeira` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `Realizado` DECIMAL(999999999,5) NOT NULL,
-  `AReceber` DECIMAL(999999999,5) NOT NULL,
+  `Realizado` DECIMAL(65,5) NOT NULL,
+  `AReceber` DECIMAL(65,5) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

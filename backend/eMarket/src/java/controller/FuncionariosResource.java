@@ -13,6 +13,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import model.DAO.FuncionarioDAO;
 import model.Funcionario;
@@ -43,4 +44,13 @@ public class FuncionariosResource {
          return gson.toJson(funcionario);
                 
     }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/consultarid")
+    public String  consultarId(@QueryParam("id")int id) throws SQLException {
+        Gson gson = new Gson();
+        Funcionario f = FuncionarioDAO.retreave(id);
+        return gson.toJson(f);
+    }
+    
 }
