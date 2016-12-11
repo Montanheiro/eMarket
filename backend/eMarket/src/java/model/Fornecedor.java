@@ -18,8 +18,6 @@ public class Fornecedor {
 
     private int pessoaId;
     private int statusId;
-    
-    //private Compra compra;//Associacao
 
     public Fornecedor() {
     }

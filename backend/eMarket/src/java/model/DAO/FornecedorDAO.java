@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import model.Fornecedor;
+import model.Pessoa;
+import model.Status;
 
 /**
  *
@@ -45,13 +47,14 @@ public class FornecedorDAO {
         String sql = "SELECT * FROM fornecedor where id =" + id;
         ResultSet rs = stm.executeQuery(sql);
         rs.next();
+        Pessoa p = PessoaDAO.retreave(rs.getInt("pessoa_id")); 
+        Status st = StatusDAO.retreave(rs.getInt("Status_id"));                
         return new Fornecedor(id,
                 rs.getString("Responsavel"),
                 rs.getInt("IE"),
                 rs.getString("IM"),
                 rs.getString("Representante"),
-                rs.getInt("Pessoa_id"),
-                rs.getInt("Status_id"));
+                p, st);
     }
 
     public static ArrayList<Fornecedor> retreaveAll() throws SQLException {
@@ -62,14 +65,15 @@ public class FornecedorDAO {
         ResultSet rs = stm.executeQuery(sql);
         ArrayList<Fornecedor> f = new ArrayList<>();
         while (rs.next()) {
+        Pessoa p = PessoaDAO.retreave(rs.getInt("pessoa_id")); 
+        Status st = StatusDAO.retreave(rs.getInt("Status_id"));                
             f.add(new Fornecedor(
                     rs.getInt("id"),
                 rs.getString("Responsavel"),
                 rs.getInt("IE"),
                 rs.getString("IM"),
                 rs.getString("Representante"),
-                rs.getInt("Pessoa_id"),
-                rs.getInt("Status_id")));
+                p, st));
         }
         rs.next();
         return f;
