@@ -4,7 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import model.Cargo;
 import model.Funcionario;
+import model.Pessoa;
 
 /**
  *
@@ -45,13 +47,14 @@ public class FuncionarioDAO {
         String sql = "SELECT * FROM funcionario where id =" + id;
         ResultSet rs = stm.executeQuery(sql);
         rs.next();
+        Cargo c = CargoDAO.retreave(rs.getInt("Cargo_id"));                        
+        Pessoa p = PessoaDAO.retreave(rs.getInt("pessoa_id"));                
         return new Funcionario(id,
                 rs.getDouble("Salario"),
                 rs.getInt("Comissao"),
                 rs.getDate("DataAdmissao"),
                 rs.getDate("DataDemissao"),
-                rs.getInt("Cargo_id"),
-                rs.getInt("Pessoa_id"));
+                c, p);
     }
 
     public static ArrayList<Funcionario> retreaveAll() throws SQLException {

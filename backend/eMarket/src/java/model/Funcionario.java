@@ -43,6 +43,16 @@ public class Funcionario{
         this.pessoaId = pessoaId;
     }
 
+    public Funcionario(int id, double salario, int comissao, Date dataAdimissao, Date dataDemissao, Cargo cargo, Pessoa pessoa) {
+        this.id = id;
+        this.salario = salario;
+        this.comissao = comissao;
+        this.dataAdimissao = dataAdimissao;
+        this.dataDemissao = dataDemissao;
+        this.cargo = cargo;
+        this.pessoa = pessoa;
+    }
+    
     public int getId() {
         return id;
     }
