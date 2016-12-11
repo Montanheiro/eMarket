@@ -45,13 +45,12 @@ public class ClienteDAO {
         String sql = "SELECT * FROM cliente where id =" + id;
         ResultSet rs = stm.executeQuery(sql);
         rs.next();
-        Pessoa p = PessoaDAO.retreave(id);        
+        Pessoa p = PessoaDAO.retreave(rs.getInt("pessoa_id"));        
         return new Cliente(id,
                 rs.getDate("DataNascimento"),
                 rs.getInt("RG"),
                 rs.getDouble("Limite"),
-                p,
-                rs.getInt("pessoa_id"));
+                p, rs.getInt("pessoa_id"));
     }
 
     public static Cliente retreaveByPessoa(int pessoaId) throws SQLException {
