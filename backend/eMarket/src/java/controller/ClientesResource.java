@@ -13,6 +13,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import model.Cliente;
 import model.DAO.ClienteDAO;
@@ -42,4 +43,14 @@ public class ClientesResource {
          return gson.toJson(cliente);
                 
     }
+    
+        @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/consultarid")
+    public String  consultarId(@QueryParam("id")int id) throws SQLException {
+        Gson gson = new Gson();
+        Cliente c = ClienteDAO.retreave(id);
+        return gson.toJson(c);
+    }
+    
 }

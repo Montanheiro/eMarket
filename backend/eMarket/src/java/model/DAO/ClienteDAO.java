@@ -50,7 +50,8 @@ public class ClienteDAO {
                 rs.getDate("DataNascimento"),
                 rs.getInt("RG"),
                 rs.getDouble("Limite"),
-                p);
+                p,
+                rs.getInt("pessoa_id"));
     }
 
     public static Cliente retreaveByPessoa(int pessoaId) throws SQLException {
