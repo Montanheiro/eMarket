@@ -10,7 +10,6 @@ public class Usuario {
 
     private String login;
     private String senha;
-    private String tokenSession;
     
     private int funcionarioId;
     private int statusId;
@@ -20,17 +19,15 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String login, String senha, String tokenSession) {
+    public Usuario(String login, String senha) {
         this.login = login;
         this.senha = senha;
-        this.tokenSession = tokenSession;
     }
 
-    public Usuario(int id, String login, String senha, String tokenSession, int funcionarioId, int statusId) {
+    public Usuario(int id, String login, String senha, int funcionarioId, int statusId) {
         this.id = id;
         this.login = login;
         this.senha = senha;
-        this.tokenSession = tokenSession;
         this.funcionarioId = funcionarioId;
         this.statusId = statusId;
     }
@@ -59,14 +56,6 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getTokenSession() {
-        return tokenSession;
-    }
-
-    public void setTokenSession(String tokenSession) {
-        this.tokenSession = tokenSession;
-    }
-
     public int getFuncionarioId() {
         return funcionarioId;
     }
@@ -85,7 +74,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", login=" + login + ", senha=" + senha + ", tokenSession=" + tokenSession + ", funcionarioId=" + funcionarioId + ", statusId=" + statusId + '}';
+        return "Usuario{" + "id=" + id + ", login=" + login + ", senha=" + senha + ", funcionarioId=" + funcionarioId + ", statusId=" + statusId + '}';
     }
 
     

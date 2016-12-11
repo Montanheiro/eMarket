@@ -19,7 +19,7 @@
 
     main.controller('mainCtrl', function($rootScope) {
 
-        $rootScope.api = "http://192.168.0.138:37157";
+        $rootScope.api = "http://localhost:8080/build/webresources";
     });
 
     main.config(function($mdThemingProvider) {
