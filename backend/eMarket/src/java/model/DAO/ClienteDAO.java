@@ -53,23 +53,6 @@ public class ClienteDAO {
                 p);
     }
 
-    public static Cliente retreaveByPessoa(int pessoaId) throws SQLException {
-        Statement stm
-                = BancoDados.createConnection().
-                        createStatement();
-        String sql = "SELECT * FROM cliente WHERE Pessoa_id = " + pessoaId;
-        ResultSet rs = stm.executeQuery(sql);
-        if (rs.next()) {
-
-            return new Cliente(
-                    rs.getInt("id"),
-                    rs.getDate("DataNascimento"),
-                    rs.getInt("RG"),
-                    rs.getDouble("Limite"),
-                    rs.getInt("pessoa_id"));
-        }
-        return null;
-    }
 
     public static ArrayList<Cliente> retreaveAll() throws SQLException {
         Statement stm
@@ -79,12 +62,13 @@ public class ClienteDAO {
         ResultSet rs = stm.executeQuery(sql);
         ArrayList<Cliente> f = new ArrayList<>();
         while (rs.next()) {
+        Pessoa p = PessoaDAO.retreave(rs.getInt("pessoa_id"));        
             f.add(new Cliente(
                     rs.getInt("id"),
                     rs.getDate("DataNascimento"),
                     rs.getInt("RG"),
                     rs.getDouble("Limite"),
-                    rs.getInt("pessoa_id")));
+                    p));
         }
         rs.next();
         return f;

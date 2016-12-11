@@ -65,14 +65,15 @@ public class FuncionarioDAO {
         ResultSet rs = stm.executeQuery(sql);
         ArrayList<Funcionario> f = new ArrayList<>();
         while (rs.next()) {
+        Cargo c = CargoDAO.retreave(rs.getInt("Cargo_id"));                                    
+        Pessoa p = PessoaDAO.retreave(rs.getInt("pessoa_id"));        
             f.add(new Funcionario(
                     rs.getInt("id"),
                     rs.getDouble("Salario"),
                     rs.getInt("Comissao"),
                     rs.getDate("DataAdmissao"),
                     rs.getDate("DataDemissao"),
-                    rs.getInt("Cargo_id"),
-                    rs.getInt("Pessoa_id")));
+                    c, p));
         }
         rs.next();
         return f;
