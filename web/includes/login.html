@@ -1,5 +1,4 @@
-<!--<div ng-controller="loginCtrl" id="login-page" ng-init="isLogado()">-->
-<div ng-controller="loginCtrl" id="login-page">
+<div ng-controller="loginCtrl" id="login-page" ng-init="verificar()">
 	<a href="#/">
 		<img src="img/logoemarket-transparente.png" class="logo">
 	</a>
@@ -10,8 +9,8 @@
 				<p class="login-erro">{{login.error}}</p>
 				<md-input-container class="md-block input"></md-input-container>
 				<md-input-container class="md-block input">
-					<label>Email</label>
-					<input type="email" ng-model="usuario.email" required>
+					<label>Usuário</label>
+					<input type="text" ng-model="usuario.login" required>
 				</md-input-container>
 
 				<md-input-container class="md-block input">

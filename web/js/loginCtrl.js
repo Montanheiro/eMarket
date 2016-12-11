@@ -2,19 +2,20 @@ angular.module('spa')
     .controller('loginCtrl',
     function($scope, $rootScope, $http, $timeout){
 
-    	 $scope.isLogado = function(){
+    	 $scope.verificar = function(){
             var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");     
             
             if(token) {
                 $http({ 
-                    url: $rootScope.domain + '/tokenVerify', 
+                    url: $rootScope.api + '/login/verificar?token=' + token, 
                     dataType: 'json', 
                     method:'GET',
-                    headers: {'x-access-token': token,'Content-Type': 'application/json'},
+                    headers: {'Content-Type': 'application/json'},
                 }).success(function (response) {
-                    window.location = "/administracao/#/";
+                    console.log("esta logado");
+                    window.location = "/painel/#/";
                 }).error(function (response) {
-                    console.log("aqui" + response);                
+                    console.log("não esta logado --" + response);                
                 });
             }    
         };
@@ -23,51 +24,35 @@ angular.module('spa')
             
             $scope.login.error = "";
       
-            var email = $scope.usuario.email;
+            var login = $scope.usuario.login;
             var senha = $scope.usuario.senha;
             var manterLogado = $scope.usuario.manterLogado;
 
             $http({ 
-                url: $rootScope.domain + '/login', 
+                url: $rootScope.api + '/login/logar', 
                 dataType: 'json', 
                 method:'POST',
                 headers: {'Content-Type': 'application/json'},
                 data: { 
-                        'email': email, 
-                        'password': senha 
+                        'login': login, 
+                        'senha': senha 
                     }
             }).success(function (response) {
+                 console.log(response);
+
                 if (manterLogado) {
-                    localStorage.setItem('user_session', response.token);
+                    localStorage.setItem('user_session', response);
+                    console.log("token gravado no local storage");
                 }else{
-                    sessionStorage.setItem('user_session', response.token);
+                    sessionStorage.setItem('user_session', response);
+                    console.log("token gravado no session storage");
                 }
-                window.location = "/administracao/#/";
+                window.location = "/painel/#/";
             }).error(function (response) {
-                $scope.login.error = "O e-mail ou a senha inseridos não coicidem.";
+                $scope.login.error = "Usuário ou a senha inseridos não coicidem.";
+                console.log(response);
             });
             
         };
-
-        $scope.recuperarSenha = function(){
-            var email = $scope.recuperarEmail.email;
-           
-            $http({ 
-                url: $rootScope.domain + '/recuperarSenha', 
-                dataType: 'json', 
-                method:'POST',
-                headers: {'Content-Type': 'application/json'},
-                data: { 
-                        'email': email 
-                    }
-            }).success(function (response) {  
-                //mostra a mensagem a mensagem para verificar email          
-                document.getElementById("snackbar-location").classList.add("display-block");
-                $timeout(function () {                
-                        document.getElementById("snackbar-location").classList.remove("display-block");
-                    }, 4000);
-             });
-        };
-
 	}
 );
