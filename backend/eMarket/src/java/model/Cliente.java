@@ -28,14 +28,6 @@ public class Cliente {
         this.pessoa = pessoa;
     }
 
-    public Cliente(int id, Date dataNascimento, int rg, double limite, int pessoaId) {
-        this.id = id;
-        this.dataNascimento = dataNascimento;
-        this.rg = rg;
-        this.limite = limite;
-        this.pessoaId = pessoaId;
-    }
-
     public Cliente(int id, Date dataNascimento, int rg, double limite, Pessoa pessoa) {
         this.id = id;
         this.dataNascimento = dataNascimento;
