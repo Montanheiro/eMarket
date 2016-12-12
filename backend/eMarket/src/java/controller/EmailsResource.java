@@ -45,8 +45,8 @@ public class EmailsResource {
     public String consultarTodos(@QueryParam("token") String t) throws SQLException, Exception{
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
-        ArrayList<Email> cliente = EmailDAO.retreaveAll();
-         return gson.toJson(cliente);
+        ArrayList<Email> email = EmailDAO.retreaveAll();
+         return gson.toJson(email);
                 
     }
     
