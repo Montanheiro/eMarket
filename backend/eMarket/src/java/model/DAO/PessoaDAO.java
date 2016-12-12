@@ -104,16 +104,16 @@ public class PessoaDAO {
         EnderecoDAO.update(c.getEndereco());
 
         for (Contato cs : c.getContato()) {
-            if (cs.getPessoaId() != 0) {
+            if (cs.getId() != 0) {
+                ContatoDAO.update(cs);
+            } else {
                 cs.setPessoaId(c.getId());
                 ContatoDAO.create(cs);
-            } else {
-                ContatoDAO.update(cs);
             }
         }
 
         for (Email em : c.getEmail()) {
-            if (em.getPessoaId() != 0) {
+            if (em.getId() != 0) {
                 EmailDAO.update(em);
             } else {
                 em.setPessoaId(c.getId());
