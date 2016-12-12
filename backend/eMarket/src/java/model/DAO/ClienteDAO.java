@@ -85,6 +85,7 @@ public class ClienteDAO {
                 + "' WHERE `id`= "
                 + f.getId();
         stm.execute(sql);
+        PessoaDAO.update(f.getPessoa());        
     }
 
     public static void delete(Cliente f) throws SQLException {

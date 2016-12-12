@@ -3,6 +3,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Cargo;
+import model.Cliente;
 import model.Contato;
 import model.DAO.CargoDAO;
 import model.DAO.ContatoDAO;
@@ -199,7 +200,7 @@ System.out.println(ContatoDAO.retreaveByPessoa(1));
  * 
 */
 
-
+    //Cliente c = new Cliente(new Date(10-01-12), 10012, 100, new Pessoa(""));
 
 //        Funcionario f = new Funcionario(2000, 5, new Date(10-01-12), new Date(15-10-16), 1, new Pessoa("9876543210", "Lucas Cagao", new Contato("1234-6789"), new Endereco("Rua das Flores", "Centro", "Mhos", "GO", "BR", "75650000")));
 //        FuncionarioDAO.create(f);
