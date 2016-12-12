@@ -271,6 +271,23 @@
         .accentPalette('red');
     });
 
+    $scope.verificarLogin = function(){
+        var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");     
+            
+        if(token) {
+            $http({ 
+                url: $rootScope.api + '/login/verificar?token=' + token, 
+                dataType: 'json', 
+                method:'GET',
+                headers: {'Content-Type': 'application/json'},
+            }).success(function (response) {
+                console.log("esta logado");
+            }).error(function (response) {
+                console.log("não esta logado --" + response);                
+            });
+        }    
+    };
+
 })();
 
 
