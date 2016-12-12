@@ -105,10 +105,10 @@ public class PessoaDAO {
 
         for (Contato cs : c.getContato()) {
             if (cs.getPessoaId() != 0) {
-                ContatoDAO.update(cs);
-            } else {
                 cs.setPessoaId(c.getId());
                 ContatoDAO.create(cs);
+            } else {
+                ContatoDAO.update(cs);
             }
         }
 
