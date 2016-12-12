@@ -35,6 +35,15 @@ public class Cliente {
         this.limite = limite;
         this.pessoa = pessoa;
     }
+
+    public Cliente(int id, Date dataNascimento, int rg, double limite, Pessoa pessoa, int pessoaId) {
+        this.id = id;
+        this.dataNascimento = dataNascimento;
+        this.rg = rg;
+        this.limite = limite;
+        this.pessoa = pessoa;
+        this.pessoaId = pessoaId;
+    }
     
     public int getId() {
         return id;
