@@ -29,6 +29,7 @@ public class ApplicationConfig extends Application {
         resources.add(controller.ContatosResource.class);
         resources.add(controller.EmailsResource.class);
         resources.add(controller.EmpresaResource.class);
+        resources.add(controller.FornecedoresResource.class);
         resources.add(controller.FuncionariosResource.class);
         resources.add(controller.LoginResource.class);
         resources.add(controller.PessoasResource.class);
