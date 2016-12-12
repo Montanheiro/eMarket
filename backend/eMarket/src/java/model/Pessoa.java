@@ -20,24 +20,6 @@ public class Pessoa {
     public Pessoa() {
     }
     
-    public Pessoa(String cpf_cnpj, String nome) {
-        this.cpf_cnpj = cpf_cnpj;
-        this.nome = nome;
-    }
-
-    public Pessoa(String cpf_cnpj, String nome, Endereco endereco) {
-        this.cpf_cnpj = cpf_cnpj;
-        this.nome = nome;
-        this.endereco = endereco;
-    }
-
-    public Pessoa(int id, String cpf_cnpj, String nome, Endereco endereco) {
-        this.id = id;
-        this.cpf_cnpj = cpf_cnpj;
-        this.nome = nome;
-        this.endereco = endereco;
-    }
-    
     public Pessoa(int id, String cpf_cnpj, String nome, Endereco endereco, ArrayList<Contato> cs, ArrayList<Email> email) {
         this.id = id;
         this.cpf_cnpj = cpf_cnpj;
@@ -47,6 +29,14 @@ public class Pessoa {
         this.email = email;
     }    
 
+    public Pessoa(String cpf_cnpj, String nome, Endereco endereco, ArrayList<Contato> cs, ArrayList<Email> email) {
+        this.cpf_cnpj = cpf_cnpj;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.contato = cs;
+        this.email = email;
+    }    
+    
     public int getId() {
         return id;
     }
