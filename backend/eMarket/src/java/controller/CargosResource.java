@@ -62,7 +62,7 @@ public class CargosResource {
         return gson.toJson(c);
     }
     
-   @POST
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/inserir")
     public int inserir(@QueryParam("token")String t, String nome) throws SQLException, Exception {
@@ -102,7 +102,6 @@ public class CargosResource {
     public void alterar (@QueryParam("token")String t,String data) throws SQLException, Exception{
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
-        System.out.println(data);
         Cargo c = gson.fromJson(data, Cargo.class);
             CargoDAO.update(c);
     }
