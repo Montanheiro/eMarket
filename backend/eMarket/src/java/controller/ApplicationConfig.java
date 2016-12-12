@@ -26,6 +26,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(controller.CargosResource.class);
         resources.add(controller.ClientesResource.class);
+        resources.add(controller.ContatosResource.class);
         resources.add(controller.EmpresaResource.class);
         resources.add(controller.FuncionariosResource.class);
         resources.add(controller.LoginResource.class);
