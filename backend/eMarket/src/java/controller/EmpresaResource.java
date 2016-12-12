@@ -1,6 +1,7 @@
 package controller;
 
 import com.google.gson.Gson;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -10,8 +11,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import model.DAO.EmpresaDAO;
+import model.Empresa;
+import model.Token;
 import model.Empresa;
 
 /**
@@ -26,25 +30,56 @@ public class EmpresaResource {
     public EmpresaResource(){
     
 }
+   @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/consultar")
+    public String consultarTodos(@QueryParam("token") String t) throws SQLException, Exception{
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
+        Gson gson = new Gson();
+        ArrayList<Empresa> empresa = EmpresaDAO.retreaveAll();
+         return gson.toJson(empresa);
+                
+    }
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson(){
+    @Path("/consultarid")
+    public String  consultarId(@QueryParam("token") String t, @QueryParam("id")int id) throws SQLException, Exception {
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
-        ArrayList<Empresa> emp = EmpresaDAO.retreaveAll();      
-        return gson.toJson(emp);   
+        Empresa e = EmpresaDAO.retreave(id);
+        return gson.toJson(e);
     }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/inserir")
+    public int inserir(@QueryParam("token")String t, String data) throws SQLException, Exception {
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
+        Gson gson = new Gson();
+        Empresa e = gson.fromJson(data, Empresa.class);
+        EmpresaDAO.create(e); 
+        return 200;
+    }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/deletar")
+    public int deletar(@QueryParam("token")String t, String id) throws SQLException, Exception {
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
+        Gson gson = new Gson();
+        Empresa e = gson.fromJson(id, Empresa.class);
+        EmpresaDAO.delete(e);
+        return 200;
+    }    
+        
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void puJson(String content){
-}
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    
-    public void postEmpresa(String nome)
-    {
+    @Path("/atualizar")
+    public void alterar (@QueryParam("token")String t,String data) throws SQLException, Exception{
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
-        Empresa e = gson.fromJson(nome, Empresa.class);
-        EmpresaDAO.create(e);
+        Empresa e = gson.fromJson(data, Empresa.class);
+            EmpresaDAO.update(e);
     }
 }

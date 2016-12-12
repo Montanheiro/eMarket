@@ -19,6 +19,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import model.Cargo;
 import model.DAO.CargoDAO;
+import model.Token;
 
 /**
  * REST Web Service
@@ -44,7 +45,8 @@ public class CargosResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/consultar")
-    public String consultarTodos() throws SQLException {
+    public String consultarTodos(@QueryParam("token") String t) throws SQLException, Exception {
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
          ArrayList<Cargo> cargo = CargoDAO.retreaveAll();
           return gson.toJson(cargo);
@@ -53,16 +55,18 @@ public class CargosResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/consultarid")
-    public String  consultarId(@QueryParam("id")int id) throws SQLException {
+    public String  consultarId (@QueryParam("token") String t, @QueryParam("id")int id ) throws SQLException, Exception {
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Cargo c = CargoDAO.retreave(id);
         return gson.toJson(c);
     }
     
-   @POST
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/inserir")
-    public int inserir(String nome) throws SQLException {
+    public int inserir(@QueryParam("token")String t, String nome) throws SQLException, Exception {
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Cargo c = gson.fromJson(nome, Cargo.class);
         CargoDAO.create(c); 
@@ -84,7 +88,8 @@ public class CargosResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/deletar")
-    public int deletar(String id) throws SQLException {
+    public int deletar(@QueryParam("token")String t, String id) throws SQLException, Exception {
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Cargo c = gson.fromJson(id, Cargo.class);
         CargoDAO.delete(c);
@@ -94,16 +99,11 @@ public class CargosResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/atualizar")
-    public void alterar(String data) throws SQLException{
+    public void alterar (@QueryParam("token")String t,String data) throws SQLException, Exception{
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
-        System.out.println(data);
         Cargo c = gson.fromJson(data, Cargo.class);
-
             CargoDAO.update(c);
-
-
-   
-        
     }
 
 }

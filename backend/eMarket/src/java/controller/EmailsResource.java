@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
 import com.google.gson.Gson;
@@ -5,33 +10,33 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import model.DAO.ProdutoDAO;
-import model.Produto;
+import model.DAO.EmailDAO;
+import model.Email;
 import model.Token;
 
 /**
  * REST Web Service
  *
- * @author Dione
+ * @author dione
  */
-@Path("produtos")
-public class ProdutosResource {
+@Path("emails")
+public class EmailsResource {
 
     @Context
     private UriInfo context;
 
     /**
-     * Creates a new instance of ProdutosResource
+     * Creates a new instance of EmailsResource
      */
-    public ProdutosResource() {
+    public EmailsResource() {
     }
 
     @GET
@@ -40,8 +45,8 @@ public class ProdutosResource {
     public String consultarTodos(@QueryParam("token") String t) throws SQLException, Exception{
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
-        ArrayList<Produto> produto = ProdutoDAO.retreaveAll();
-         return gson.toJson(produto);
+        ArrayList<Email> email = EmailDAO.retreaveAll();
+         return gson.toJson(email);
                 
     }
     
@@ -51,8 +56,8 @@ public class ProdutosResource {
     public String  consultarId(@QueryParam("token") String t, @QueryParam("id")int id) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
-        Produto p = ProdutoDAO.retreave(id);
-        return gson.toJson(p);
+        Email e = EmailDAO.retreave(id);
+        return gson.toJson(e);
     }
     
     @POST
@@ -61,8 +66,8 @@ public class ProdutosResource {
     public int inserir(@QueryParam("token")String t, String data) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
-        Produto p = gson.fromJson(data, Produto.class);
-        ProdutoDAO.create(p); 
+        Email e = gson.fromJson(data, Email.class);
+        EmailDAO.create(e); 
         return 200;
     }
     
@@ -72,8 +77,8 @@ public class ProdutosResource {
     public int deletar(@QueryParam("token")String t, String id) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
-        Produto p = gson.fromJson(id, Produto.class);
-        ProdutoDAO.delete(p);
+        Email e = gson.fromJson(id, Email.class);
+        EmailDAO.delete(e);
         return 200;
     }    
         
@@ -83,8 +88,7 @@ public class ProdutosResource {
     public void alterar (@QueryParam("token")String t,String data) throws SQLException, Exception{
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
-        Produto p = gson.fromJson(data, Produto.class);
-            ProdutoDAO.update(p);
+        Email e = gson.fromJson(data, Email.class);
+            EmailDAO.update(e);
     }
-   
 }
