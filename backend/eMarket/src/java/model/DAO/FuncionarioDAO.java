@@ -19,8 +19,6 @@ public class FuncionarioDAO {
 
     public static int create(Funcionario f) throws SQLException {
         PessoaDAO.create(f.getPessoa());
-        //CargoDAO.retreave(f.getCargo().getId());
-
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
@@ -91,6 +89,7 @@ public class FuncionarioDAO {
                 + "' WHERE `id`= "
                 + f.getId();
         stm.execute(sql);
+        PessoaDAO.update(f.getPessoa());
     }
 
     public static void delete(Funcionario f) throws SQLException {

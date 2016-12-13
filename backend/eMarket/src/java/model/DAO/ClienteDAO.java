@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import model.Cliente;
-import model.Endereco;
 import model.Pessoa;
 
 /**
@@ -19,8 +18,6 @@ public class ClienteDAO {
 
     public static int create(Cliente f) throws SQLException {
         PessoaDAO.create(f.getPessoa());
-        //CargoDAO.retreave(f.getCargo().getId());
-
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();

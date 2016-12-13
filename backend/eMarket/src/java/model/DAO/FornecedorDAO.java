@@ -19,8 +19,6 @@ public class FornecedorDAO {
 
     public static int create(Fornecedor f) throws SQLException {
         PessoaDAO.create(f.getPessoa());
-        //CargoDAO.retreave(f.getCargo().getId());
-
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
@@ -91,6 +89,7 @@ public class FornecedorDAO {
                 + "' WHERE `id`= "
                 + f.getId();
         stm.execute(sql);
+        PessoaDAO.update(f.getPessoa());                
     }
 
     public static void delete(Fornecedor f) throws SQLException {

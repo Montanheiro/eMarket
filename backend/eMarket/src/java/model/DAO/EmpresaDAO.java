@@ -20,14 +20,13 @@ public class EmpresaDAO {
                 = BancoDados.createConnection().
                         createStatement();
         String sql
-                = "INSERT INTO empresa (Nome, RazaoSocial, CNPJ, DataContratacao,DataCancelamnetoContrato, status_id) VALUES ('"
+                = "INSERT INTO empresa (Nome, RazaoSocial, CNPJ, DataContratacao, DataCancelamnetoContrato, status_id) VALUES ('"
                 + e.getNome() + ",'"
                 + e.getRazaoSocial() + "','"
                 + e.getCnpj() + "','"
                 + e.getDataContratacao() + "','"
                 + e.getDataCancelamentoContrato() + "','"
-                + e.getStatusId() + "','"
-                + "')";
+                + e.getStatusId()+ "')";
 
         stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = stm.getGeneratedKeys();
