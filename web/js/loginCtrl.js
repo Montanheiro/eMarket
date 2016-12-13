@@ -2,7 +2,7 @@ angular.module('spa')
     .controller('loginCtrl',
     function($scope, $rootScope, $http, $timeout){
 
-    	 $scope.verificar = function(){
+    	$scope.verificar = function(){
             var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");     
             
             if(token) {
