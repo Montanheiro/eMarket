@@ -42,23 +42,21 @@ public class CargosResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/consultarid")
     public String  consultarId (@HeaderParam("token") String t,
-            @QueryParam("id") int id, @Context HttpServletResponse response) throws SQLException, Exception {
+            @QueryParam("id") int id) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Cargo c = CargoDAO.retreave(id);
-        response.addHeader("Access-Control-Allow-Origin", "*");
         return gson.toJson(c);
     }
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/inserir")
-    public int inserir(@HeaderParam("token") String t, String nome, @Context HttpServletResponse response) throws SQLException, Exception {
+    public int inserir(@HeaderParam("token") String t, String nome) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Cargo c = gson.fromJson(nome, Cargo.class);
         CargoDAO.create(c); 
-        response.addHeader("Access-Control-Allow-Origin", "*");
         return 200;
 
     }
@@ -66,24 +64,22 @@ public class CargosResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/deletar")
-    public int deletar(@HeaderParam("token")String t, String id, @Context HttpServletResponse response) throws SQLException, Exception {
+    public int deletar(@HeaderParam("token")String t, String id) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Cargo c = gson.fromJson(id, Cargo.class);
         CargoDAO.delete(c);
-        response.addHeader("Access-Control-Allow-Origin", "*");
         return 200;
     }
     
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/atualizar")
-    public int alterar (@HeaderParam("token") String t,String data, @Context HttpServletResponse response) throws SQLException, Exception{
+    public int alterar (@HeaderParam("token") String t,String data) throws SQLException, Exception{
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Cargo c = gson.fromJson(data, Cargo.class);
         CargoDAO.update(c);
-        response.addHeader("Access-Control-Allow-Origin", "*");
         return 200;
     }
 
