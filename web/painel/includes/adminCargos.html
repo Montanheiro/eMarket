@@ -1,4 +1,4 @@
-<div ng-controller="adminCargosCtrl" md-> <!-- EDITAR CONTROLLER -->
+<div ng-controller="adminCargosCtrl"> <!-- EDITAR CONTROLLER -->
 	<md-toolbar>
 		<div class="md-toolbar-tools">
 			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
@@ -29,18 +29,16 @@
       data: itensFiltrados,
       'table-row-id-key': 'id',
       'column-keys': [
-        'nome',
-        'descricao'
+        'nome'
       ]
     }">
       <mdt-header-row>
         <!-- COLOCAR UM MD-COLUMN PRA CADA COLUNA EXIBIDA ACIMA NO COLUMN-KEYS-->
         <mdt-column align-rule="left">Cargo</mdt-column>
-        <mdt-column align-rule="left">Descrição</mdt-column>
       </mdt-header-row>
       <mdt-custom-cell column-key="nome"> <!-- COLOCAR O COLUMN-KEY CLICAVEL-->
         <!-- EDITAR CAMINHO DO LINK ABAIXO -->
-        <a ng-href="#/administracao/cadastros/cargos/editar?id={{clientScope.getCargosPorId(rowId).id}}">{{clientScope.getCargosPorId(rowId).nome}}</a>
+        <a ng-href="#/administracao/cadastros/cargos/editar?id={{clientScope.getCargosPorId(rowId).id}}&nome={{clientScope.getCargosPorId(rowId).nome}}">{{clientScope.getCargosPorId(rowId).nome}}</a>
       </mdt-custom-cell>
     </mdt-table>
 
