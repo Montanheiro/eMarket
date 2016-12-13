@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import com.google.gson.Gson;
@@ -13,6 +8,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
@@ -22,38 +18,30 @@ import model.DAO.UsuarioDAO;
 import model.Token;
 import model.Usuario;
 
-/**
- * REST Web Service
- *
- * @author dione
- */
 @Path("usuarios")
 public class UsuariosResource {
 
     @Context
     private UriInfo context;
 
-    /**
-     * Creates a new instance of UsuariosResource
-     */
     public UsuariosResource() {
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/consultar")
-    public String consultarTodos(@QueryParam("token") String t) throws SQLException, Exception{
+    public String consultarTodos(@HeaderParam("token") String t) throws SQLException, Exception{
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         ArrayList<Usuario> u = UsuarioDAO.retreaveAll();
-         return gson.toJson(u);
+        return gson.toJson(u);
                 
     }
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/consultarid")
-    public String  consultarId(@QueryParam("token") String t, @QueryParam("id")int id) throws SQLException, Exception {
+    public String  consultarId(@HeaderParam("token") String t, @QueryParam("id")int id) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Usuario u = UsuarioDAO.retreave(id);
@@ -63,7 +51,7 @@ public class UsuariosResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/inserir")
-    public int inserir(@QueryParam("token")String t, String data) throws SQLException, Exception {
+    public int inserir(@HeaderParam("token")String t, String data) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Usuario u = gson.fromJson(data, Usuario.class);
@@ -74,7 +62,7 @@ public class UsuariosResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/deletar")
-    public int deletar(@QueryParam("token")String t, String id) throws SQLException, Exception {
+    public int deletar(@HeaderParam("token")String t, String id) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Usuario u = gson.fromJson(id, Usuario.class);
@@ -85,10 +73,10 @@ public class UsuariosResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/atualizar")
-    public void alterar (@QueryParam("token")String t,String data) throws SQLException, Exception{
+    public void alterar (@HeaderParam("token")String t,String data) throws SQLException, Exception{
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Usuario c = gson.fromJson(data, Usuario.class);
-            UsuarioDAO.update(c);
+        UsuarioDAO.update(c);
     }
 }

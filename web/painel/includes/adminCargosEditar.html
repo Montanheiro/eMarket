@@ -13,14 +13,14 @@
 	<md-content class="md-padding">
     	<md-card>      
      		<md-card-content>
-				<form name="cliente" ng-submit="editarCargo()">
+				<form name="cliente" ng-submit="editar()">
 					<span>Cargos</span>
 					<md-input-container class="md-block">
 						<label>Nome do Cargo</label>
-						<input required ng-model="nome" type="text">
+						<input required ng-model="cargo.nome" type="text">
 					</md-input-container>
 					<md-button type="submit" value="submit" class="md-raised md-primary right">Salvar</md-button>
-					<md-button type="button" class="md-accent md-raised right" ng-click="excluirCargo()">Excluir</md-button>
+					<md-button type="button" class="md-accent md-raised right" ng-click="excluir()">Excluir</md-button>
 					<md-button type="button" class="md-raised right" ng-click="cancelar()">Cancelar</md-button>
      			</form>
 			</md-card-content>

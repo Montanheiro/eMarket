@@ -260,33 +260,33 @@
         .otherwise({ redirectTo: '/'});
     });
 
-    main.controller('mainCtrl', function($rootScope) {
+    main.controller('mainCtrl', function($rootScope, $scope, $http) {
 
-        $rootScope.api = "http://backend-emarket.montanheiro.me:8080";
+        $rootScope.api = "http://localhost:8080/build/webresources";
+
+        $scope.verificarLogin = function(){
+            var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");     
+                
+            if(token) {
+                $http({ 
+                    url: $rootScope.api + '/login/verificar', 
+                    dataType: 'json', 
+                    method:'GET',
+                    headers: {'token': token, 'Content-Type': 'application/json'},
+                }).success(function (response) {
+                    console.log("esta logado");
+                }).error(function (response) {
+                    console.log("não esta logado --" + response);                
+                });
+            }   
+        };
     });
 
     main.config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')
         .primaryPalette('indigo')
         .accentPalette('red');
-    });
-
-    $scope.verificarLogin = function(){
-        var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");     
-            
-        if(token) {
-            $http({ 
-                url: $rootScope.api + '/login/verificar?token=' + token, 
-                dataType: 'json', 
-                method:'GET',
-                headers: {'Content-Type': 'application/json'},
-            }).success(function (response) {
-                console.log("esta logado");
-            }).error(function (response) {
-                console.log("não esta logado --" + response);                
-            });
-        }    
-    };
+    });    
 
 })();
 

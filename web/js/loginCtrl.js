@@ -7,10 +7,10 @@ angular.module('spa')
             
             if(token) {
                 $http({ 
-                    url: $rootScope.api + '/login/verificar?token=' + token, 
+                    url: $rootScope.api + '/login/verificar', 
                     dataType: 'json', 
                     method:'GET',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: {'token': token, 'Content-Type': 'application/json'},
                 }).success(function (response) {
                     console.log("esta logado");
                     window.location = "/painel/#/";
