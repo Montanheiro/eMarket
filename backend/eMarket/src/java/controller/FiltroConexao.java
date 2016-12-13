@@ -20,9 +20,6 @@ public class FiltroConexao implements Filter{
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
             FilterChain chain) throws IOException, ServletException {
       
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        System.out.println("Request" + request.getMethod());
-
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         resp.addHeader("Access-Control-Allow-Origin","*");
         resp.addHeader("Access-Control-Allow-Methods","GET,POST,PUT,OPTIONS");
