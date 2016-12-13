@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import model.Empresa;
+import model.Status;
 
 /**
  *
@@ -20,13 +21,13 @@ public class EmpresaDAO {
                 = BancoDados.createConnection().
                         createStatement();
         String sql
-                = "INSERT INTO empresa (Nome, RazaoSocial, CNPJ, DataContratacao, DataCancelamnetoContrato, status_id) VALUES ('"
+                = "INSERT INTO empresa (`Nome`, `RazaoSocial`, `CNPJ`, `DataContratacao`, `DataCancelamentoContrato`, `status_id`) VALUES ('"
                 + e.getNome() + ",'"
                 + e.getRazaoSocial() + "','"
                 + e.getCnpj() + "','"
                 + e.getDataContratacao() + "','"
                 + e.getDataCancelamentoContrato() + "','"
-                + e.getStatusId()+ "')";
+                + e.getStatus().getId() + "')";
 
         stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = stm.getGeneratedKeys();
@@ -45,27 +46,25 @@ public class EmpresaDAO {
         String sql = "SELECT * FROM empresa WHERE id =" + id;
         ResultSet rs = stm.executeQuery(sql);
         rs.next();
-
+        Status st = StatusDAO.retreave(rs.getInt("status_id"));        
         return new Empresa(id,
                 rs.getString("Nome"),
                 rs.getString("RazaoSocial"),
                 rs.getString("CNPJ"),
                 rs.getDate("DataContratacao"),
                 rs.getDate("DataCancelamentoContrato"),
-                rs.getInt("status_id"));
+                st);
     }
 
     public static ArrayList<Empresa> retreaveAll() throws SQLException {
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
-
         String sql = "SELECT * FROM empresa";
         ResultSet rs = stm.executeQuery(sql);
-
         ArrayList<Empresa> em = new ArrayList<>();
-
         while (rs.next()) {
+        Status st = StatusDAO.retreave(rs.getInt("status_id"));        
             em.add(new Empresa(
                     rs.getInt("id"),
                     rs.getString("Nome"),
@@ -73,7 +72,7 @@ public class EmpresaDAO {
                     rs.getString("CNPJ"),
                     rs.getDate("DataContratacao"),
                     rs.getDate("DataCancelamentoContrato"),
-                    rs.getInt("status_id")));
+                    st));
         }
 
         return em;
@@ -83,7 +82,6 @@ public class EmpresaDAO {
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
-
         String sql = "UPDATE empresa SET "
                 + "`Nome` = '" + em.getNome()
                 + "', `RazaoSocial` = '" + em.getRazaoSocial()
@@ -92,9 +90,7 @@ public class EmpresaDAO {
                 + "', DataCancelamentoContrato = '" + em.getDataCancelamentoContrato()
                 + "', status_id = '" + em.getStatusId()
                 + "' WHERE `id` = " + em.getId();
-
         stm.execute(sql);
-
     }
 
     public static void delete(Empresa em) throws SQLException {

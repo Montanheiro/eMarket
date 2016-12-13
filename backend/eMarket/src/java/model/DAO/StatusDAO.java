@@ -40,7 +40,7 @@ public class StatusDAO {
         ResultSet rs = stm.executeQuery(sql);
         rs.next();
         return new Status(id,
-                rs.getString("decricao"));
+                rs.getString("descricao"));
     }
 
     public static ArrayList<Status> retreaveAll() throws SQLException {

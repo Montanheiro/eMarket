@@ -16,6 +16,8 @@ public class Empresa {
     private Date dataContratacao;
     private Date dataCancelamentoContrato;
     
+    private Status status;
+    
     private int statusId;
     
     
@@ -42,6 +44,16 @@ public class Empresa {
         this.statusId = statusId;
     }
 
+    public Empresa(int id, String nome, String razaoSocial, String cnpj, Date dataContratacao, Date dataCancelamentoContrato, Status status) {
+        this.id = id;
+        this.nome = nome;
+        this.razaoSocial = razaoSocial;
+        this.cnpj = cnpj;
+        this.dataContratacao = dataContratacao;
+        this.dataCancelamentoContrato = dataCancelamentoContrato;
+        this.status = status;
+    }
+    
     public int getId() {
         return id;
     }
@@ -96,6 +108,14 @@ public class Empresa {
 
     public void setStatusId(int statusId) {
         this.statusId = statusId;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override
