@@ -11,6 +11,9 @@ public class TerminalVenda {
     private int numeroMaquina;
     private String token;
     
+    private Empresa empresa;
+    private Usuario usuario;
+    
     private int empresaId;
     private int usuarioId;
 
@@ -28,6 +31,14 @@ public class TerminalVenda {
         this.token = token;
         this.empresaId = empresaId;
         this.usuarioId = usuarioId;
+    }
+
+    public TerminalVenda(int id, int numeroMaquina, String token, Empresa empresa, Usuario usuario) {
+        this.id = id;
+        this.numeroMaquina = numeroMaquina;
+        this.token = token;
+        this.empresa = empresa;
+        this.usuario = usuario;
     }
 
     public int getId() {
@@ -68,6 +79,22 @@ public class TerminalVenda {
 
     public void setUsuarioId(int usuarioId) {
         this.usuarioId = usuarioId;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
