@@ -1,0 +1,42 @@
+<div layout="column" ng-controller="adminEmpresaCtrl" ng-init="buscar()">
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
+				<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+			</md-button>
+			<h2>
+				<span>{{name}}</span>
+			</h2>					    
+		</div>
+	</md-toolbar>
+	<div class="spaceToolbar"></div>
+	<md-content class="md-padding">
+    	<md-card>      
+     		<md-card-content>
+				<form ng-submit="editar()">
+					<span>Dados da empresa</span>
+
+					<md-input-container class="md-block">
+						<label>Nome fantasia</label>
+						<input required ng-model="empresa.nome" type="text">
+					</md-input-container>
+					<md-input-container class="md-block">
+						<label>Razão Social</label>
+						<input required ng-model="empresa.razaoSocial" type="text">
+					</md-input-container>
+					<md-input-container class="md-block">
+						<label>CNPJ</label>
+						<input required ng-model="empresa.cnpj" ng-pattern="/([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})$/" ui-br-cpfcnpj-mask>
+					</md-input-container>
+					<md-input-container class="md-block">
+						<label>Data Contratação</label>
+						<input disabled ng-model="empresa.dataContratacao" type="date">
+					</md-input-container>
+
+					<md-button type="submit" value="submit" class="md-raised md-primary right">Salvar</md-button>
+					<md-button type="button" class="md-raised right" ng-click="cancelar()">Cancelar</md-button>
+     			</form>
+			</md-card-content>
+		</md-card>
+	</md-content>	
+</div>

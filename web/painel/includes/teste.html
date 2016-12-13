@@ -1,0 +1,18 @@
+<script type="text/javascript">
+function dataJava(data) {
+	var months = {jan:'01',fev:'02',mar:'03',abr:'04',maio:'05',jun:'06',
+				 jul:'07',ago:'08',set:'09',out:'10',nov:'11',dez:'12'};
+	data = data.replace(",","");
+ 	var b = data.split(' ');
+	console.log(b);
+	return new Date(b[2] + '-' + months[b[0].toLowerCase()] + '-' + b[1] + ' 00:00:00');
+}
+
+function proJava(data){
+	var meses = {01: 'jan',02: 'fev', 03: 'mar',04: 'abr', 05: 'maio', 06: 'jun',
+				 07: 'jul', 08: 'ago', 09: 'set', 10: 'out', 11: 'nov', 12: 'dez'};
+	data = data.toLocaleDateString(); // DD/MM/AAAA
+	data = data.split("/"); // 0 = DD, 1 = MM, 2 = AAAA
+	return meses[data[1]] + " " + data[0] + ", " + data[2]
+}
+</script>
