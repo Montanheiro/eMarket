@@ -13,6 +13,9 @@ public class Venda {
     private Date dataVenda;
     private double valorTotal;
     
+    private Empresa empresa;
+    private Usuario usuario;
+    
     private int empresaId;
     private int usuarioId;
 
@@ -32,6 +35,14 @@ public class Venda {
         this.usuarioId = usuarioId;
     }
 
+    public Venda(int id, Date dataVenda, double valorTotal, Empresa empresa, Usuario usuario) {
+        this.id = id;
+        this.dataVenda = dataVenda;
+        this.valorTotal = valorTotal;
+        this.empresa = empresa;
+        this.usuario = usuario;
+    }
+    
     public int getId() {
         return id;
     }
@@ -72,10 +83,27 @@ public class Venda {
         this.usuarioId = usuarioId;
     }
 
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     @Override
     public String toString() {
-        return "Venda{" + "id=" + id + ", dataVenda=" + dataVenda + ", valorTotal=" + valorTotal + ", empresaId=" + empresaId + ", usuarioId=" + usuarioId + '}';
+        return "Venda{" + "id=" + id + ", dataVenda=" + dataVenda + ", valorTotal=" + valorTotal + ", empresa=" + empresa + ", usuario=" + usuario + ", empresaId=" + empresaId + ", usuarioId=" + usuarioId + '}';
     }
+
     
     
 }
