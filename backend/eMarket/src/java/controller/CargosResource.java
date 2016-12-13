@@ -31,11 +31,10 @@ public class CargosResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/consultar")
-    public String consultarTodos(@HeaderParam("token") String t, @Context HttpServletResponse response) throws SQLException, Exception {
+    public String consultarTodos(@HeaderParam("token") String t) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         ArrayList<Cargo> cargo = CargoDAO.retreaveAll();
-        response.addHeader("Access-Control-Allow-Origin", "*");
         return gson.toJson(cargo);
     }
     
