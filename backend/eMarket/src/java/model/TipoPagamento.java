@@ -43,5 +43,4 @@ public class TipoPagamento {
         return "TipoPagamento{" + "id=" + id + ", descricao=" + descricao + '}';
     }
     
-    
 }
