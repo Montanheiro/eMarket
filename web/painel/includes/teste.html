@@ -9,10 +9,8 @@ function dataJava(data) {
 }
 
 function proJava(data){
-	var meses = {01: 'jan',02: 'fev', 03: 'mar',04: 'abr', 05: 'maio', 06: 'jun',
-				 07: 'jul', 08: 'ago', 09: 'set', 10: 'out', 11: 'nov', 12: 'dez'};
 	data = data.toLocaleDateString(); // DD/MM/AAAA
 	data = data.split("/"); // 0 = DD, 1 = MM, 2 = AAAA
-	return meses[data[1]] + " " + data[0] + ", " + data[2]
+	return data[2] + "-" + data[1] + "-" + data[0]
 }
 </script>

@@ -280,6 +280,19 @@
                 });
             }   
         };
+
+        $rootScope.receberData = function(data) {
+            data = data.split('-'); // 0 = AAAA, 1 = MM, 2 = DD
+            data = new Date(data[2] + "-" + data[1] + "-" + data[0] + ' 00:00:00');
+            console.log(data);
+            return data;
+        };
+
+        $rootScope.enviarData = function(data){
+            data = data.toLocaleDateString(); // DD/MM/AAAA
+            data = data.split("/"); // 0 = DD, 1 = MM, 2 = AAAA
+            return data[2] + "-" + data[1] + "-" + data[0];
+        };
     });
 
     main.config(function($mdThemingProvider) {
