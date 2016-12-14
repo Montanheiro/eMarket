@@ -13,7 +13,7 @@
 	<md-content class="md-padding">
     	<md-card>      
      		<md-card-content>
-				<form ng-submit="editar()">
+				<form name="form" ng-submit="editar()">
 					<span>Dados da empresa</span>
 
 					<md-input-container class="md-block">
@@ -33,7 +33,7 @@
 						<input disabled ng-model="empresa.dataContratacao" type="date">
 					</md-input-container>
 
-					<md-button type="submit" value="submit" class="md-raised md-primary right">Salvar</md-button>
+					<md-button type="submit" value="submit" class="md-raised md-primary right" ng-disabled="form.$invalid">Salvar</md-button>
 					<md-button type="button" class="md-raised right" ng-click="cancelar()">Cancelar</md-button>
      			</form>
 			</md-card-content>
