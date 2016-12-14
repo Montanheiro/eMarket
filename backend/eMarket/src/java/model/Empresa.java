@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Date;
-
 /**
  *
  * @author Bárbara, Mateus
@@ -13,8 +11,8 @@ public class Empresa {
     private String nome;
     private String razaoSocial;
     private String cnpj;
-    private Date dataContratacao;
-    private Date dataCancelamentoContrato;
+    private String dataContratacao;
+    private String dataCancelamentoContrato;
     
     private Status status;
     
@@ -26,7 +24,7 @@ public class Empresa {
     public Empresa() {
     }
 
-    public Empresa(String nome, String razaoSocial, String cnpj, Date dataContratacao, Date dataCancelamentoContrato) {
+    public Empresa(String nome, String razaoSocial, String cnpj, String dataContratacao, String dataCancelamentoContrato) {
         this.nome = nome;
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
@@ -34,7 +32,7 @@ public class Empresa {
         this.dataCancelamentoContrato = dataCancelamentoContrato;
     }
 
-    public Empresa(int id, String nome, String razaoSocial, String cnpj, Date dataContratacao, Date dataCancelamentoContrato, int statusId) {
+    public Empresa(int id, String nome, String razaoSocial, String cnpj, String dataContratacao, String dataCancelamentoContrato, int statusId) {
         this.id = id;
         this.nome = nome;
         this.razaoSocial = razaoSocial;
@@ -44,7 +42,7 @@ public class Empresa {
         this.statusId = statusId;
     }
 
-    public Empresa(int id, String nome, String razaoSocial, String cnpj, Date dataContratacao, Date dataCancelamentoContrato, Status status) {
+    public Empresa(int id, String nome, String razaoSocial, String cnpj, String dataContratacao, String dataCancelamentoContrato, Status status) {
         this.id = id;
         this.nome = nome;
         this.razaoSocial = razaoSocial;
@@ -86,19 +84,19 @@ public class Empresa {
         this.cnpj = cnpj;
     }
 
-    public Date getDataContratacao() {
+    public String getDataContratacao() {
         return dataContratacao;
     }
 
-    public void setDataContratacao(Date dataContratacao) {
+    public void setDataContratacao(String dataContratacao) {
         this.dataContratacao = dataContratacao;
     }
 
-    public Date getDataCancelamentoContrato() {
+    public String getDataCancelamentoContrato() {
         return dataCancelamentoContrato;
     }
 
-    public void setDataCancelamentoContrato(Date dataCancelamentoContrato) {
+    public void setDataCancelamentoContrato(String dataCancelamentoContrato) {
         this.dataCancelamentoContrato = dataCancelamentoContrato;
     }
 
