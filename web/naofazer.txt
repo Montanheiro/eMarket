@@ -1,0 +1,7 @@
+promoção
+permissão
+relatórios por período
+logs
+cripitrografia de senha de usuário
+criar PDV (só vai ter 1 pdv, igual empresa)
+separar sistema por empresa
