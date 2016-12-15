@@ -10,7 +10,7 @@ public class Cliente {
     
     private int id;
     
-    private Date dataNascimento;
+    private String dataNascimento;
     private int rg;
     private double limite;
     
@@ -21,14 +21,14 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(Date dataNascimento, int rg, double limite, Pessoa pessoa) {
+    public Cliente(String dataNascimento, int rg, double limite, Pessoa pessoa) {
         this.dataNascimento = dataNascimento;
         this.rg = rg;
         this.limite = limite;
         this.pessoa = pessoa;
     }
 
-    public Cliente(int id, Date dataNascimento, int rg, double limite, Pessoa pessoa) {
+    public Cliente(int id, String dataNascimento, int rg, double limite, Pessoa pessoa) {
         this.id = id;
         this.dataNascimento = dataNascimento;
         this.rg = rg;
@@ -36,7 +36,7 @@ public class Cliente {
         this.pessoa = pessoa;
     }
 
-    public Cliente(int id, Date dataNascimento, int rg, double limite, Pessoa pessoa, int pessoaId) {
+    public Cliente(int id, String dataNascimento, int rg, double limite, Pessoa pessoa, int pessoaId) {
         this.id = id;
         this.dataNascimento = dataNascimento;
         this.rg = rg;
@@ -53,11 +53,11 @@ public class Cliente {
         this.id = id;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

@@ -44,7 +44,7 @@ public class ClienteDAO {
         rs.next();
         Pessoa p = PessoaDAO.retreave(rs.getInt("pessoa_id"));        
         return new Cliente(id,
-                rs.getDate("DataNascimento"),
+                rs.getString("DataNascimento"),
                 rs.getInt("RG"),
                 rs.getDouble("Limite"),
                 p);
@@ -62,7 +62,7 @@ public class ClienteDAO {
         Pessoa p = PessoaDAO.retreave(rs.getInt("pessoa_id"));        
             f.add(new Cliente(
                     rs.getInt("id"),
-                    rs.getDate("DataNascimento"),
+                    rs.getString("DataNascimento"),
                     rs.getInt("RG"),
                     rs.getDouble("Limite"),
                     p));
