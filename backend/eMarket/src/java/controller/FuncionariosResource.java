@@ -54,8 +54,7 @@ public class FuncionariosResource {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Funcionario f = gson.fromJson(data, Funcionario.class);
-        FuncionarioDAO.create(f); 
-        return 200;
+        return FuncionarioDAO.create(f);
     }
     
     @POST

@@ -18,12 +18,11 @@ public class EnderecoDAO {
                 = BancoDados.createConnection().
                         createStatement();
         String sql
-                = "INSERT INTO endereco (`Logradouro`, `Bairro`, `Cidade`, `Estado`, `Pais`, `Cep`, `Pessoa_id`) VALUES ('"
+                = "INSERT INTO endereco (`Logradouro`, `Bairro`, `Cidade`, `Estado`, `Cep`, `Pessoa_id`) VALUES ('"
                 + e.getLogradouro() + "','"
                 + e.getBairro() + "','"
                 + e.getCidade() + "','"
                 + e.getEstado() + "','"
-                + e.getPais() + "','"
                 + e.getCep() + "','"
                 + e.getPessoaId() + "')";
         stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
@@ -50,7 +49,6 @@ public class EnderecoDAO {
                 rs.getString("bairro"),
                 rs.getString("cidade"),
                 rs.getString("estado"),
-                rs.getString("pais"),
                 rs.getString("cep"),
                 rs.getInt("pessoa_id"));
     }
@@ -70,7 +68,6 @@ public class EnderecoDAO {
                     rs.getString("bairro"),
                     rs.getString("cidade"),
                     rs.getString("estado"),
-                    rs.getString("pais"),
                     rs.getString("cep"),
                     rs.getInt("pessoa_id"));
         }
@@ -94,7 +91,6 @@ public class EnderecoDAO {
                     rs.getString("bairro"),
                     rs.getString("cidade"),
                     rs.getString("estado"),
-                    rs.getString("pais"),
                     rs.getString("cep"),
                     rs.getInt("pessoa_id")));
         }
@@ -112,7 +108,6 @@ public class EnderecoDAO {
                 + "', `Bairro`='" + e.getBairro()
                 + "', `Cidade`='" + e.getCidade()
                 + "', `Estado`='" + e.getEstado()
-                + "', `Pais`='" + e.getPais()
                 + "', `Cep`='" + e.getCep()
                 + "' WHERE `id`="
                 + e.getId();

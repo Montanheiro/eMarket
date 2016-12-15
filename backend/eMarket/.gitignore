@@ -4,5 +4,5 @@ nbproject/*
 setup/*
 test/*
 web/*
-*.class/
+*.class
 

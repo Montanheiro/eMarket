@@ -28,6 +28,10 @@
             templateUrl: 'includes/adminFuncionariosInserir.html',
             controller: 'adminFuncionariosInserirCtrl'
         })
+        .when('/administracao/cadastros/funcionarios/inserir/contatos', {
+            templateUrl: 'includes/adminFuncionariosInserirContatos.html',
+            controller: 'adminFuncionariosInserirContatosCtrl'
+        })
         .when('/administracao/cadastros/funcionarios/editar', {
             templateUrl: 'includes/adminFuncionariosEditar.html',
             controller: 'adminFuncionariosEditarCtrl'
@@ -125,6 +129,10 @@
             templateUrl: 'includes/estoqFornecedoresInserir.html',
             controller: 'estoqFornecedoresInserirCtrl'
         })
+        .when('/estoque/cadastros/fornecedores/inserir/contatos', {
+            templateUrl: 'includes/estoqFornecedoresContatosInserir.html',
+            controller: 'estoqFornecedoresInserirContatosCtrl'
+        })
         .when('/estoque/cadastros/fornecedores/editar', {
             templateUrl: 'includes/estoqFornecedoresEditar.html',
             controller: 'estoqFornecedoresEditarCtrl'
@@ -199,6 +207,22 @@
             controller: 'vendResumoPdvCtrl'
         })
         //cadastros
+        .when('/vendas/cadastros/clientes', {
+            templateUrl: 'includes/vendClientes.html',
+            controller: 'vendClientesCtrl'
+        })
+        .when('/vendas/cadastros/clientes/inserir', {
+            templateUrl: 'includes/vendClientesInserir.html',
+            controller: 'vendClientesInserirCtrl'
+        })
+        .when('/vendas/cadastros/clientes/inserir/contatos', {
+            templateUrl: 'includes/vendClientesContatosInserir.html',
+            controller: 'vendClientesContatosInserirCtrl'
+        })
+        .when('/vendas/cadastros/clientes/editar', {
+            templateUrl: 'includes/vendClientesEditar.html',
+            controller: 'vendClientesEditarCtrl'
+        })
         .when('/vendas/cadastros/promocoes', {
             templateUrl: 'includes/vendPromocoes.html',
             controller: 'vendPromocoesCtrl'

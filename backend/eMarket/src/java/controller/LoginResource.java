@@ -27,10 +27,10 @@ public class LoginResource {
         
         Usuario u = gson.fromJson(dados, Usuario.class);
         System.out.println("Usuário >>>>>" + u);
-        UsuarioDAO.retreave(u.getLogin(), u.getSenha());
+        u = UsuarioDAO.retreave(u.getLogin(), u.getSenha());
         System.out.println("Usuário válido, gerando token");
         
-        String token = new Token().GerarToken("eMarket", u.getLogin(), 43200000);
+        String token = new Token().GerarToken("eMarket", String.valueOf(u.getId()), 43200000);
         return token;
     }   
     

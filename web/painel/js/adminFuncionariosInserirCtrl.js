@@ -3,6 +3,10 @@ angular.module('spa')
 	function($scope, $rootScope,$routeParams, $http, $location, $mdToast){
 		$scope.name = 'Inserir Funcionário';
 
+        $scope.cancelar = function(){
+            $location.path('administracao/cadastros/funcionarios').search({});
+        };
+
 		$scope.consultarCargos = function(){
             var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");
             if(token) {
@@ -13,7 +17,7 @@ angular.module('spa')
                         headers: {'token': token, 'Content-Type': 'application/json'},
                     }).success(function (response) {
                         $scope.cargos = response;
-                        console.log("cargo = " + response);
+                        console.log(response);
                     }).error(function (response) {
                         if (!response.success) {
                             console.log("erro response sucess false")
@@ -62,16 +66,16 @@ angular.module('spa')
                                 .content("Inserido com sucesso!")
                                 .hideDelay(3000)
                         );
-                        $location.path('/administracao/cadastros/funcionarios').search({});
+                        window.location = "/painel/#/administracao/cadastros/funcionarios/inserir/contatos?id=" + response;
 
                     }).error(function (response) {
                         console.log(response);
                         alert("erro ao inserir ou no token");
-                        //window.location = "/#/login";
+                        window.location = "/#/login";
                     });
             }else{
             	alert("sem token");
-                //window.location = "/#/login";
+                window.location = "/#/login";
             }
         };
 

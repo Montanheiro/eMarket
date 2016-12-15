@@ -16,7 +16,7 @@ public class ContatoDAO {
     }
     
     //Metodo CREATE esta OK, testado e funcionando
-        public static int create(Contato c) throws SQLException{
+        public static Contato create(Contato c) throws SQLException{
             Statement stm =
                     BancoDados.createConnection().
                             createStatement();
@@ -31,7 +31,7 @@ public class ContatoDAO {
             int key = rs.getInt(1);
             c.setId(key);
             
-            return key;
+            return c;
     }
 
     
@@ -84,7 +84,7 @@ public class ContatoDAO {
     }
 
     //Metodo UPDATE esta OK, testado e funcionando
-    public static void update(Contato c) throws SQLException {
+    public static Contato update(Contato c) throws SQLException {
             Statement stm
                     = BancoDados.createConnection().
                             createStatement();
@@ -93,6 +93,8 @@ public class ContatoDAO {
                     + "' WHERE `id`= "
                     + c.getId();
             stm.execute(sql);
+            
+            return c;
     }
 
 //Metodo DELETE esta OK, testado e funcionando    

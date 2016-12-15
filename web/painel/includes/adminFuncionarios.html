@@ -1,4 +1,4 @@
-<div ng-controller="adminFuncionariosCtrl"> <!-- EDITAR CONTROLLER -->
+<div ng-controller="adminFuncionariosCtrl" ng-init="consultarFuncionarios()"> <!-- EDITAR CONTROLLER -->
 	<md-toolbar>
 		<div class="md-toolbar-tools">
 			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
@@ -11,7 +11,7 @@
 	</md-toolbar>
 	<div class="spaceToolbar"></div>
 
-  <div class="md-padding" layout-margin ng-init="consultarFuncionarios()">
+  <div class="md-padding" layout-margin >
   <md-card class="semMargem">
     <md-input-container class="campoPesquisa">
       <label>Pesquisar...</label>
@@ -42,7 +42,7 @@
       </mdt-header-row>
       <mdt-custom-cell column-key="pessoa.nome"> <!-- COLOCAR O COLUMN-KEY CLICAVEL-->
         <!-- EDITAR CAMINHO DO LINK ABAIXO -->
-        <a ng-href="#/administracao/cadastros/funcionarios/editar?id={{clientScope.getFuncionariosPorId(rowId).id}}&pessoa.nome={{clientScope.getFuncionariosPorId(rowId).pessoa.nome}}">{{clientScope.getFuncionariosPorId(rowId).pessoa.nome}}</a>
+        <a ng-href="#/administracao/cadastros/funcionarios/editar?id={{clientScope.getFuncionariosPorId(rowId).id}}">{{clientScope.getFuncionariosPorId(rowId).pessoa.nome}}</a>
       </mdt-custom-cell>
     </mdt-table>
 
