@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import model.Cliente;
 import model.Empresa;
 import model.ItemVenda;
 import model.Usuario;
@@ -18,24 +19,26 @@ public class VendaDAO {
     private VendaDAO() {
     }
 
-    public static int create(Venda venda) throws SQLException {
+    public static boolean create(Venda venda) throws Exception {
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
+
         String sql
-                = "INSERT INTO venda (`DataDaVenda`, `ValorTotal`, `Empresa_id`, `Usuario_id`) VALUES ('"
+                = "INSERT INTO venda (`DataDaVenda`, `ValorTotal`, `Empresa_id`, `Usuario_id`, `Cliente_id`) VALUES ('"
                 + venda.getDataVenda() + "','"
                 + venda.getValorTotal() + "','"
                 + venda.getEmpresa().getId() + "','"
-                + venda.getUsuario().getId() + "')";
+                + venda.getUsuario().getId() + "','"
+                + venda.getCliente().getId() + "')";
         stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = stm.getGeneratedKeys();
         rs.next();
         int key = rs.getInt(1);
         venda.setId(key);
+        ArrayList<ItemVenda> itens = venda.getItemVenda();
 
-        ArrayList<ItemVenda> vis = venda.getItemVenda();
-        for (ItemVenda iv : vis) {
+        for (ItemVenda iv : itens) {
             iv.setId(key);
             ItemVendaDAO.create(iv);
         }
@@ -52,10 +55,13 @@ public class VendaDAO {
         rs.next();
         Empresa empresa = EmpresaDAO.retreave(rs.getInt("Empresa_id"));
         Usuario usuario = UsuarioDAO.retreave(rs.getInt("Usuario_id"));
+        Cliente cliente = ClienteDAO.retreave(rs.getInt("cliente_id"));
+        ArrayList<ItemVenda> itens = ItemVendaDAO.retreaveByVenda(rs.getInt("venda_id"));
+
         return new Venda(id,
                 rs.getString("DataDaVenda"),
                 rs.getDouble("ValorTotal"),
-                empresa, usuario);
+                empresa, usuario, cliente, itens);
     }
 
     public static ArrayList<Venda> retreaveAll() throws SQLException {
@@ -68,11 +74,13 @@ public class VendaDAO {
         while (rs.next()) {
             Empresa empresa = EmpresaDAO.retreave(rs.getInt("Empresa_id"));
             Usuario usuario = UsuarioDAO.retreave(rs.getInt("Usuario_id"));
+            Cliente cliente = ClienteDAO.retreave(rs.getInt("cliente_id"));
+            ArrayList<ItemVenda> itens = ItemVendaDAO.retreaveByVenda(rs.getInt("venda_id"));
             venda.add(new Venda(
                     rs.getInt("id"),
                     rs.getString("DataDaVenda"),
                     rs.getDouble("ValorTotal"),
-                    empresa, usuario));
+                    empresa, usuario, cliente, itens));
         }
         rs.next();
         return venda;

@@ -40,12 +40,13 @@ public class Venda {
         this.clienteId = clienteId;
     }
 
-    public Venda(int id, String dataVenda, double valorTotal, Empresa empresa, Usuario usuario, ArrayList<ItemVenda> itemVenda) {
+    public Venda(int id, String dataVenda, double valorTotal, Empresa empresa, Usuario usuario, Cliente cliente, ArrayList<ItemVenda> itemVenda) {
         this.id = id;
         this.dataVenda = dataVenda;
         this.valorTotal = valorTotal;
         this.empresa = empresa;
         this.usuario = usuario;
+        this.cliente = cliente;
         this.itemVenda = itemVenda;
     }
 
@@ -110,6 +111,22 @@ public class Venda {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public int getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(int clienteId) {
+        this.clienteId = clienteId;
     }
 
     public ArrayList<ItemVenda> getItemVenda() {
