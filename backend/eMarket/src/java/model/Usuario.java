@@ -29,6 +29,12 @@ public class Usuario {
         this.funcionarioId = funcionarioId;
         this.statusId = statusId;
     }
+    public Usuario(int id, String login, int funcionarioId, int statusId) {
+        this.id = id;
+        this.login = login;
+        this.funcionarioId = funcionarioId;
+        this.statusId = statusId;
+    }
 
     public int getId() {
         return id;
