@@ -60,12 +60,11 @@ public class EmailsResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/inserir")
-    public int inserir(@HeaderParam("token")String t, String data) throws SQLException, Exception {
+    public String inserir(@HeaderParam("token")String t, String data) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
-        Email e = gson.fromJson(data, Email.class);
-        EmailDAO.create(e); 
-        return 200;
+        Email e = gson.fromJson(data, Email.class); 
+        return gson.toJson(EmailDAO.create(e));
     }
     
     @POST

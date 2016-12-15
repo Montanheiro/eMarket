@@ -16,7 +16,7 @@ public class EmailDAO {
     }
 
     //Metodo CREATE esta OK, testado e funcionando
-    public static int create(Email e) throws SQLException {
+    public static Email create(Email e) throws SQLException {
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
@@ -31,7 +31,7 @@ public class EmailDAO {
         int key = rs.getInt(1);
         e.setId(key);
 
-        return key;
+        return e;
     }
 
     //Metodo RETREAVE esta OK, testado e funcionando
