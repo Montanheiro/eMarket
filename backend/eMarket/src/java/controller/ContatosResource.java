@@ -47,15 +47,25 @@ public class ContatosResource {
         return gson.toJson(c);
     }
     
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/consultarbypessoa")
+    public String consultarByPessoa(@HeaderParam("token") String t, @QueryParam("id") int id) throws SQLException, Exception {
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
+        Gson gson = new Gson();       
+        ArrayList<Contato> contato = ContatoDAO.retreaveByPessoa(id);
+        return gson.toJson(contato);
+    }
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/inserir")
-    public int inserir(@HeaderParam("token")String t, String data) throws SQLException, Exception {
+    public String inserir(@HeaderParam("token")String t, String data) throws SQLException, Exception {
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Contato c = gson.fromJson(data, Contato.class);
-        ContatoDAO.create(c); 
-        return 200;
+
+        return gson.toJson(ContatoDAO.create(c)); 
     }
     
     @POST
@@ -72,13 +82,10 @@ public class ContatosResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/atualizar")
-    public String alterar (@HeaderParam("token")String t,String data) throws SQLException, Exception{
+    public void alterar (@HeaderParam("token")String t,String data) throws SQLException, Exception{
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Contato c = gson.fromJson(data, Contato.class);
         ContatoDAO.update(c);
-        
-        ArrayList<Contato> contato = ContatoDAO.retreaveAll();
-        return gson.toJson(contato); 
     }
 }
