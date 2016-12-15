@@ -14,8 +14,6 @@ public class Usuario {
     private int funcionarioId;
     private int statusId;
 
-    //private Compra compra;//Associacao
-
     public Usuario() {
     }
 

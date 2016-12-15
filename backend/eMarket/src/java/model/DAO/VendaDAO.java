@@ -45,7 +45,7 @@ public class VendaDAO {
         Empresa empresa = EmpresaDAO.retreave(rs.getInt("Empresa_id"));
         Usuario usuario = UsuarioDAO.retreave(rs.getInt("Usuario_id"));
         return new Venda(id,
-                rs.getDate("DataDaVenda"),
+                rs.getString("DataDaVenda"),
                 rs.getDouble("ValorTotal"),
                 empresa, usuario);
     }
@@ -62,7 +62,7 @@ public class VendaDAO {
             Usuario usuario = UsuarioDAO.retreave(rs.getInt("Usuario_id"));
             venda.add(new Venda(
                     rs.getInt("id"),
-                    rs.getDate("DataDaVenda"),
+                    rs.getString("DataDaVenda"),
                     rs.getDouble("ValorTotal"),
                     empresa, usuario));
         }

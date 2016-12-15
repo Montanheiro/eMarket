@@ -10,7 +10,7 @@ public class Venda {
     
     private int id;
 
-    private Date dataVenda;
+    private String dataVenda;
     private double valorTotal;
     
     private Empresa empresa;
@@ -22,12 +22,12 @@ public class Venda {
     public Venda() {
     }
 
-    public Venda(Date dataVenda, double valorTotal) {
+    public Venda(String dataVenda, double valorTotal) {
         this.dataVenda = dataVenda;
         this.valorTotal = valorTotal;
     }
 
-    public Venda(int id, Date dataVenda, double valorTotal, int empresaId, int usuarioId) {
+    public Venda(int id, String dataVenda, double valorTotal, int empresaId, int usuarioId) {
         this.id = id;
         this.dataVenda = dataVenda;
         this.valorTotal = valorTotal;
@@ -35,7 +35,7 @@ public class Venda {
         this.usuarioId = usuarioId;
     }
 
-    public Venda(int id, Date dataVenda, double valorTotal, Empresa empresa, Usuario usuario) {
+    public Venda(int id, String dataVenda, double valorTotal, Empresa empresa, Usuario usuario) {
         this.id = id;
         this.dataVenda = dataVenda;
         this.valorTotal = valorTotal;
@@ -51,11 +51,11 @@ public class Venda {
         this.id = id;
     }
 
-    public Date getDataVenda() {
+    public String getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(Date dataVenda) {
+    public void setDataVenda(String dataVenda) {
         this.dataVenda = dataVenda;
     }
 
