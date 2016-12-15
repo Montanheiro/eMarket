@@ -72,10 +72,13 @@ public class ContatosResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/atualizar")
-    public void alterar (@HeaderParam("token")String t,String data) throws SQLException, Exception{
+    public String alterar (@HeaderParam("token")String t,String data) throws SQLException, Exception{
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Contato c = gson.fromJson(data, Contato.class);
         ContatoDAO.update(c);
+        
+        ArrayList<Contato> contato = ContatoDAO.retreaveAll();
+        return gson.toJson(contato); 
     }
 }

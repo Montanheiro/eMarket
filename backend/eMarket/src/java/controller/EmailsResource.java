@@ -72,10 +72,13 @@ public class EmailsResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/atualizar")
-    public void alterar (@HeaderParam("token")String t,String data) throws SQLException, Exception{
+    public String alterar (@HeaderParam("token")String t,String data) throws SQLException, Exception{
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Email e = gson.fromJson(data, Email.class);
         EmailDAO.update(e);
+        
+        ArrayList<Email> email = EmailDAO.retreaveAll();
+        return gson.toJson(email);
     }
 }
