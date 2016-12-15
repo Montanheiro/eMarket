@@ -56,7 +56,7 @@ public class ContatoDAO {
             String sql = "SELECT * FROM contato where Pessoa_id =" + pessoaId;
             ResultSet rs = stm.executeQuery(sql);
             ArrayList<Contato> temp = new ArrayList<>();
-            if (rs.next()) {
+            while (rs.next()) {
                 temp.add(new Contato(
                         rs.getInt("id"),
                         rs.getString("Telefone"),

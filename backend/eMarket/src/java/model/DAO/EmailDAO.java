@@ -55,7 +55,7 @@ public class EmailDAO {
         String sql = "SELECT * FROM email where Pessoa_id =" + pessoaId;
         ResultSet rs = stm.executeQuery(sql);
         ArrayList<Email> temp = new ArrayList<>();
-        if (rs.next()) {
+        while (rs.next()) {
             temp.add(new Email(
                     rs.getInt("id"),
                     rs.getString("Email"),
