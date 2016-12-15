@@ -19,7 +19,7 @@
 
     main.controller('mainCtrl', function($rootScope) {
 
-        $rootScope.api = "http://localhost:8080/build/webresources";
+        $rootScope.api = "http://backend-emarket.montanheiro.me:8080/webresources";
     });
 
     main.config(function($mdThemingProvider) {
