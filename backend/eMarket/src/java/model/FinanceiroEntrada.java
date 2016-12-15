@@ -10,10 +10,10 @@ public class FinanceiroEntrada {
     
     private int id;
 
-    private Date dataVencimento;
+    private String dataVencimento;
     private double valor;
     private int numParcela;
-    private Date dataBaixa;
+    private String dataBaixa;
     
     private int movimentacaoFinanceiraId;
     private int formaPagamentoId;
@@ -23,14 +23,14 @@ public class FinanceiroEntrada {
     public FinanceiroEntrada() {
     }
 
-    public FinanceiroEntrada(Date dataVencimento, double valor, int numParcela, Date dataBaixa) {
+    public FinanceiroEntrada(String dataVencimento, double valor, int numParcela, String dataBaixa) {
         this.dataVencimento = dataVencimento;
         this.valor = valor;
         this.numParcela = numParcela;
         this.dataBaixa = dataBaixa;
     }
     
-    public FinanceiroEntrada(int id, Date dataVencimento, double valor, int numParcela, Date dataBaixa, int movimentacaoFinanceiraId, int formaPagamentoId, int vendaId, int statusId) {
+    public FinanceiroEntrada(int id, String dataVencimento, double valor, int numParcela, String dataBaixa, int movimentacaoFinanceiraId, int formaPagamentoId, int vendaId, int statusId) {
         this.id = id;
         this.dataVencimento = dataVencimento;
         this.valor = valor;
@@ -50,11 +50,11 @@ public class FinanceiroEntrada {
         this.id = id;
     }
 
-    public Date getDataVencimento() {
+    public String getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(Date dataVencimento) {
+    public void setDataVencimento(String dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
 
@@ -74,11 +74,11 @@ public class FinanceiroEntrada {
         this.numParcela = numParcela;
     }
 
-    public Date getDataBaixa() {
+    public String getDataBaixa() {
         return dataBaixa;
     }
 
-    public void setDataBaixa(Date dataBaixa) {
+    public void setDataBaixa(String dataBaixa) {
         this.dataBaixa = dataBaixa;
     }
 

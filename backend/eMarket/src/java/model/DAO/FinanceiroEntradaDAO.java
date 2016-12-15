@@ -47,10 +47,10 @@ public class FinanceiroEntradaDAO {
         ResultSet rs = stm.executeQuery(sql);
         rs.next();
         return new FinanceiroEntrada(rs.getInt("id"),
-                rs.getDate("DataVencimento"),
+                rs.getString("DataVencimento"),
                 rs.getDouble("Valor"),
                 rs.getInt("NumeroParcela"),
-                rs.getDate("DataBaixa"),
+                rs.getString("DataBaixa"),
                 rs.getInt("MovimentacaoFinanceira_id"),
                 rs.getInt("FormasDePagamento_id"),
                 rs.getInt("Vendas_id"),
@@ -67,10 +67,10 @@ public class FinanceiroEntradaDAO {
         while (rs.next()) {
             fe.add(new FinanceiroEntrada(
                     rs.getInt("id"),
-                    rs.getDate("DataVencimento"),
+                    rs.getString("DataVencimento"),
                     rs.getDouble("Valor"),
                     rs.getInt("NumeroParcela"),
-                    rs.getDate("DataBaixa"),
+                    rs.getString("DataBaixa"),
                     rs.getInt("MovimentacaoFinanceira_id"),
                     rs.getInt("FormasDePagamento_id"),
                     rs.getInt("Vendas_id"),
