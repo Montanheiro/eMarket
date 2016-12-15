@@ -3,6 +3,10 @@ angular.module('spa')
 	function($scope, $rootScope,$routeParams, $http, $location, $mdToast){
 		$scope.name = 'Inserir Funcionário';
 
+        $scope.cancelar = function(){
+            $location.path('administracao/cadastros/funcionarios').search({});
+        };
+
 		$scope.consultarCargos = function(){
             var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");
             if(token) {
