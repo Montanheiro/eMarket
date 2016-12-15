@@ -1,8 +1,8 @@
-build/
-dist/
-nbproject/
-setup/
-test/
-web/
+build/*
+dist/*
+nbproject/*
+setup/*
+test/*
+web/*
 *.class/
 
