@@ -16,7 +16,7 @@ public class Produto {
     private String margem;
     private String ncm;
     private double valorUnitario;
-    private Date dataVencimento;
+    private String dataVencimento;
     
     private int empresaId;
     private int promocaoId;
@@ -24,7 +24,7 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(int codBarras, String nome, String descricao, String margem, String ncm, double valorUnitario, Date dataVencimento) {
+    public Produto(int codBarras, String nome, String descricao, String margem, String ncm, double valorUnitario, String dataVencimento) {
         this.codBarras = codBarras;
         this.nome = nome;
         this.descricao = descricao;
@@ -34,7 +34,7 @@ public class Produto {
         this.dataVencimento = dataVencimento;
     }
 
-    public Produto(int id, int codBarras, String nome, String descricao, String margem, String ncm, double valorUnitario, Date dataVencimento, int empresaId, int promocaoId) {
+    public Produto(int id, int codBarras, String nome, String descricao, String margem, String ncm, double valorUnitario, String dataVencimento, int empresaId, int promocaoId) {
         this.id = id;
         this.codBarras = codBarras;
         this.nome = nome;
@@ -103,11 +103,11 @@ public class Produto {
         this.valorUnitario = valorUnitario;
     }
 
-    public Date getDataVencimento() {
+    public String getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(Date dataVencimento) {
+    public void setDataVencimento(String dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
 

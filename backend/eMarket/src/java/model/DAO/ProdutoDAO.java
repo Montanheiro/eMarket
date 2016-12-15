@@ -54,7 +54,7 @@ public class ProdutoDAO {
                 rs.getString("Margem"),
                 rs.getString("NCM"),
                 rs.getDouble("ValorUnitario"),
-                rs.getDate("DataVencimento"),
+                rs.getString("DataVencimento"),
                 rs.getInt("Empresa_id"),
                 rs.getInt("Promocao_id"));
     }
@@ -75,7 +75,7 @@ public class ProdutoDAO {
                     rs.getString("Margem"),
                     rs.getString("NCM"),
                     rs.getDouble("ValorUnitario"),
-                    rs.getDate("DataVencimento"),
+                    rs.getString("DataVencimento"),
                     rs.getInt("Empresa_id"),
                     rs.getInt("Promocao_id")));
         }
