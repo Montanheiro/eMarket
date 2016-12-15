@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Date;
-
 /**
  *
  * @author Bárbara
@@ -19,7 +17,9 @@ public class Produto {
     private String dataVencimento;
     
     private int empresaId;
-    private int promocaoId;
+    
+    private Promocao promocao;
+    private Empresa empresa;
 
     public Produto() {
     }
@@ -34,7 +34,7 @@ public class Produto {
         this.dataVencimento = dataVencimento;
     }
 
-    public Produto(int id, int codBarras, String nome, String descricao, String margem, String ncm, double valorUnitario, String dataVencimento, int empresaId, int promocaoId) {
+    public Produto(int id, int codBarras, String nome, String descricao, String margem, String ncm, double valorUnitario, String dataVencimento, Empresa empresa, Promocao promocao) {
         this.id = id;
         this.codBarras = codBarras;
         this.nome = nome;
@@ -43,8 +43,8 @@ public class Produto {
         this.ncm = ncm;
         this.valorUnitario = valorUnitario;
         this.dataVencimento = dataVencimento;
-        this.empresaId = empresaId;
-        this.promocaoId = promocaoId;
+        this.empresa = empresa;
+        this.promocao = promocao;
     }
 
     public int getId() {
@@ -119,18 +119,25 @@ public class Produto {
         this.empresaId = empresaId;
     }
 
-    public int getPromocaoId() {
-        return promocaoId;
+    public Promocao getPromocao() {
+        return promocao;
     }
 
-    public void setPromocaoId(int promocaoId) {
-        this.promocaoId = promocaoId;
+    public void setPromocao(Promocao promocao) {
+        this.promocao = promocao;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     @Override
     public String toString() {
-        return "Produto{" + "id=" + id + ", codBarras=" + codBarras + ", nome=" + nome + ", descricao=" + descricao + ", margem=" + margem + ", ncm=" + ncm + ", valorUnitario=" + valorUnitario + ", dataVencimento=" + dataVencimento + ", empresaId=" + empresaId + ", promocaoId=" + promocaoId + '}';
+        return "Produto{" + "id=" + id + ", codBarras=" + codBarras + ", nome=" + nome + ", descricao=" + descricao + ", margem=" + margem + ", ncm=" + ncm + ", valorUnitario=" + valorUnitario + ", dataVencimento=" + dataVencimento + ", empresaId=" + empresaId + ", promocao=" + promocao + ", empresa=" + empresa + '}';
     }
-
 
 }
