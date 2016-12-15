@@ -50,8 +50,8 @@ public class FuncionarioDAO {
         return new Funcionario(id,
                 rs.getDouble("Salario"),
                 rs.getInt("Comissao"),
-                rs.getDate("DataAdmissao"),
-                rs.getDate("DataDemissao"),
+                rs.getString("DataAdmissao"),
+                rs.getString("DataDemissao"),
                 c, p);
     }
 
@@ -69,8 +69,8 @@ public class FuncionarioDAO {
                     rs.getInt("id"),
                     rs.getDouble("Salario"),
                     rs.getInt("Comissao"),
-                    rs.getDate("DataAdmissao"),
-                    rs.getDate("DataDemissao"),
+                    rs.getString("DataAdmissao"),
+                    rs.getString("DataDemissao"),
                     c, p));
         }
         rs.next();

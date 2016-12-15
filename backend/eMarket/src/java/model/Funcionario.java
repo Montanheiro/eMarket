@@ -12,8 +12,8 @@ public class Funcionario{
 
     private double salario;
     private int comissao;
-    private Date dataAdimissao;
-    private Date dataDemissao;
+    private String dataAdimissao;
+    private String dataDemissao;
     
     private Pessoa pessoa;
     private Cargo cargo;
@@ -24,7 +24,7 @@ public class Funcionario{
     public Funcionario() {
     }
 
-    public Funcionario(double salario, int comissao, Date dataAdimissao, Date dataDemissao, int cargoId, Pessoa pessoa) {
+    public Funcionario(double salario, int comissao, String dataAdimissao, String dataDemissao, int cargoId, Pessoa pessoa) {
         this.salario = salario;
         this.comissao = comissao;
         this.dataAdimissao = dataAdimissao;
@@ -33,7 +33,7 @@ public class Funcionario{
         this.pessoa = pessoa;
     }
 
-    public Funcionario(int id, double salario, int comissao, Date dataAdimissao, Date dataDemissao, int cargoId, int pessoaId) {
+    public Funcionario(int id, double salario, int comissao, String dataAdimissao, String dataDemissao, int cargoId, int pessoaId) {
         this.id = id;
         this.salario = salario;
         this.comissao = comissao;
@@ -43,7 +43,7 @@ public class Funcionario{
         this.pessoaId = pessoaId;
     }
 
-    public Funcionario(int id, double salario, int comissao, Date dataAdimissao, Date dataDemissao, Cargo cargo, Pessoa pessoa) {
+    public Funcionario(int id, double salario, int comissao, String dataAdimissao, String dataDemissao, Cargo cargo, Pessoa pessoa) {
         this.id = id;
         this.salario = salario;
         this.comissao = comissao;
@@ -77,19 +77,19 @@ public class Funcionario{
         this.comissao = comissao;
     }
 
-    public Date getDataAdimissao() {
+    public String getDataAdimissao() {
         return dataAdimissao;
     }
 
-    public void setDataAdimissao(Date dataAdimissao) {
+    public void setDataAdimissao(String dataAdimissao) {
         this.dataAdimissao = dataAdimissao;
     }
 
-    public Date getDataDemissao() {
+    public String getDataDemissao() {
         return dataDemissao;
     }
 
-    public void setDataDemissao(Date dataDemissao) {
+    public void setDataDemissao(String dataDemissao) {
         this.dataDemissao = dataDemissao;
     }
 
@@ -125,8 +125,6 @@ public class Funcionario{
         this.cargo = cargo;
     }
     
-    
-
     @Override
     public String toString() {
         return "Funcionario{" + "id=" + id + ", salario=" + salario + ", comissao=" + comissao + ", dataAdimissao=" + dataAdimissao + ", dataDemissao=" + dataDemissao + ", cargoId=" + cargoId + ", pessoaId=" + pessoaId + '}';
