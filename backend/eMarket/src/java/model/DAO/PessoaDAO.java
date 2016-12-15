@@ -32,9 +32,9 @@ public class PessoaDAO {
         rs.next();
         int key = rs.getInt(1);
         p.setId(key);
-
+       
         EnderecoDAO.create(p.getEndereco());
-
+        
         for (Contato c : p.getContato()) {
             c.setPessoaId(key);
             ContatoDAO.create(c);

@@ -11,6 +11,7 @@ import model.DAO.EmpresaDAO;
 import model.DAO.EnderecoDAO;
 import model.DAO.FuncionarioDAO;
 import model.DAO.PessoaDAO;
+import model.Email;
 import model.Empresa;
 import model.Endereco;
 import model.Fornecedor;
@@ -202,9 +203,14 @@ System.out.println(ContatoDAO.retreaveByPessoa(1));
 
     //Cliente c = new Cliente(new Date(10-01-12), 10012, 100, new Pessoa(""));
 
-//        Funcionario f = new Funcionario(2000, 5, new Date(10-01-12), new Date(15-10-16), 1, new Pessoa("9876543210", "Lucas Cagao", new Contato("1234-6789"), new Endereco("Rua das Flores", "Centro", "Mhos", "GO", "BR", "75650000")));
+//        Funcionario f = new Funcionario(
+//                2000, 5, "10-01-12", "15-10-16", 1, 
+//                new Pessoa("9876543210", "Lucas Cagao", 
+//                        new Endereco("Rua das Flores", "Centro", "Mhos", "GO", "BR", "75650000"),
+//                        new ArrayList<Contato>[("9999999")],
+//                                new ArrayList<Email>("barbara@mail.com");
 //        FuncionarioDAO.create(f);
-
+//
 
 
 
