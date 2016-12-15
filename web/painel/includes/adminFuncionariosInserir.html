@@ -1,4 +1,4 @@
-<div layout="column" ng-controller="adminFuncionariosInserirCtrl">
+<div layout="column" ng-controller="adminFuncionariosInserirCtrl" ng-init="consultarCargos()">
 	<md-toolbar>
 		<div class="md-toolbar-tools">
 			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
@@ -13,76 +13,67 @@
 	<md-content class="md-padding">
     	<md-card>
      		<md-card-content>
-				<form name="cliente" ng-submit="inserirFuncionario()">
-          <span>Dados Pessoais</span>
-
+				<form name="form" ng-submit="inserirFuncionario()">
+          <span>Dados Gerais</span>
           <md-input-container class="md-block">
             <label>Nome</label>
-            <input required ng-model="nome" type="text">
+            <input required ng-model="funcionario.pessoa.nome" type="text">
           </md-input-container>
+            <md-input-container class="md-block">
+              <label>CPF</label>
+              <input required ng-model="funcionario.pessoa.cpf_cnpj" ng-pattern="/([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})$/" ui-br-cpf-mask>
+            </md-input-container>
+          <br><span>Endereço</span>
           <div layout="row">
-            <md-input-container flex="25">
+            <md-input-container flex="30">
               <label>CEP</label>
-              <input required ng-model="cep" ng-pattern="/^\d{5}[-]\d{3}$/" ui-br-cep-mask>
+              <input required ng-model="funcionario.pessoa.endereco.cep" ng-pattern="/^\d{5}[-]\d{3}$/" ui-br-cep-mask>
             </md-input-container>
-            <md-input-container flex="60">
+            <md-input-container flex="70">
               <label>Logradouro</label>
-              <input required ng-model="logradouro" type="text">
-            </md-input-container>
-            <md-input-container flex="15">
-              <label>Nº</label>
-              <input required ng-model="numero" type="number">
+              <input required ng-model="funcionario.pessoa.endereco.logradouro" type="text">
             </md-input-container>
           </div>
           <div layout="row">
             <md-input-container flex="40">
               <label>Bairro</label>
-              <input type="text" ng-model="bairro">
+              <input type="text" ng-model="funcionario.pessoa.endereco.bairro">
             </md-input-container>
             <md-input-container flex="60">
-              <label>Complemento</label>
-              <input type="text" ng-model="complemento">
-            </md-input-container>
-          </div>
-          <div layout="row">
-            <md-input-container flex="50">
               <label>Cidade</label>
-              <input type="text" required ng-model="cidade">
-            </md-input-container>
-            <md-input-container flex="50">
-              <label>Telefone</label>
-              <input required ng-model="telefone" ng-pattern="/^\(?[0]?[1-9]{2}\)? ?[9]?[0-9]{4}\-?[0-9]{4}$/" ui-br-phone-number>
+              <input type="text" ng-model="funcionario.pessoa.endereco.cidade">
             </md-input-container>
           </div>
-          <md-input-container class="md-block">
-              <md-select ng-model="selecionarEstado" placeholder="Estado" required>
-                <md-option value="{{estado.nome}}" ng-repeat="estado in estados">{{estado.nome}}</md-option>
-              </md-select>
-          </md-input-container>
+          <md-input-container>
+            <md-select ng-model="funcionario.pessoa.endereco.estado" placeholder="Selecione um Estado" required>
+              <md-option value="{{estado.uf}}" ng-repeat="estado in estados">{{estado.nome}}</md-option>
+            </md-select>
+          </md-input-container>     
             <span>Dados Profissionais</span>
 
-              <md-input-container class="md-block">
-                <label>Função/Cargo</label>
-                <input required ng-model="cargo">
-              </md-input-container>
+            <md-input-container>
+              <md-select ng-model="funcionario.cargo.id" placeholder="Selecione um Cargo" required>
+                <md-option value="{{cargo.id}}" ng-repeat="cargo in cargos">{{cargo.nome}}</md-option>
+              </md-select>
+            </md-input-container>
               <div layout="row">
               <md-input-container flex="50">
-                <label>Salario</label>
-                <input required ng-model="salario" type="text" ui-money-mask="3">
+                <label>Salário</label>
+                <input required ng-model="funcionario.salario" type="text" ui-money-mask="2">
               </md-input-container>
               <md-input-container flex="50">
                 <label>Comissão</label>
-                <input required ng-model="comissao">
+                <input required ng-model="funcionario.comissao" type="text">
               </md-input-container>
             </div>
             <div layout="row">
             <md-input-container flex="50">
               <label>Data de Adimissão</label>
-              <input required ng-model="adimissao" type="date">
+              <input required ng-model="funcionario.dataAdimissao" type="date">
             </md-input-container>
-
           </div>
-					<md-button type="submit" value="submit" class="md-raised md-primary">Salvar</md-button>
+					<md-button type="submit" value="submit" ng-disabled="form.$invalid" class="md-raised md-primary right">Salvar</md-button>
+          <md-button type="button" class="md-raised right" ng-click="cancelar()">Cancelar</md-button>
      			</form>
 			</md-card-content>
 		</md-card>

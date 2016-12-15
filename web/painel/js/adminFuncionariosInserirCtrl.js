@@ -1,11 +1,81 @@
 angular.module('spa')
-	.controller('adminFuncionariosInserirCtrl', ['$scope', '$log', function($scope, $log){
-		$scope.name = 'Inserir Funcionario';
+	.controller('adminFuncionariosInserirCtrl', ['$scope', '$rootScope', '$routeParams', '$http', '$location', '$mdToast',
+	function($scope, $rootScope,$routeParams, $http, $location, $mdToast){
+		$scope.name = 'Inserir Funcionário';
 
-		$scope.sizes = ['480', '960', '1024', '1920'];
+		$scope.consultarCargos = function(){
+            var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");
+            if(token) {
+                $http({ 
+                        url: $rootScope.api + '/cargos/consultar', 
+                        dataType: 'json', 
+                        method:'GET',
+                        headers: {'token': token, 'Content-Type': 'application/json'},
+                    }).success(function (response) {
+                        $scope.cargos = response;
+                        console.log("cargo = " + response);
+                    }).error(function (response) {
+                        if (!response.success) {
+                            console.log("erro response sucess false")
+                            console.log(response);
+                            window.location = "/#/login";
+                        }                       
+                        $scope.cargos();             
+                    });
+            }else{
+                console.log("sem token");
+                window.location = "/#/login";
+            }
+        };
+
+        $scope.inserirFuncionario = function(){
+            var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");     
+            if(token) {
+                $http({ 
+                        url: $rootScope.api + '/funcionarios/inserir', 
+                        dataType: 'json', 
+                        method:'POST',
+                        headers: {'token': token,'Content-Type': 'application/json'},
+                        data: { 
+                            'salario': $scope.funcionario.salario,
+                            'comissao': $scope.funcionario.comissao,
+                            'dataAdimissao': $rootScope.enviarData($scope.funcionario.dataAdimissao),
+                            'pessoa': {
+							    'cpf_cnpj': $scope.funcionario.pessoa.cpf_cnpj,
+							    'nome': $scope.funcionario.pessoa.nome,
+							    'endereco': {
+							      'logradouro': $scope.funcionario.pessoa.endereco.logradouro,
+							      'bairro': $scope.funcionario.pessoa.endereco.bairro,
+							      'cidade': $scope.funcionario.pessoa.endereco.cidade,
+							      'estado': $scope.funcionario.pessoa.endereco.estado,
+							      'pais': $scope.funcionario.pessoa.endereco.pais,
+							      'cep': $scope.funcionario.pessoa.endereco.cep
+							    }
+							  },
+                            'cargo': {
+                            	'id': $scope.funcionario.cargo.id}                             
+                        }
+                    }).success(function (response) {                        
+                        console.log(response);
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .content("Inserido com sucesso!")
+                                .hideDelay(3000)
+                        );
+                        $location.path('/administracao/cadastros/funcionarios').search({});
+
+                    }).error(function (response) {
+                        console.log(response);
+                        alert("erro ao inserir ou no token");
+                        //window.location = "/#/login";
+                    });
+            }else{
+            	alert("sem token");
+                //window.location = "/#/login";
+            }
+        };
 
 		$scope.estados = [
-
 			{id: "1", uf: "AC", nome: "Acre"},
 			{id: "2", uf: "AL", nome: "Alagoas"},
 			{id: "3", uf: "AM", nome: "Amazonas"},
@@ -35,7 +105,5 @@ angular.module('spa')
 			{id: "27", uf: "TO", nome: "Tocantins"}
 		];
 
-		$scope.selecionarEstado = [
-			{id: 1, nome: 'São Paulo'}
-		];
+		
 }]);
