@@ -1,0 +1,54 @@
+<div ng-controller="adminUsuariosCtrl"> <!-- EDITAR CONTROLLER -->
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
+				<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+			</md-button>
+			<h2>
+				<span>{{name}}</span>
+			</h2>					    
+		</div>
+	</md-toolbar>
+	<div class="spaceToolbar"></div>
+
+  <div class="md-padding" layout-margin ng-init="consultarUsuarios()">
+  <md-card class="semMargem">
+    <md-input-container class="campoPesquisa">
+      <label>Pesquisar...</label>
+      <input type="text" ng-model="filtro">
+    </md-input-container>
+     <!--- EDITAR NOME DO ARRAY ABAIXO-->
+    <div ng-hide="true">{{(itensFiltrados = (usuarios | filter: filtro))}}</div>
+  </md-card>
+  </div>
+
+	<div class="md-padding" layout-margin>
+
+    <!-- EDITAR COLUMNS-KEYS COM AS COLUNAS QUE IRÃO EXIBIR -->
+		<mdt-table mdt-row="{
+      data: itensFiltrados,
+      'table-row-id-key': 'id',
+      'column-keys': [
+        'login',
+        'funcionarioId',
+        'statusId'
+      ]
+    }">
+      <mdt-header-row>
+        <!-- COLOCAR UM MD-COLUMN PRA CADA COLUNA EXIBIDA ACIMA NO COLUMN-KEYS-->
+        
+        <mdt-column align-rule="left">Login</mdt-column>
+        <mdt-column align-rule="right">Funcionário iD</mdt-column>
+        <mdt-column align-rule="right">Status iD</mdt-column>
+      </mdt-header-row>
+      <mdt-custom-cell column-key="login"> <!-- COLOCAR O COLUMN-KEY CLICAVEL-->
+        <!-- EDITAR CAMINHO DO LINK ABAIXO -->
+        <a ng-href="#/administracao/cadastros/usuarios/editar?id={{clientScope.getUsuariosPorId(rowId).id}}">{{clientScope.getUsuariosPorId(rowId).login}}</a>
+      </mdt-custom-cell>
+    </mdt-table>
+
+    <md-button class="md-fab md-primary" ng-href="#/administracao/cadastros/usuarios/inserir" aria-label="Adicionar"><!-- EDITAR CAMINHO ACIMA -->
+      <md-icon md-svg-src="img/icons/add.svg"></md-icon>
+    </md-button>
+	</div>    
+</div>

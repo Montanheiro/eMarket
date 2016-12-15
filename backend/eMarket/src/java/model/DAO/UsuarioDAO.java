@@ -46,7 +46,6 @@ public class UsuarioDAO {
         rs.next();
         return new Usuario(id,
                 rs.getString("Login"),
-                rs.getString("Senha"),
                 rs.getInt("Funcionario_id"),
                 rs.getInt("Status_id"));
     }
@@ -62,7 +61,6 @@ public class UsuarioDAO {
         
         return new Usuario(rs.getInt("id"),
                 rs.getString("Login"),
-                rs.getString("Senha"),
                 rs.getInt("Funcionario_id"),
                 rs.getInt("Status_id"));
         
@@ -79,7 +77,6 @@ public class UsuarioDAO {
             while (rs.next()) {
                 u.add(new Usuario(rs.getInt("id"),
                         rs.getString("Login"),
-                        rs.getString("Senha"),
                         rs.getInt("Funcionario_id"),
                         rs.getInt("Status_id")));
             }

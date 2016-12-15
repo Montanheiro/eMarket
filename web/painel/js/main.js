@@ -288,6 +288,7 @@
 
         $rootScope.api = "http://backend-emarket.montanheiro.me:8080/webresources";
 
+
         $scope.verificarLogin = function(){
             var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");     
                 

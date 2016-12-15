@@ -1,4 +1,4 @@
-<div layout="column" ng-controller="adminUsuariosInserirCtrl">
+<div layout="column" ng-controller="adminUsuariosInserirCtrl" ng-init="consultarFuncionarios()">
 	<md-toolbar>
 		<div class="md-toolbar-tools">
 			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
@@ -16,26 +16,33 @@
 				<form name="cliente" ng-submit="inserirUsuario()">
           <span>Cadastro de Usuário</span>
           <div layout="row">
-          <md-input-container flex="30">
+            <md-input-container class="md-block">
+                <md-select  ng-model="usuario.funcionarioId" placeholder="Selecione um Funcionário" required>
+                  <md-option value="{{funcionario.id}}" ng-repeat="funcionario in funcionarios">{{funcionario.pessoa.nome}}</md-option>
+                </md-select>
+              </md-input-container>
+          </div>
+          <div layout="row">
+          <md-input-container flex="100">
             <label>Login</label >
-            <input required ng-model="login" type="text">
+            <input required ng-model="usuario.login" type="text">
           </md-input-container>
           </div>
           <div layout="row">
-            <md-input-container flex="30">
+            <md-input-container flex="100">
               <label>Senha</label>
-              <input required ng-model="senha" type="password" >
+              <input required ng-model="usuario.senha" type="password" >
             </md-input-container>
           </div>
           <div layout="row">
             <md-input-container class="md-block">
-                <md-select  ng-model="selecionarStatusUsuario" placeholder="Status" required>
-                  <md-option value="{{status.tipo}}" ng-repeat="status in statuss">{{status.tipo}}</md-option>
+                <md-select  ng-model="usuario.statusId" placeholder="Selecione um Status" required>
+                  <md-option value="{{status.id}}" ng-repeat="status in statuss">{{status.tipo}}</md-option>
                 </md-select>
               </md-input-container>
           </div>
-
-					<md-button class="md-raised md-primary right" type="submit" value="submit">Salvar</md-button>
+          <md-button type="submit" ng-disabled="form.$invalid" value="submit" class="md-raised md-primary right">Salvar</md-button>
+          <md-button type="button" class="md-raised right" ng-click="cancelar()">Cancelar</md-button>
      			</form>
 			</md-card-content>
 		</md-card>
