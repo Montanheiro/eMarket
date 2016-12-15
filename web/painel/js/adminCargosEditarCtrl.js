@@ -51,8 +51,7 @@ angular.module('spa')
                         method:'POST',
                         headers: {'token': token,'Content-Type': 'application/json'},
                         data: { 
-                            'id': $scope.cargo.id,
-                            'nome': $scope.cargo.nome
+                            'id': $scope.cargo.id
                         }
                     }).success(function (response) {                        
                         console.log(response);
