@@ -23,11 +23,10 @@ public class FuncionarioDAO {
                 = BancoDados.createConnection().
                         createStatement();
         String sql
-                = "INSERT INTO funcionario (`Salario`, `Comissao`, `DataAdmissao`, `DataDemissao`, `Cargo_id`, `Pessoa_id`) VALUES ('"
+                = "INSERT INTO funcionario (`Salario`, `Comissao`, `DataAdmissao`, `Cargo_id`, `Pessoa_id`) VALUES ('"
                 + f.getSalario() + "','"
                 + f.getComissao() + "','"
                 + f.getDataAdimissao() + "','"
-                + f.getDataDemissao() + "','"
                 + f.getCargo().getId() + "','"
                 + f.getPessoa().getId() + "')";
         stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
@@ -81,14 +80,25 @@ public class FuncionarioDAO {
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
-        String sql = "UPDATE funcionario SET "
-                + "`Salario`= '" + f.getSalario()
-                + "', `Comissao`= '" + f.getComissao()
-                + "', `DataAdmissao`= '" + f.getDataAdimissao()
-                + "', `DataDemissao`= '" + f.getDataDemissao()
-                + "' WHERE `id`= "
-                + f.getId();
-        stm.execute(sql);
+        if (f.getDataDemissao() == null) {
+            String sql = "UPDATE funcionario SET "
+                    + "`Salario`= '" + f.getSalario()
+                    + "', `Comissao`= '" + f.getComissao()
+                    + "', `DataAdmissao`= '" + f.getDataAdimissao()
+                    + "' WHERE `id`= "
+                    + f.getId();
+            stm.execute(sql);
+        } else {
+            String sql = "UPDATE funcionario SET "
+                    + "`Salario`= '" + f.getSalario()
+                    + "', `Comissao`= '" + f.getComissao()
+                    + "', `DataAdmissao`= '" + f.getDataAdimissao()
+                    + "', `DataDemissao`= '" + f.getDataDemissao()
+                    + "' WHERE `id`= "
+                    + f.getId();
+            stm.execute(sql);
+
+        }
         PessoaDAO.update(f.getPessoa());
     }
 

@@ -15,9 +15,8 @@ public class Email {
     public Email() {
     }
 
-    public Email(String email, int pessoaId) {
+    public Email(String email) {
         this.email = email;
-        this.pessoaId = pessoaId;
     }
 
     public Email(int id, String email, int pessoaId) {
