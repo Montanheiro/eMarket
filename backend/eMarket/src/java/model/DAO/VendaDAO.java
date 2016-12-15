@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import model.Empresa;
+import model.ItemVenda;
 import model.Usuario;
 import model.Venda;
 
@@ -32,7 +33,14 @@ public class VendaDAO {
         rs.next();
         int key = rs.getInt(1);
         venda.setId(key);
-        return key;
+
+        ArrayList<ItemVenda> vis = venda.getItemVenda();
+        for (ItemVenda iv : vis) {
+            iv.setId(key);
+            ItemVendaDAO.create(iv);
+        }
+        return true;
+
     }
 
     public static Venda retreave(int id) throws SQLException {

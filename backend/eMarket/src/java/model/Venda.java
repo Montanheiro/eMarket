@@ -16,8 +16,10 @@ public class Venda {
 
     private Empresa empresa;
     private Usuario usuario;
+    private Cliente cliente;
     private ArrayList<ItemVenda> itemVenda;
 
+    private int clienteId;
     private int empresaId;
     private int usuarioId;
 
@@ -29,12 +31,13 @@ public class Venda {
         this.valorTotal = valorTotal;
     }
 
-    public Venda(int id, String dataVenda, double valorTotal, int empresaId, int usuarioId) {
+    public Venda(int id, String dataVenda, double valorTotal, int empresaId, int usuarioId, int clienteId) {
         this.id = id;
         this.dataVenda = dataVenda;
         this.valorTotal = valorTotal;
         this.empresaId = empresaId;
         this.usuarioId = usuarioId;
+        this.clienteId = clienteId;
     }
 
     public Venda(int id, String dataVenda, double valorTotal, Empresa empresa, Usuario usuario, ArrayList<ItemVenda> itemVenda) {
