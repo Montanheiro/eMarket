@@ -1,4 +1,4 @@
-<div layout="column" ng-controller="estoqFornecedoresInserirCtrl">
+<div layout="column" ng-controller="estoqFornecedoresEditarCtrl" ng-init="consultar()">
 	<md-toolbar>
 		<div class="md-toolbar-tools">
 			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
@@ -13,7 +13,7 @@
 	<md-content class="md-padding">
     	<md-card>
      		<md-card-content>
-				<form name="fornecedores">
+				<form name="form" ng-submit="editarFornecedores()">
 					<span>Dados Gerais</span>
 
 					<md-input-container class="md-block">
@@ -30,11 +30,11 @@
 							<label>CPF/CNPJ</label>
 							<input required ng-model="fornecedores.fornecedor.cpf_cnpj" ng-pattern="/([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})$/" ui-br-cpfcnpj-mask>
 						</md-input-container>
-						<md-input-container flex="50">
-							<label>Telefone</label>
+					<md-input-container flex="50">
+				<!--	<label>Telefone</label>
 							<input required ng-model="telefone" ng-pattern="/^\(?[0]?[1-9]{2}\)? ?[9]?[0-9]{4}\-?[0-9]{4}$/" ui-br-phone-number>
-						</md-input-container>
-						</div>
+						</md-input-container> -->
+					</div>
 						<div layout="row">
 						<md-input-container flex="50">
 							<label>Inscrição Municipal</label>
@@ -96,12 +96,71 @@
 								<label>Conta</label>
 								<input required ng-model="conta">
 							</md-input-container>
-						</div>
-						<md-button type="submit" value="submit" ng-disabled="form.$invalid" class="md-raised md-primary right">Salvar</md-button>
-						<md-button type="button" class="md-raised right" ng-click="cancelar()">Cancelar</md-button>
+							<md-button type="submit" value="submit" ng-disabled="form.$invalid" class="md-raised md-primary right">Salvar</md-button>
+							<md-button type="button" class="md-accent md-raised right" ng-click="excluir()">Excluir</md-button>
+							<md-button type="button" class="md-raised right" ng-click="cancelar()">Cancelar</md-button>
      			</form>
-
 			</md-card-content>
 		</md-card>
+
+    <md-card>
+        <md-card-content>
+        <form name="form3" ng-submit="inserirTelefone()">
+          <span>Inserir telefone</span>
+          <md-input-container class="md-block">
+              <label>Telefone</label>
+              <input required ng-model="campoTelefone" ng-pattern="/^\(?[0]?[1-9]{2}\)? ?[9]?[0-9]{4}\-?[0-9]{4}$/" ui-br-phone-number>
+          </md-input-container>
+          <md-button type="submit" value="submit" ng-disabled="form3.$invalid" class="md-raised md-primary right">Inserir</md-button>
+          <md-button type="button" class="md-raised right" ng-click="cancelar()">Cancelar</md-button>
+          </form>
+      </md-card-content>
+    </md-card>
+
+      <mdt-table table-card="{visible: true, title: 'Telefones'}"
+                 selectable-rows="true"
+                 alternate-headers="'contextual'"
+
+                 delete-row-callback="deletarTelefone(rows)">
+        <mdt-header-row>
+          <mdt-column align-rule="left">Telefones</mdt-column>
+        </mdt-header-row>
+        <mdt-row
+                 ng-repeat="telefone in telefones"
+                 table-row-id="telefone.id">
+          <mdt-cell>{{telefone.telefone}}</mdt-cell>
+        </mdt-row>
+      </mdt-table>
+
+      <br>
+
+      <md-card>
+        <md-card-content>
+        <form name="form2" ng-submit="inserirEmail()">
+          <span>Inserir Email</span>
+          <md-input-container class="md-block">
+              <label>Email</label>
+              <input required ng-model="campoEmail" type="email">
+          </md-input-container>
+          <md-button type="submit" value="submit" ng-disabled="form2.$invalid" class="md-raised md-primary right">Inserir</md-button>
+          <md-button type="button" class="md-raised right" ng-click="cancelar()">Cancelar</md-button>
+          </form>
+      </md-card-content>
+    </md-card>
+
+      <mdt-table table-card="{visible: true, title: 'Emails'}"
+                 selectable-rows="true"
+                 alternate-headers="'contextual'"
+
+                 delete-row-callback="deletarTelefone(rows)">
+        <mdt-header-row>
+          <mdt-column align-rule="left">Emails</mdt-column>
+        </mdt-header-row>
+        <mdt-row
+                 ng-repeat="email in emails"
+                 table-row-id="email.id">
+          <mdt-cell>{{email.email}}</mdt-cell>
+        </mdt-row>
+      </mdt-table>
 	</md-content>
 </div>

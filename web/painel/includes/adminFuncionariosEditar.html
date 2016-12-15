@@ -48,7 +48,7 @@
             <md-select ng-model="funcionario.pessoa.endereco.estado" placeholder="Selecione um Estado" required>
               <md-option value="{{estado.uf}}" ng-repeat="estado in estados">{{estado.nome}}</md-option>
             </md-select>
-          </md-input-container>     
+          </md-input-container>
             <span>Dados Profissionais</span>
 
             <md-input-container>
@@ -100,12 +100,12 @@
       <mdt-table table-card="{visible: true, title: 'Telefones'}"
                  selectable-rows="true"
                  alternate-headers="'contextual'"
-                 
+
                  delete-row-callback="deletarTelefone(rows)">
         <mdt-header-row>
           <mdt-column align-rule="left">Telefones</mdt-column>
         </mdt-header-row>
-        <mdt-row 
+        <mdt-row
                  ng-repeat="telefone in telefones"
                  table-row-id="telefone.id">
           <mdt-cell>{{telefone.telefone}}</mdt-cell>
@@ -131,12 +131,12 @@
       <mdt-table table-card="{visible: true, title: 'Emails'}"
                  selectable-rows="true"
                  alternate-headers="'contextual'"
-                 
+
                  delete-row-callback="deletarTelefone(rows)">
         <mdt-header-row>
           <mdt-column align-rule="left">Emails</mdt-column>
         </mdt-header-row>
-        <mdt-row 
+        <mdt-row
                  ng-repeat="email in emails"
                  table-row-id="email.id">
           <mdt-cell>{{email.email}}</mdt-cell>
