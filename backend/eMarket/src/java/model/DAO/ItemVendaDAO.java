@@ -27,9 +27,9 @@ public class ItemVendaDAO {
                 + iv.getQuantidade() + "','"
                 + iv.getValorVenda() + "','"
                 + iv.getVendaId() + "','"
-                + iv.getFinanceiroCaixaId() + "','"
-                + iv.getProdutoId() + "','"
-                + iv.getStatusId() + "')";
+                + iv.getFinanceiro().getId() + "','"
+                + iv.getProduto().getId() + "','"
+                + iv.getStatus().getId() + "')";
 
         stm.execute(sql, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = stm.getGeneratedKeys();
@@ -108,8 +108,7 @@ public class ItemVendaDAO {
         String sql = "UPDATE item_venda SET "
                 + "`Quantidade`= '" + iv.getQuantidade()
                 + "', `ValorDaVenda`= '" + iv.getValorVenda()
-                + "' WHERE `id`= "
-                + iv.getId();
+                + "' WHERE `id`= " + iv.getId();
         stm.execute(sql);
     }
 
@@ -117,8 +116,7 @@ public class ItemVendaDAO {
         Statement stm
                 = BancoDados.createConnection().
                         createStatement();
-        String sql = "DELETE FROM item_venda WHERE `id`="
-                + iv.getId();
+        String sql = "DELETE FROM item_venda WHERE `id` = " + iv.getId();
         stm.execute(sql);
     }
 
