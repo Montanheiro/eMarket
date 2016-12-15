@@ -10,9 +10,9 @@ public class FinanceiroSaida {
         
     private int id;
 
-    private Date dataVencimento;
-    private Date dataBaixa;
-    private Date dataEmissao;
+    private String dataVencimento;
+    private String dataBaixa;
+    private String dataEmissao;
     private double valor;
         
     private int movimentacaoFinanceiraId;
@@ -23,14 +23,14 @@ public class FinanceiroSaida {
     public FinanceiroSaida() {
     }
 
-    public FinanceiroSaida(Date dataVencimento, Date dataBaixa, Date dataEmissao, double valor) {
+    public FinanceiroSaida(String dataVencimento, String dataBaixa, String dataEmissao, double valor) {
         this.dataVencimento = dataVencimento;
         this.dataBaixa = dataBaixa;
         this.dataEmissao = dataEmissao;
         this.valor = valor;
     }
 
-    public FinanceiroSaida(int id, Date dataVencimento, Date dataBaixa, Date dataEmissao, double valor, int movimentacaoFinanceiraId, int compraId, int formaPagamentoId, int statusId) {
+    public FinanceiroSaida(int id, String dataVencimento, String dataBaixa, String dataEmissao, double valor, int movimentacaoFinanceiraId, int compraId, int formaPagamentoId, int statusId) {
         this.id = id;
         this.dataVencimento = dataVencimento;
         this.dataBaixa = dataBaixa;
@@ -50,27 +50,27 @@ public class FinanceiroSaida {
         this.id = id;
     }
 
-    public Date getDataVencimento() {
+    public String getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(Date dataVencimento) {
+    public void setDataVencimento(String dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
 
-    public Date getDataBaixa() {
+    public String getDataBaixa() {
         return dataBaixa;
     }
 
-    public void setDataBaixa(Date dataBaixa) {
+    public void setDataBaixa(String dataBaixa) {
         this.dataBaixa = dataBaixa;
     }
 
-    public Date getDataEmissao() {
+    public String getDataEmissao() {
         return dataEmissao;
     }
 
-    public void setDataEmissao(Date dataEmissao) {
+    public void setDataEmissao(String dataEmissao) {
         this.dataEmissao = dataEmissao;
     }
 
