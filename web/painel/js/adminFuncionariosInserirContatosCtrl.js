@@ -117,7 +117,7 @@ angular.module('spa')
                 }
 
             }
-        }
+        };
 
 
         $scope.inserirEmail = function(){
@@ -185,7 +185,7 @@ angular.module('spa')
                 }
 
             }
-        }
+        };
 
 	}
 ]);
