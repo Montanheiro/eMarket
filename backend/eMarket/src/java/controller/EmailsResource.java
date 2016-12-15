@@ -47,6 +47,16 @@ public class EmailsResource {
         return gson.toJson(e);
     }
     
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/consultarbypessoa")
+    public String  consultarByPessoa(@HeaderParam("token") String t, @QueryParam("id")int id) throws SQLException, Exception {
+        if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
+        Gson gson = new Gson();
+        ArrayList<Email> emails = EmailDAO.retreaveByPessoa(id);
+        return gson.toJson(emails);
+    }
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/inserir")
@@ -72,13 +82,10 @@ public class EmailsResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/atualizar")
-    public String alterar (@HeaderParam("token")String t,String data) throws SQLException, Exception{
+    public void alterar (@HeaderParam("token")String t,String data) throws SQLException, Exception{
         if (!new Token().VerificarToken(t)) throw new Exception("token invalido");
         Gson gson = new Gson();
         Email e = gson.fromJson(data, Email.class);
         EmailDAO.update(e);
-        
-        ArrayList<Email> email = EmailDAO.retreaveAll();
-        return gson.toJson(email);
     }
 }
