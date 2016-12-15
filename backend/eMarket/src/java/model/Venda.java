@@ -1,21 +1,23 @@
 package model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
  * @author Bárbara
  */
 public class Venda {
-    
+
     private int id;
 
     private String dataVenda;
     private double valorTotal;
-    
+
     private Empresa empresa;
     private Usuario usuario;
-    
+    private ArrayList<ItemVenda> itemVenda;
+
     private int empresaId;
     private int usuarioId;
 
@@ -35,14 +37,22 @@ public class Venda {
         this.usuarioId = usuarioId;
     }
 
-    public Venda(int id, String dataVenda, double valorTotal, Empresa empresa, Usuario usuario) {
+    public Venda(int id, String dataVenda, double valorTotal, Empresa empresa, Usuario usuario, ArrayList<ItemVenda> itemVenda) {
         this.id = id;
         this.dataVenda = dataVenda;
         this.valorTotal = valorTotal;
         this.empresa = empresa;
         this.usuario = usuario;
+        this.itemVenda = itemVenda;
     }
-    
+
+    public void addItem(ItemVenda iv) {
+        if (itemVenda == null) {
+            itemVenda = new ArrayList<>();
+        }
+        itemVenda.add(iv);
+    }
+
     public int getId() {
         return id;
     }
@@ -99,11 +109,17 @@ public class Venda {
         this.usuario = usuario;
     }
 
+    public ArrayList<ItemVenda> getItemVenda() {
+        return itemVenda;
+    }
+
+    public void setItemVenda(ArrayList<ItemVenda> itemVenda) {
+        this.itemVenda = itemVenda;
+    }
+
     @Override
     public String toString() {
         return "Venda{" + "id=" + id + ", dataVenda=" + dataVenda + ", valorTotal=" + valorTotal + ", empresa=" + empresa + ", usuario=" + usuario + ", empresaId=" + empresaId + ", usuarioId=" + usuarioId + '}';
     }
 
-    
-    
 }
