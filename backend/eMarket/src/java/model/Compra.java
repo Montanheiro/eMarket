@@ -10,7 +10,7 @@ public class Compra {
 
     private int id;
 
-    private Date data;
+    private String data;
     private double valorTotal;
     
     private int empresaId;
@@ -20,12 +20,12 @@ public class Compra {
     public Compra() {
     }
 
-    public Compra(Date data, double valorTotal) {
+    public Compra(String data, double valorTotal) {
         this.data = data;
         this.valorTotal = valorTotal;
     }
 
-    public Compra(int id, Date data, double valorTotal, int empresaId, int usuarioId, int fornecedorId) {
+    public Compra(int id, String data, double valorTotal, int empresaId, int usuarioId, int fornecedorId) {
         this.id = id;
         this.data = data;
         this.valorTotal = valorTotal;
@@ -42,11 +42,11 @@ public class Compra {
         this.id = id;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

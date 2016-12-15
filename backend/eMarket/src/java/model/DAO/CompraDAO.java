@@ -44,7 +44,7 @@ public class CompraDAO {
             rs.next();
 
             return new Compra(rs.getInt("id"),
-                    rs.getDate("data"),
+                    rs.getString("data"),
                     rs.getDouble("valorTotal"),
                     rs.getInt("empresaId"),
                     rs.getInt("usuarioId"),
@@ -64,7 +64,7 @@ public class CompraDAO {
             while (rs.next()) {
                 c.add(new Compra(
                         rs.getInt("id"),
-                        rs.getDate("data"),
+                        rs.getString("data"),
                         rs.getDouble("valorTotal"),
                         rs.getInt("empresaId"),
                         rs.getInt("usuarioId"),
@@ -86,7 +86,7 @@ public class CompraDAO {
 
                 return new Compra(
                         rs.getInt("id"),
-                        rs.getDate("data"),
+                        rs.getString("data"),
                         rs.getDouble("valorTotal"),
                         rs.getInt("empresaId"),
                         rs.getInt("usuarioId"),
@@ -105,7 +105,7 @@ public class CompraDAO {
 
                 return new Compra(
                         rs.getInt("id"),
-                        rs.getDate("data"),
+                        rs.getString("data"),
                         rs.getDouble("valorTotal"),
                         rs.getInt("empresaId"),
                         rs.getInt("usuarioId"),
