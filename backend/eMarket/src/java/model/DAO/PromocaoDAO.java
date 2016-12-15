@@ -44,8 +44,8 @@ public class PromocaoDAO {
         rs.next();
         return new Promocao(rs.getInt("id"),
                 rs.getString("Descricao"),
-                rs.getDate("DataInicio"),
-                rs.getDate("DataFinal"),
+                rs.getString("DataInicio"),
+                rs.getString("DataFinal"),
                 rs.getInt("Porcentagem"));
     }
 
@@ -60,8 +60,8 @@ public class PromocaoDAO {
             e.add(new Promocao(
                     rs.getInt("id"),
                     rs.getString("Descricao"),
-                    rs.getDate("DataInicio"),
-                    rs.getDate("DataFinal"),
+                    rs.getString("DataInicio"),
+                    rs.getString("DataFinal"),
                     rs.getInt("Porcentagem")));
         }
         rs.next();

@@ -11,21 +11,21 @@ public class Promocao {
     private int id;
 
     private String descricao;
-    private Date dataInicio;
-    private Date dataFim;
+    private String dataInicio;
+    private String dataFim;
     private int porcentagem;
 
     public Promocao() {
     }
 
-    public Promocao(String descricao, Date dataInicio, Date dataFim, int porcentagem) {
+    public Promocao(String descricao, String dataInicio, String dataFim, int porcentagem) {
         this.descricao = descricao;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.porcentagem = porcentagem;
     }
 
-    public Promocao(int id, String descricao, Date dataInicio, Date dataFim, int porcentagem) {
+    public Promocao(int id, String descricao, String dataInicio, String dataFim, int porcentagem) {
         this.id = id;
         this.descricao = descricao;
         this.dataInicio = dataInicio;
@@ -49,19 +49,19 @@ public class Promocao {
         this.descricao = descricao;
     }
 
-    public Date getDataInicio() {
+    public String getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(String dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataFim() {
+    public String getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(String dataFim) {
         this.dataFim = dataFim;
     }
 
