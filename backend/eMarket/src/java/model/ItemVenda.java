@@ -11,6 +11,10 @@ public class ItemVenda {
     private double quantidade;
     private double valorVenda;
     
+    private Produto produto;
+    private FinanceiroCaixa financeiro;
+    private Status status;
+    
     private int vendaId;
     private int financeiroCaixaId;
     private int produtoId;
@@ -34,6 +38,16 @@ public class ItemVenda {
         this.statusId = statusId;
     }
 
+    public ItemVenda(int id, double quantidade, double valorVenda, Produto produto, FinanceiroCaixa financeiro, Status status, int vendaId) {
+        this.id = id;
+        this.quantidade = quantidade;
+        this.valorVenda = valorVenda;
+        this.produto = produto;
+        this.financeiro = financeiro;
+        this.status = status;
+        this.vendaId = vendaId;
+    }
+    
     public int getId() {
         return id;
     }
@@ -90,10 +104,35 @@ public class ItemVenda {
         this.statusId = statusId;
     }
 
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public FinanceiroCaixa getFinanceiro() {
+        return financeiro;
+    }
+
+    public void setFinanceiro(FinanceiroCaixa financeiro) {
+        this.financeiro = financeiro;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "ItemVenda{" + "id=" + id + ", quantidade=" + quantidade + ", valorVenda=" + valorVenda + ", vendaId=" + vendaId + ", financeiroCaixaId=" + financeiroCaixaId + ", produtoId=" + produtoId + ", statusId=" + statusId + '}';
+        return "ItemVenda{" + "id=" + id + ", quantidade=" + quantidade + ", valorVenda=" + valorVenda + ", produto=" + produto + ", financeiro=" + financeiro + ", status=" + status + ", vendaId=" + vendaId + ", financeiroCaixaId=" + financeiroCaixaId + ", produtoId=" + produtoId + ", statusId=" + statusId + '}';
     }
+    
 
     
 }
