@@ -12,7 +12,6 @@ public class Endereco {
     private String bairro;
     private String cidade;
     private String estado;
-    private String pais;
     private String cep;
     
     private int pessoaId;
@@ -20,22 +19,20 @@ public class Endereco {
     public Endereco() {
     }
     
-    public Endereco(String logradouro, String bairro, String cidade, String estado, String pais, String cep) {
+    public Endereco(String logradouro, String bairro, String cidade, String estado, String cep) {
         this.logradouro = logradouro;
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
-        this.pais = pais;
         this.cep = cep;
     }
 
-    public Endereco(int id, String logradouro, String bairro, String cidade, String estado, String pais, String cep, int pessoaId) {
+    public Endereco(int id, String logradouro, String bairro, String cidade, String estado, String cep, int pessoaId) {
         this.id = id;
         this.logradouro = logradouro;
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
-        this.pais = pais;
         this.cep = cep;
         this.pessoaId = pessoaId;
     }
@@ -80,14 +77,6 @@ public class Endereco {
         this.estado = estado;
     }
 
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
     public String getCep() {
         return cep;
     }
@@ -106,7 +95,7 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco{" + "id=" + id + ", logradouro=" + logradouro + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", pais=" + pais + ", cep=" + cep + ", pessoaId=" + pessoaId + '}';
+        return "Endereco{" + "id=" + id + ", logradouro=" + logradouro + ", bairro=" + bairro + ", cidade=" + cidade + ", estado=" + estado + ", cep=" + cep + ", pessoaId=" + pessoaId + '}';
     }
 
         
