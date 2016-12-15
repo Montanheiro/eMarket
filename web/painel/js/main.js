@@ -28,6 +28,10 @@
             templateUrl: 'includes/adminFuncionariosInserir.html',
             controller: 'adminFuncionariosInserirCtrl'
         })
+        .when('/administracao/cadastros/funcionarios/inserir/contatos', {
+            templateUrl: 'includes/adminFuncionariosInserirContatos.html',
+            controller: 'adminFuncionariosInserirContatosCtrl'
+        })
         .when('/administracao/cadastros/funcionarios/editar', {
             templateUrl: 'includes/adminFuncionariosEditar.html',
             controller: 'adminFuncionariosEditarCtrl'
