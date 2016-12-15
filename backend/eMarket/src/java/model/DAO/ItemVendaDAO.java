@@ -4,7 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import model.FinanceiroCaixa;
 import model.ItemVenda;
+import model.Produto;
+import model.Status;
 
 /**
  *
@@ -44,13 +47,36 @@ public class ItemVendaDAO {
         String sql = "SELECT * FROM item_venda where id =" + id;
         ResultSet rs = stm.executeQuery(sql);
         rs.next();
-        return new ItemVenda(rs.getInt("id"),
+        Produto p = ProdutoDAO.retreave(rs.getInt("Produtos_id"));
+        Status st = StatusDAO.retreave(rs.getInt("Status_id"));
+        FinanceiroCaixa fc = FinanceiroCaixaDAO.retreave(rs.getInt("FinanceiroCaixa_id"));
+        return new ItemVenda(
+                rs.getInt("id"),
                 rs.getDouble("Quantidade"),
                 rs.getDouble("ValorDaVenda"),
-                rs.getInt("Vendas_id"),
-                rs.getInt("FinanceiroCaixa_id"),
-                rs.getInt("Produtos_id"),
-                rs.getInt("Status_id"));
+                p, fc, st,
+                rs.getInt("Vendas_id"));
+    }
+
+    public static ArrayList<ItemVenda> retreaveByVenda(int vendaId) throws SQLException {
+        Statement stm
+                = BancoDados.createConnection().
+                        createStatement();
+        String sql = "SELECT * FROM item_venda where venda_id = " + vendaId;
+        ResultSet rs = stm.executeQuery(sql);
+        ArrayList<ItemVenda> iv = new ArrayList<>();
+        if (rs.next()) {
+            Produto p = ProdutoDAO.retreave(rs.getInt("Produtos_id"));
+            Status st = StatusDAO.retreave(rs.getInt("Status_id"));
+            FinanceiroCaixa fc = FinanceiroCaixaDAO.retreave(rs.getInt("FinanceiroCaixa_id"));
+            iv.add(new ItemVenda(
+                    rs.getInt("id"),
+                    rs.getDouble("Quantidade"),
+                    rs.getDouble("ValorDaVenda"),
+                    p, fc, st,
+                    rs.getInt("Vendas_id")));
+        }
+        return iv;
     }
 
     public static ArrayList<ItemVenda> retreaveAll() throws SQLException {
@@ -61,14 +87,15 @@ public class ItemVendaDAO {
         ResultSet rs = stm.executeQuery(sql);
         ArrayList<ItemVenda> iv = new ArrayList<>();
         while (rs.next()) {
+            Produto p = ProdutoDAO.retreave(rs.getInt("Produtos_id"));
+            Status st = StatusDAO.retreave(rs.getInt("Status_id"));
+            FinanceiroCaixa fc = FinanceiroCaixaDAO.retreave(rs.getInt("FinanceiroCaixa_id"));
             iv.add(new ItemVenda(
                     rs.getInt("id"),
                     rs.getDouble("Quantidade"),
                     rs.getDouble("ValorDaVenda"),
-                    rs.getInt("Vendas_id"),
-                    rs.getInt("FinanceiroCaixa_id"),
-                    rs.getInt("Produtos_id"),
-                    rs.getInt("Status_id")));
+                    p, fc, st,
+                    rs.getInt("Vendas_id")));
         }
         rs.next();
         return iv;
