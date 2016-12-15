@@ -286,7 +286,8 @@
 
     main.controller('mainCtrl', function($rootScope, $scope, $http) {
 
-        $rootScope.api = "http://localhost:8080/build/webresources";
+        $rootScope.api = "http://backend-emarket.montanheiro.me:8080/webresources";
+
 
         $scope.verificarLogin = function(){
             var token = sessionStorage.getItem("user_session") || localStorage.getItem("user_session");     

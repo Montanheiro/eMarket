@@ -1,0 +1,54 @@
+<div ng-controller="estoqFornecedoresCtrl" ng-init="consultarFornecedores()"> <!-- EDITAR CONTROLLER -->
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<md-button ng-click="toggleLeft()" class="md-button" hide-gt-md="" aria-label="Menu">
+				<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+			</md-button>
+			<h2>
+				<span>{{name}}</span>
+			</h2>
+		</div>
+	</md-toolbar>
+	<div class="spaceToolbar"></div>
+
+  <div class="md-padding" layout-margin >
+  <md-card class="semMargem">
+    <md-input-container class="campoPesquisa">
+      <label>Pesquisar...</label>
+      <input type="text" ng-model="filtro">
+    </md-input-container>
+     <!--- EDITAR NOME DO ARRAY ABAIXO-->
+    <div ng-hide="true">{{(itensFiltrados = (fornecedores | filter: filtro))}}</div>
+  </md-card>
+  </div>
+
+	<div class="md-padding" layout-margin>
+
+    <!-- EDITAR COLUMNS-KEYS COM AS COLUNAS QUE IRÃO EXIBIR -->
+		<mdt-table mdt-row="{
+      data: itensFiltrados,
+      'table-row-id-key': 'id',
+      'column-keys': [
+        'pessoa.nome',
+        'pessoa.responsavel',
+        'pessoa.cpf_cnpj'
+      ]
+    }">
+      <mdt-header-row>
+        <!-- COLOCAR UM MD-COLUMN PRA CADA COLUNA EXIBIDA ACIMA NO COLUMN-KEYS-->
+        <mdt-column align-rule="left">Razão Social</mdt-column>
+        <mdt-column align-rule="right">Nome Fantasia</mdt-column>
+        <mdt-column align-rule="right">CPF/CNPJ</mdt-column>
+
+      </mdt-header-row>
+      <mdt-custom-cell column-key="pessoa.nome"> <!-- COLOCAR O COLUMN-KEY CLICAVEL-->
+        <!-- EDITAR CAMINHO DO LINK ABAIXO -->
+        <a ng-href="#/estoque/cadastros/fornecedores/editar?id={{clientScope.getFornecedoresPorId(rowId).id}}">{{clientScope.getFornecedoresPorId(rowId).pessoa.nome}}</a>
+      </mdt-custom-cell>
+    </mdt-table>
+
+    <md-button class="md-fab md-primary" ng-href="#/estoque/cadastros/fornecedores/inserir" aria-label="Adicionar"><!-- EDITAR CAMINHO ACIMA -->
+      <md-icon md-svg-src="img/icons/add.svg"></md-icon>
+    </md-button>
+	</div>
+</div>
