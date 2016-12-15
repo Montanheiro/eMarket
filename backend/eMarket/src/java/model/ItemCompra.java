@@ -12,7 +12,7 @@ public class ItemCompra {
 
     private double quantidade;
     private double valorCompra;
-    private Date dataCompra;
+    private String dataCompra;
 
     private int compraId;
     private int produtoId;
@@ -21,13 +21,13 @@ public class ItemCompra {
     public ItemCompra() {
     }
 
-    public ItemCompra(double quantidade, double valorCompra, Date dataCompra) {
+    public ItemCompra(double quantidade, double valorCompra, String dataCompra) {
         this.quantidade = quantidade;
         this.valorCompra = valorCompra;
         this.dataCompra = dataCompra;
     }
 
-    public ItemCompra(int id, double quantidade, double valorCompra, Date dataCompra, int compraId, int produtoId, int statusId) {
+    public ItemCompra(int id, double quantidade, double valorCompra, String dataCompra, int compraId, int produtoId, int statusId) {
         this.id = id;
         this.quantidade = quantidade;
         this.valorCompra = valorCompra;
@@ -61,11 +61,11 @@ public class ItemCompra {
         this.valorCompra = valorCompra;
     }
 
-    public Date getDataCompra() {
+    public String getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(Date dataCompra) {
+    public void setDataCompra(String dataCompra) {
         this.dataCompra = dataCompra;
     }
 

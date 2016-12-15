@@ -47,7 +47,7 @@ public class ItemCompraDAO {
         return new ItemCompra(rs.getInt("id"),
                 rs.getDouble("Quantidade"),
                 rs.getDouble("ValorCompra"),
-                rs.getDate("DataCompra"),
+                rs.getString("DataCompra"),
                 rs.getInt("Compras_id"),
                 rs.getInt("Produtos_id"),
                 rs.getInt("Status_id"));
@@ -65,7 +65,7 @@ public class ItemCompraDAO {
                     rs.getInt("id"),
                     rs.getDouble("Quantidade"),
                     rs.getDouble("ValorCompra"),
-                    rs.getDate("DataCompra"),
+                    rs.getString("DataCompra"),
                     rs.getInt("Compras_id"),
                     rs.getInt("Produtos_id"),
                     rs.getInt("Status_id")));
